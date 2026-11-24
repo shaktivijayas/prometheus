@@ -18,12 +18,14 @@ def _sizing(p: argparse.ArgumentParser) -> None:
     p.add_argument("--episodes-per-lesson", type=int, default=d.episodes_per_lesson)
     p.add_argument("--eval-worlds", type=int, default=d.eval_worlds)
     p.add_argument("--workers", type=int, default=d.workers, help="0 = all cores")
+    p.add_argument("--replicates", type=int, default=d.replicates,
+                   help="independent upbringings averaged per child (reduces luck)")
 
 
 def _config(args, creator: str, seed: int) -> RunConfig:
     return RunConfig(creator=creator, generations=args.generations, population=args.population, elite=args.elite,
                      seed=seed, episodes_per_lesson=args.episodes_per_lesson, eval_worlds=args.eval_worlds,
-                     workers=args.workers)
+                     workers=args.workers, replicates=args.replicates)
 
 
 def _check_creators(names: list[str]) -> None:
@@ -87,7 +89,7 @@ def build_parser() -> argparse.ArgumentParser:
     run.set_defaults(func=cmd_run)
 
     cmp_ = sub.add_parser("compare", help="compare Creators across seeds on identical budgets")
-    cmp_.add_argument("--creators", default="heuristic,random")
+    cmp_.add_argument("--creators", default="clone,heuristic,random")
     cmp_.add_argument("--seeds", default="0,1,2")
     cmp_.add_argument("--out", default=".")
     cmp_.add_argument("--name", default="comparison")

@@ -97,3 +97,13 @@ def test_all_equal_fitness_no_crash():
     report = population([metrics(fitness=0.0)] * 4)
     for name in ("random", "heuristic"):
         assert len(get_creator(name).next_generation(report, 3, np.random.default_rng(0))) == 3
+
+
+def test_clone_creator_copies_parents_exactly():
+    report = population([metrics(fitness=f) for f in (1, 2, 3, 4)])
+    specs = get_creator("clone").next_generation(report, 4, np.random.default_rng(0))
+    by_id = {r.id: r for r in report.population}
+    for s in specs:
+        parent = by_id[s.parent_id]
+        assert s.genome == parent.genome_obj() and list(s.curriculum) == parent.curriculum
+        assert not s.inherit_beliefs

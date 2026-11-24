@@ -9,7 +9,7 @@ from typing import Callable
 
 import numpy as np
 
-from .benchmark import EvalSuite, replay_episodes, train_and_evaluate
+from .benchmark import EvalSuite, replay_episodes, train_and_evaluate_replicated
 from .child import Beliefs
 from .creators import get_creator
 from .creators.base import Creator, GenerationReport, ranked
@@ -29,6 +29,7 @@ class RunConfig:
     eval_worlds: int = 24
     workers: int = 0              # 0 = all cores, 1 = in-process
     record_replays: bool = True
+    replicates: int = 3           # independent upbringings averaged per child, so fitness reflects the design
     universe: int | None = None   # which hidden laws; defaults to `seed` so every arm with a seed shares a universe
 
     def universe_seed(self) -> int:
@@ -50,12 +51,19 @@ def child_seed(run_seed: int, entity_id: str) -> int:
     return int(np.random.SeedSequence([run_seed, int(entity_id[1:])]).generate_state(1)[0])
 
 
+def replicate_seeds(run_seed: int, entity_id: str, replicates: int) -> list[int]:
+    """Replicate 0 uses child_seed (it is the child that lives on); the rest are independent upbringings."""
+    extra = [int(np.random.SeedSequence([run_seed, int(entity_id[1:]), r]).generate_state(1)[0])
+             for r in range(1, replicates)]
+    return [child_seed(run_seed, entity_id)] + extra
+
+
 def _evaluate_job(job: tuple) -> tuple[dict, dict]:
     """Top-level (spawn-safe) worker: teach and score one child."""
-    genome_d, beliefs_d, curriculum, seed, suite, episodes_per_lesson = job
+    genome_d, beliefs_d, curriculum, seeds, suite, episodes_per_lesson = job
     beliefs = Beliefs.from_dict(beliefs_d) if beliefs_d else None
-    metrics, learned = train_and_evaluate(Genome.from_dict(genome_d), beliefs, curriculum, seed, suite,
-                                          episodes_per_lesson=episodes_per_lesson)
+    metrics, learned = train_and_evaluate_replicated(Genome.from_dict(genome_d), beliefs, curriculum, seeds, suite,
+                                                     episodes_per_lesson=episodes_per_lesson)
     return metrics.to_dict(), learned.to_dict()
 
 
@@ -146,7 +154,8 @@ def _evaluate(new: list[EntityRecord], registry: Registry, events: EventLog, exe
     jobs = []
     for rec in new:
         start = _start_beliefs(rec, registry)
-        jobs.append((rec.genome, start.to_dict() if start else None, tuple(rec.curriculum), child_seed(config.seed, rec.id), suite,
+        jobs.append((rec.genome, start.to_dict() if start else None, tuple(rec.curriculum),
+                     replicate_seeds(config.seed, rec.id, max(1, config.replicates)), suite,
                      config.episodes_per_lesson))
     for rec, (metrics, beliefs) in zip(new, executor.map(jobs)):
         rec.metrics, rec.beliefs = metrics, beliefs

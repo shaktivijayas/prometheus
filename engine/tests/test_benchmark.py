@@ -128,3 +128,24 @@ def test_replay_matches_scored_episode():
         scored = bm._evaluate_worlds(agent, [worlds[idx]], lessons, suite.rules())
         assert (preset, wseed) == worlds[idx]
         assert res.score == pytest.approx(scored.mean_score)
+
+
+def test_replicates_reduce_seed_lottery():
+    """Same genome, different child seeds: averaging k training replicates must shrink the spread."""
+    from prometheus.benchmark import train_and_evaluate_replicated
+    suite = EvalSuite(n_worlds=8)
+    singles, triples = [], []
+    for s in range(12):
+        singles.append(train_and_evaluate_replicated(Genome.default(), None, DEFAULT_CURRICULUM, [s], suite,
+                                                     episodes_per_lesson=2)[0].fitness)
+        triples.append(train_and_evaluate_replicated(Genome.default(), None, DEFAULT_CURRICULUM,
+                                                     [s, 100 + s, 200 + s], suite, episodes_per_lesson=2)[0].fitness)
+    assert np.std(triples) < 0.8 * np.std(singles)
+
+
+def test_single_replicate_equals_plain_train_and_evaluate():
+    from prometheus.benchmark import train_and_evaluate_replicated
+    suite = EvalSuite(n_worlds=4)
+    a = train_and_evaluate(Genome.default(), None, DEFAULT_CURRICULUM, 5, suite, episodes_per_lesson=1)
+    b = train_and_evaluate_replicated(Genome.default(), None, DEFAULT_CURRICULUM, [5], suite, episodes_per_lesson=1)
+    assert a[0] == b[0] and np.array_equal(a[1].mean, b[1].mean)

@@ -158,3 +158,28 @@ def replay_episodes(genome: Genome, beliefs: Beliefs | None, curriculum: Sequenc
         trial = copy.deepcopy(agent)
         out.append((preset, wseed, run_episode(trial, make_world(preset, wseed, suite.rules()), record=True)))
     return out
+
+
+def average_metrics(items: Sequence[ChildMetrics]) -> ChildMetrics:
+    """Mean of several replicate scorings of the same design."""
+    if len(items) == 1:
+        return items[0]
+    keys = ("fitness", "mean_score", "stable_score", "shift_score", "survival_rate", "adaptation_ratio",
+            "learning_speed", "mean_prediction_error", "perception_cost")
+    avg = {k: float(np.mean([getattr(m, k) for m in items])) for k in keys}
+    causes = {k: float(np.mean([m.death_causes[k] for m in items])) for k in items[0].death_causes}
+    lessons = [float(x) for x in np.mean([m.lesson_scores for m in items], axis=0)] if items[0].lesson_scores else []
+    return ChildMetrics(**avg, death_causes=causes, lesson_scores=lessons)
+
+
+def train_and_evaluate_replicated(genome: Genome, beliefs: Beliefs | None, curriculum: Sequence[str],
+                                  seeds: Sequence[int], suite: EvalSuite, n_kinds: int = 5,
+                                  episodes_per_lesson: int = EPISODES_PER_LESSON) -> tuple[ChildMetrics, Beliefs]:
+    """Score a design over several independent upbringings (different training seeds) and average.
+
+    One upbringing is a lottery (the same genome scores 0.06-2.24 depending on its training worlds);
+    averaging replicates makes fitness reflect the design. The child that lives on (its beliefs, its
+    replays) is replicate 0.
+    """
+    runs = [train_and_evaluate(genome, beliefs, curriculum, s, suite, n_kinds, episodes_per_lesson) for s in seeds]
+    return average_metrics([m for m, _ in runs]), runs[0][1]

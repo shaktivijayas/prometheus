@@ -4,12 +4,14 @@ from __future__ import annotations
 from typing import Callable
 
 from .base import ChildSpec, Creator, GenerationReport
+from .clone import CloneCreator
 from .heuristic import HeuristicCreator
 from .random_mutation import RandomMutationCreator
 
 _FACTORIES: dict[str, Callable[[str], Creator]] = {
     "random": lambda arg: RandomMutationCreator(),
     "heuristic": lambda arg: HeuristicCreator(),
+    "clone": lambda arg: CloneCreator(),
 }
 CREATOR_NAMES = _FACTORIES  # live view: the neural Creator registers itself here
 

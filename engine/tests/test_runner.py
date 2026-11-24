@@ -102,3 +102,17 @@ def test_all_dying_population_finite(monkeypatch):
     res = run_evolution(RunConfig(creator="heuristic", **TINY), clock=CLOCK)
     for g in res.generations:
         assert all(math.isfinite(v) for k, v in g.items() if isinstance(v, float))
+
+
+def test_replicates_average_several_upbringings():
+    one = run_evolution(RunConfig(creator="clone", **{**TINY, "generations": 1, "replicates": 1}), clock=CLOCK)
+    two = run_evolution(RunConfig(creator="clone", **{**TINY, "generations": 1, "replicates": 2}), clock=CLOCK)
+    f1 = [r.fitness for r in one.registry.all()]
+    f2 = [r.fitness for r in two.registry.all()]
+    assert f1 != f2  # second upbringing changes the averaged score
+    # replicate 0 is the child that lives on: same learned beliefs either way
+    assert [r.beliefs for r in one.registry.all()] == [r.beliefs for r in two.registry.all()]
+
+
+def test_default_replicates_is_three():
+    assert RunConfig().replicates == 3
