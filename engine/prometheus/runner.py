@@ -8,7 +8,7 @@ from __future__ import annotations
 import multiprocessing as mp
 import os
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Callable
 
 import numpy as np
@@ -117,6 +117,11 @@ def _job(rec: EntityRecord, registry: Registry, seeds: list[int], suite: EvalSui
             config.episodes_per_lesson)
 
 
+# Verification worlds are offset from the selection worlds, so a champion can't carry an advantage it got by
+# fitting the exact layouts it was selected on. Same universe (hidden laws), different world layouts.
+VERIFY_WORLD_OFFSET = 50_000
+
+
 class Evolution:
     """One population evolving under one Creator. Drive it with pending_jobs() / ingest(results)."""
 
@@ -129,6 +134,7 @@ class Evolution:
         self.config = config
         self.creator = creator or get_creator(config.creator)
         self.suite = EvalSuite(n_worlds=config.eval_worlds, rules_seed=config.universe_seed(), variant=config.variant)
+        self.verify_suite = replace(self.suite, seed=self.suite.seed + VERIFY_WORLD_OFFSET)
         self.registry, self.events = Registry(clock=clock), EventLog()
         self.rng = np.random.default_rng([config.seed, 1])
         self.generations: list[dict] = []
@@ -211,7 +217,7 @@ class Evolution:
 
     # ----- verification ---------------------------------------------------
     def _verify_jobs(self) -> list[tuple]:
-        """Re-score the gen-0 best and the final champion on fresh upbringings.
+        """Re-score the gen-0 best and the final champion on fresh upbringings and unseen world layouts.
 
         Selection keeps the luckiest draws, so the in-run 'best' curve is biased upward (a clone arm that changes
         nothing still 'improves'). These numbers are not: the same fresh seeds are used for both designs.
@@ -226,7 +232,7 @@ class Evolution:
         jobs = []
         for entity_id in self._verify_targets.values():
             rec = self.registry.get(entity_id)
-            jobs += [_job(rec, self.registry, [s], self.suite, self.config) for s in seeds]
+            jobs += [_job(rec, self.registry, [s], self.verify_suite, self.config) for s in seeds]
         return jobs
 
     def _ingest_verification(self, results: list[tuple[dict, dict]]) -> None:

@@ -169,3 +169,23 @@ def test_verification_written_to_run_json(tmp_path):
     write_run(res, tmp_path)
     run = json.loads((tmp_path / "run.json").read_text())
     assert run["verification"]["final_best"]["n"] == 2
+
+
+def test_verification_uses_unseen_world_layouts():
+    """Final review #1: verification must not reuse the world layouts selection was scored on."""
+    from prometheus.runner import Evolution
+    evo = Evolution(RunConfig(creator="random", **{**TINY, "generations": 1, "verify_replicates": 2}), clock=CLOCK)
+    while evo.phase == "propose":
+        evo.ingest(_run_jobs(evo.pending_jobs()))
+    jobs = evo.pending_jobs()
+    assert evo.phase == "verify" and jobs
+    selection_worlds = set(evo.suite.worlds())
+    for job in jobs:
+        suite = job[4]
+        assert suite.rules_seed == evo.suite.rules_seed          # same universe: same hidden laws
+        assert not set(suite.worlds()) & selection_worlds        # but world layouts never seen in selection
+
+
+def _run_jobs(jobs):
+    from prometheus.runner import _evaluate_job as _work
+    return [_work(j) for j in jobs]
