@@ -12,20 +12,21 @@ The Creator is a neural network we build and train ourselves with reinforcement 
 
 ## Headline result
 
-Every number below was measured in universes the Creator never trained in, with the same budget for every arm. Results are verified, meaning champions are re-scored on 10 fresh upbringings, across 5 universes.
+Every number below was measured in universes the Creator never trained in, with the same budget for every arm. Results are verified: champions are re-scored on 10 fresh upbringings, in world layouts selection never saw, across 5 universes.
 
 | Creator | Verified final champion | **Verified gain** over gen-0 |
 |---|---|---|
-| **trained Creator** (PPO, 156 iterations) | **15.85 ± 0.97** | **+12.37 ± 1.38** |
-| random mutation (control) | 10.22 ± 0.82 | +6.75 ± 1.51 |
-| untrained Creator (same network, random weights) | 8.27 ± 1.87 | +4.79 ± 2.16 |
-| trained Creator with its teaching switched off | 5.10 ± 2.26 | +1.62 ± 2.18 |
-| clone (null: changes nothing) | 3.48 ± 0.97 | +0.00 ± 0.00 |
-| hand-written rules | 1.26 ± 0.16 | −0.06 ± 0.20 |
+| **trained Creator** (PPO, 156 iterations) | **16.29 ± 0.85** | **+11.51 ± 1.37** |
+| trained Creator's designs, random lessons | 16.21 ± 0.70 | +11.43 ± 0.83 |
+| random mutation (control) | 12.57 ± 1.14 | +7.80 ± 1.78 |
+| untrained Creator (same network, random weights) | 11.02 ± 2.53 | +6.25 ± 2.92 |
+| trained Creator's designs, one fixed default lesson plan | 6.94 ± 2.05 | +2.16 ± 1.93 |
+| clone (null: changes nothing) | 4.78 ± 1.11 | +0.00 ± 0.00 |
+| hand-written rules | 1.84 ± 0.28 | −0.00 ± 0.20 |
 
-- **The trained Creator gets 1.8× random mutation's improvement.** Its worst held-out universe beats random's best.
+- **The trained Creator beats random mutation clearly.** The gap is about 6 standard errors, and its worst held-out universe beats random's best.
 - **Training is what does it.** The same network untrained is no better than random.
-- **Teaching is half the skill.** Without its lesson plans the trained Creator's gain collapses to +1.6. It learned to almost never teach a law-change lesson (0.2% of lessons) and to favour hard lessons. It also designs fast-learning, far-seeing children that drop their beliefs as soon as the world surprises them.
+- **Its skill is in design, not teaching.** It learned to build far-seeing, fast-learning children that drop their beliefs as soon as the world surprises them. Its learned lesson plans, though, are *no better than random lessons*. What children are taught still matters: one fixed plan wrecks the same designs. An earlier version of this README claimed the opposite, and a control arm added after code review corrected it. Details are in [`docs/creator-results.md`](docs/creator-results.md).
 
 ## How it works
 
@@ -49,7 +50,7 @@ We train the CREATOR  ──►  Creator DESIGNS a child (genome), passes on kno
 cd engine
 python -m venv .venv
 .venv/Scripts/python -m pip install -e ".[dev]"      # on macOS/Linux use .venv/bin/python
-.venv/Scripts/python -m pytest                          # 129 tests
+.venv/Scripts/python -m pytest                          # 132 tests
 
 # evolve one population with one Creator
 .venv/Scripts/prometheus run --creator random --seed 0
@@ -58,7 +59,7 @@ python -m venv .venv
 .venv/Scripts/prometheus compare --creators clone,heuristic,random --seeds 0,1,2 --name baseline --out ..
 ```
 
-Creators: `clone` (null baseline), `random` (control), `heuristic` (hand-written rules) and `neural` (the trained network). `neural` takes a version: `neural:latest`, `neural:v000` … `neural:v006`, and `:noteach` switches teaching off. Trained checkpoints are in `checkpoints/`.
+Creators: `clone` (null baseline), `random` (control), `heuristic` (hand-written rules) and `neural` (the trained network). `neural` takes a version: `neural:latest`, `neural:v000` … `neural:v006`, `:noteach` gives every child one fixed default lesson plan, and `:randomteach` gives random lessons (both are control arms). Trained checkpoints are in `checkpoints/`.
 
 ```bash
 # train the Creator (or continue: --resume --iterations <more>)
@@ -72,20 +73,19 @@ The dashboard (`dashboard/`, React + Vite) runs with `npm install && npm run dev
 
 ## Baseline results (before the Creator)
 
-The defaults are population 8, 10 generations, each child scored as the average of 3 upbringings, and 3 seeds. The run took 176 s on a 12-core laptop.
+The defaults are population 8, 10 generations, each child scored as the average of 3 upbringings, and 3 seeds. The run took 178 s on a 12-core laptop.
 
 | Creator | Verified gen-0 best | Verified final champion | **Verified gain** (mean ± std, 3 seeds) | In-run best* |
 |---|---|---|---|---|
-| clone (null: copies parents, changes nothing) | 4.131 | 4.131 ± 0.450 | **+0.000 ± 0.000** | 6.514 |
-| heuristic (hand-written rules) | 1.325 | 1.192 ± 0.134 | **−0.132 ± 0.210** | 1.938 |
-| random mutation (control) | 4.131 | 9.818 ± 0.840 | **+5.687 ± 0.862** | 10.672 |
+| clone (null: copies parents, changes nothing) | 5.534 | 5.534 ± 0.507 | **+0.000 ± 0.000** | 6.514 |
+| heuristic (hand-written rules) | 1.892 | 1.758 ± 0.273 | **−0.135 ± 0.095** | 1.938 |
+| random mutation (control) | 5.534 | 12.433 ± 0.997 | **+6.900 ± 0.679** | 10.672 |
 
-\* The in-run best is selection-biased. Selection keeps whichever copy of a design got lucky with its training worlds, so even the clone arm, which never changes anything, "improves" from 3.16 to 6.51 in-run. That's why every run ends by **re-scoring the generation-0 best design and the final champion on 10 fresh upbringings** that played no part in selection. The verified gain is the honest headline, and the clone arm's verified gain of exactly 0 shows it works.
+\* The in-run best is selection-biased. Selection keeps whichever copy of a design got lucky with its training worlds, so even the clone arm, which never changes anything, "improves" to 6.51 in-run. That's why every run ends by **re-scoring the generation-0 best design and the final champion on 10 fresh upbringings, in world layouts that played no part in selection**. The verified gain is the honest headline, and the clone arm's verified gain of exactly 0 shows it works.
 
 **What the numbers say:**
-- **Evolution is real.** Random mutation plus selection more than doubled the verified quality of the best design (4.13 → 9.82).
+- **Evolution is real.** Random mutation plus selection more than doubled the verified quality of the best design (5.53 → 12.43).
 - **The hand-written rules don't improve anything.** In the first version, all of their lesson plans ended on a rule-shift lesson, which leaves a child believing scrambled laws. The engine review caught this. Even with that fixed, the rules make no measurable progress.
-- **The bar for the trained Creator is a verified gain clearly above random mutation's +5.7.**
 
 See [`docs/engine-speed.md`](docs/engine-speed.md) for details.
 
