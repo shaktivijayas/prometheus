@@ -31,27 +31,35 @@ We train the CREATOR  ──►  Creator DESIGNS a child (genome), passes on kno
 cd engine
 python -m venv .venv
 .venv/Scripts/python -m pip install -e ".[dev]"      # on macOS/Linux use .venv/bin/python
-.venv/Scripts/python -m pytest                          # 80 tests
+.venv/Scripts/python -m pytest                          # 95 tests
 
 # evolve one population with one Creator
 .venv/Scripts/prometheus run --creator random --seed 0
 
 # compare Creators on identical budgets across seeds
-.venv/Scripts/prometheus compare --creators heuristic,random --seeds 0,1,2 --name baseline --out ..
+.venv/Scripts/prometheus compare --creators clone,heuristic,random --seeds 0,1,2 --name baseline --out ..
 ```
 
-Creators available now: `random` (control) and `heuristic` (hand-written rules). The trained `neural` Creator arrives in Plan 2.
+Creators available now: `clone` (null baseline), `random` (control) and `heuristic` (hand-written rules). The trained `neural` Creator arrives in Plan 2.
 
 ## Baseline results
 
-The defaults are population 8, 10 generations and 3 seeds. The run took 37.6 s on a 12-core laptop.
+The defaults are population 8, 10 generations, each child scored as the average of 3 upbringings, and 3 seeds. The run took 176 s on a 12-core laptop.
 
-| Creator | Gen 0 best | Final best (mean ± std) | Gain |
-|---|---|---|---|
-| heuristic (hand-written rules) | 1.356 | 1.967 ± 0.080 | +45% |
-| random mutation (control) | 1.916 | 10.678 ± 1.858 | +458% |
+| Creator | Verified gen-0 best | Verified final champion | **Verified gain** (mean ± std, 3 seeds) | In-run best* |
+|---|---|---|---|---|
+| clone (null: copies parents, changes nothing) | 4.131 | 4.131 ± 0.450 | **+0.000 ± 0.000** | 6.514 |
+| heuristic (hand-written rules) | 1.325 | 1.192 ± 0.134 | **−0.132 ± 0.210** | 1.938 |
+| random mutation (control) | 4.131 | 9.818 ± 0.840 | **+5.687 ± 0.862** | 10.672 |
 
-Evolution works: selection plus mutation raised the best child's score more than fivefold. The hand-written rules got stuck. They kept "fixing" adaptation by making children wipe their memory more often, and never checked whether that helped. Random mutation is the bar the trained Creator has to beat. See [`docs/engine-speed.md`](docs/engine-speed.md) for details.
+\* The in-run best is selection-biased. Selection keeps whichever copy of a design got lucky with its training worlds, so even the clone arm, which never changes anything, "improves" from 3.16 to 6.51 in-run. That's why every run ends by **re-scoring the generation-0 best design and the final champion on 10 fresh upbringings** that played no part in selection. The verified gain is the honest headline, and the clone arm's verified gain of exactly 0 shows it works.
+
+**What the numbers say:**
+- **Evolution is real.** Random mutation plus selection more than doubled the verified quality of the best design (4.13 → 9.82).
+- **The hand-written rules don't improve anything.** In the first version, all of their lesson plans ended on a rule-shift lesson, which leaves a child believing scrambled laws. The engine review caught this. Even with that fixed, the rules make no measurable progress.
+- **The bar for the trained Creator is a verified gain clearly above random mutation's +5.7.**
+
+See [`docs/engine-speed.md`](docs/engine-speed.md) for details.
 
 ## Run output
 
@@ -59,7 +67,7 @@ Each run writes a self-contained folder, which the dashboard (Plan 3) will read:
 
 ```
 runs/<run>/
-  run.json          config, universe, timing, summary
+  run.json          config, universe, timing, summary, verification (unbiased re-scoring)
   entities.json     every child ever created: identity, lineage, genome, curriculum, metrics, beliefs, reason
   events.jsonl      timeline: created, creator_decision, trained, evaluated, retired, rule_shift_detected, generation_complete
   generations.json  best / mean / median fitness and genome diversity per generation
