@@ -15,6 +15,8 @@ Most children die well before 200 steps, which keeps episodes short. Better chil
 
 ## Baseline comparison (after the engine review fixes)
 
+> Historical figures. Since the final review, verification also uses world layouts that selection never saw, which shifts every verified number a little. Current figures are in the README and `docs/creator-results.md`.
+
 `prometheus compare --creators clone,heuristic,random --seeds 0,1,2 --name baseline`, with population 8, 10 generations, each child averaged over 3 upbringings (20 training + 24 eval episodes each), and 10 fresh upbringings for verification. Wall time: 176 s on 12 cores.
 
 | Creator | Verified gen-0 best | Verified final champion | **Verified gain** (mean ± std, 3 seeds) | In-run best* |
