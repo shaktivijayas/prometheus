@@ -37,7 +37,7 @@ def test_cli_run(tmp_path):
     p = cli("run", "--creator", "heuristic", *TINY_FLAGS, "--out", str(out), cwd=tmp_path)
     assert p.returncode == 0, p.stderr
     assert (out / "run.json").exists()
-    assert "Gen 0 best" in p.stdout
+    assert "Verified on" in p.stdout
 
 
 def test_cli_compare(tmp_path):
