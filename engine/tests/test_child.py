@@ -171,3 +171,13 @@ def test_beliefs_dict_roundtrip():
     b = Beliefs(np.array([1.0, 2, 3, 4, 5]), np.array([0.0, 1, 2, 3, 4]))
     b2 = Beliefs.from_dict(b.to_dict())
     assert np.array_equal(b.mean, b2.mean) and np.array_equal(b.count, b2.count)
+
+
+def test_death_before_shift_gives_no_shift_rates():
+    """Dying at step ~30 says nothing about adapting to a shift at step 100 (reviewer finding #3)."""
+    w = World(PRESETS["shift"], 0)
+    w.grid[:, :] = FLOOR
+    w.energy = 5.0
+    res = run_episode(agent(exploration=0.0), w)
+    assert res.steps < 100 and not res.survived
+    assert res.pre_shift_rate is None and res.post_shift_rate is None

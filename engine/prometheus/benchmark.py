@@ -62,6 +62,12 @@ def adaptation_ratio(pre_rates: Sequence[float], post_rates: Sequence[float]) ->
     return float(min(max(post / pre, 0.0), 2.0))
 
 
+def shift_rates(results) -> tuple[list[float], list[float]]:
+    """Pre/post-shift goal rates from the shift-world episodes where the child lived to see the shift."""
+    seen = [r for r in results if r.pre_shift_rate is not None and r.post_shift_rate is not None]
+    return [r.pre_shift_rate for r in seen], [r.post_shift_rate for r in seen]
+
+
 def learning_speed(lesson_scores: Sequence[float]) -> float:
     """Fraction of the course needed to reach 90% of the best lesson score (lower = faster)."""
     if not lesson_scores:
@@ -112,7 +118,7 @@ def _evaluate_worlds(agent: ChildAgent, worlds: list[tuple[str, int]], lesson_sc
     shifted = [r for p, r in results if PRESETS[p].shift]
     n = len(results)
     mean_score = float(np.mean(scores)) if scores else 0.0
-    ratio = adaptation_ratio([r.pre_shift_rate for r in shifted], [r.post_shift_rate for r in shifted])
+    ratio = adaptation_ratio(*shift_rates(shifted))
     return ChildMetrics(
         fitness=mean_score * (0.75 + 0.25 * min(ratio, 1.0)),
         mean_score=mean_score,

@@ -191,7 +191,7 @@ def run_episode(agent: ChildAgent, world: World, record: bool = False) -> Episod
     survived = world.energy > 0
     death_cause = None if survived else ("hazard" if last_delta < 0 else "starvation")
     max_steps = world.config.max_steps
-    shift_world = world.config.shift
+    shift_world = world.config.shift and world.shift_happened  # rates only mean something if the shift was reached
     return EpisodeResult(
         score=goals + 0.5 * world.t / max_steps,
         goals=goals,

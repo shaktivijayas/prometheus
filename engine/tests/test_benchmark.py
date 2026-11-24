@@ -149,3 +149,13 @@ def test_single_replicate_equals_plain_train_and_evaluate():
     a = train_and_evaluate(Genome.default(), None, DEFAULT_CURRICULUM, 5, suite, episodes_per_lesson=1)
     b = train_and_evaluate_replicated(Genome.default(), None, DEFAULT_CURRICULUM, [5], suite, episodes_per_lesson=1)
     assert a[0] == b[0] and np.array_equal(a[1].mean, b[1].mean)
+
+
+def test_shift_rates_ignore_worlds_where_the_shift_never_came():
+    from prometheus.benchmark import shift_rates
+    from prometheus.child import EpisodeResult
+
+    def ep(pre, post):
+        return EpisodeResult(1.0, 1, 50, False, "starvation", False, pre, post, 0.0, 0.0)
+    pre, post = shift_rates([ep(0.05, 0.05), ep(None, None), ep(0.04, 0.02)])
+    assert pre == [0.05, 0.04] and post == [0.05, 0.02]
