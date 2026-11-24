@@ -110,3 +110,15 @@ def test_registered_as_neural():
     c = get_creator("neural")
     assert isinstance(c, NeuralCreator) and c.teach
     assert get_creator("neural::noteach").teach is False
+
+
+def test_randomteach_gives_uniform_random_lessons():
+    """Final review #4: a fair control for teaching keeps the learned designs but draws lessons at random."""
+    from prometheus.creators.neural import make_neural
+    c = make_neural("fresh:randomteach")
+    assert c.name == "neural:fresh:randomteach"
+    specs = c.next_generation(report(), 40, np.random.default_rng(3))
+    lessons = [l for s in specs for l in s.curriculum]
+    assert set(lessons) == set(CURRICULUM_PRESETS)            # all four presets appear
+    assert len({s.curriculum for s in specs}) > 10           # not one fixed plan
+    assert all(not s.decision["teach"] for s in specs)

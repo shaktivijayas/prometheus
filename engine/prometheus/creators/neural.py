@@ -163,9 +163,11 @@ def _top_edits(before: Genome, after: Genome, edit: np.ndarray, k: int = 3) -> s
 
 
 class NeuralCreator:
-    def __init__(self, net: CreatorNet, teach: bool = True, name: str = "neural", version: str = "fresh"):
+    def __init__(self, net: CreatorNet, teach: bool = True, name: str = "neural", version: str = "fresh",
+                 random_lessons: bool = False):
         self.net = net
-        self.teach = teach
+        self.teach = teach and not random_lessons
+        self.random_lessons = random_lessons  # control arm: learned designs, lessons drawn uniformly at random
         self.name = name
         self.version = version
         self.decisions: list[Decision] = []
@@ -189,6 +191,8 @@ class NeuralCreator:
             before = parent.genome_obj()
             after = Genome.from_vector(np.clip(before.to_vector() + d.edit, 0.0, 1.0))
             curriculum = tuple(CURRICULUM_PRESETS[int(i)] for i in d.curriculum)
+            if self.random_lessons:
+                curriculum = tuple(CURRICULUM_PRESETS[int(i)] for i in rng.integers(len(CURRICULUM_PRESETS), size=LESSONS))
             predicted = d.prediction * scale
             reason = (f"{parent.name} ({_dominant_failure(parent.metrics or {})}): "
                       f"{_top_edits(before, after, d.edit)}; "
@@ -212,15 +216,20 @@ def prediction_scale(history: list[dict]) -> float:
 
 
 def make_neural(arg: str) -> NeuralCreator:
-    """Factory for "neural[:<which>][:noteach]" where which is "", "fresh", "latest" or "vNNN"."""
+    """Factory for "neural[:<which>][:noteach|:randomteach]" where which is "", "fresh", "latest" or "vNNN".
+
+    noteach gives every child the default lesson plan; randomteach draws each child's lessons uniformly at random.
+    """
     which, _, flag = arg.partition(":")
-    if flag not in ("", "noteach"):
-        raise ValueError(f"unknown neural creator flag {flag!r}; use ':noteach'")
-    teach = flag != "noteach"
-    name = "neural" + (f":{which}" if which else "") + (":noteach" if not teach else "")
+    if which in ("noteach", "randomteach") and not flag:
+        which, flag = "", which
+    if flag not in ("", "noteach", "randomteach"):
+        raise ValueError(f"unknown neural creator flag {flag!r}; use ':noteach' or ':randomteach'")
+    kw = {"teach": flag == "", "random_lessons": flag == "randomteach"}
+    name = "neural" + (f":{which}" if which else "") + (f":{flag}" if flag else "")
     if which in ("", "fresh"):
         torch.manual_seed(0)
-        return NeuralCreator(CreatorNet(), teach=teach, name=name, version="fresh")
+        return NeuralCreator(CreatorNet(), name=name, version="fresh", **kw)
     from .checkpoints import load_checkpoint
     net, meta = load_checkpoint(which=which)
-    return NeuralCreator(net, teach=teach, name=name, version=meta.get("version_name", which))
+    return NeuralCreator(net, name=name, version=meta.get("version_name", which), **kw)
