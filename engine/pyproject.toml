@@ -7,7 +7,7 @@ name = "prometheus"
 version = "0.1.0"
 description = "An AI ecosystem where a trained Creator designs, teaches and evolves child intelligences"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26"]
+dependencies = ["numpy>=1.26", "torch>=2.2"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]

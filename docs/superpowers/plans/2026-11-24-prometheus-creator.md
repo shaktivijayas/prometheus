@@ -12,6 +12,8 @@
 
 ## Global Constraints
 
+- **Lessons from the engine review (binding):** a single upbringing's score is mostly luck (std 1.7 on mean 3.6), and the in-run "best" curve is selection-biased (a clone arm that changes nothing shows +106%). So: (a) children in training are scored as the average of `TrainConfig.replicates = 2` upbringings; (b) every Creator is judged on **verified** results only: the gen-0 best and the final champion re-scored on fresh upbringings (`RunResult.verification`). `creator-progress` and the final report use verified numbers, and the `clone` arm is included in the final comparison as the null baseline.
+
 - The Creator is our own network, trained by us. No external AI models or APIs.
 - **Fair comparisons:** in a given seed, the neural arm's generation 0 is identical to the random arm's (same `seed_population` draws), so their curves differ only by Creator decisions. All arms share population, generations, budget, eval suite and universe.
 - **Held-out evaluation:** training uses universes `rules_seed >= TRAIN_UNIVERSE_BASE = 1_000_000` with randomized world variants. Evaluation (`run`, `compare`, `creator-progress`) uses universes `< 1_000_000` and the default variant. A test enforces that the ranges are disjoint.
@@ -44,7 +46,7 @@
   - `EvalSuite` gains `variant: WorldVariant = WorldVariant()`, used for both training and evaluation of a child.
   - `TRAIN_UNIVERSE_BASE = 1_000_000` in `benchmark.py`; `is_training_universe(rules_seed) -> bool`.
   - `RunConfig` gains `variant: WorldVariant = WorldVariant()`.
-  - `class Evolution(config: RunConfig, creator: Creator, clock=None)` in `runner.py`, with `pending_jobs() -> list[tuple]` (proposes the next generation's children and returns their worker jobs; empty when finished), `ingest(results: list[tuple[dict, dict]]) -> None` (stores metrics, emits events, records stats and replays), `done: bool`, and `result() -> RunResult`. `run_evolution` becomes a loop over a single `Evolution` with the same output.
+  - `class Evolution(config: RunConfig, creator: Creator, clock=None)` in `runner.py`, with `pending_jobs() -> list[tuple]` (proposes the next generation's children and returns their worker jobs; empty when finished), `ingest(results: list[tuple[dict, dict]]) -> None` (stores metrics, emits events, records stats and replays), `done: bool`, and `result() -> RunResult`. `run_evolution` becomes a loop over a single `Evolution` with the same output. `RunConfig.verify_replicates = 0` skips verification (used in training runs only).
   - `run_lockstep(evolutions: list[Evolution], executor) -> None` advances many evolutions together, sending all their jobs to the pool in one `map` per generation.
   - `run_evolution` and `compare` raise `ValueError` when given a training universe.
 
@@ -124,7 +126,7 @@ def test_single_candidate_population()           # N=1 works
 
 **Interfaces:**
 - Produces:
-  - `@dataclass TrainConfig(iterations: int = 100, runs_per_iteration: int = 12, generations: int = 6, population: int = 8, elite: int = 2, episodes_per_lesson: int = 3, eval_worlds: int = 12, lr: float = 3e-4, ppo_epochs: int = 4, clip: float = 0.2, value_coef: float = 0.5, entropy_coef: float = 0.01, duplicate_penalty: float = 0.1, checkpoint_every: int = 10, seed: int = 0, workers: int = 0)`
+  - `@dataclass TrainConfig(iterations: int = 100, runs_per_iteration: int = 12, generations: int = 6, population: int = 8, elite: int = 2, episodes_per_lesson: int = 3, eval_worlds: int = 12, lr: float = 3e-4, ppo_epochs: int = 4, clip: float = 0.2, value_coef: float = 0.5, entropy_coef: float = 0.01, duplicate_penalty: float = 0.1, checkpoint_every: int = 10, seed: int = 0, workers: int = 0, replicates: int = 2)`
   - **Reward** for each decision = `(child_fitness - parent_fitness) / scale`, where `scale = max(mean gen-0 fitness of that run, 0.25)`, minus `duplicate_penalty` if the child's normalized genome is within L2 0.05 of any other active genome. `predicted_change` in ChildSpec = `prediction * scale`, where the scale is computed from the report's history (gen-0 mean) for the same normalization.
   - **Advantage** = reward − prediction (the prediction head is the baseline), normalized per batch.
   - **Loss** = PPO clipped surrogate + `value_coef` × MSE(prediction, reward) − `entropy_coef` × entropy. Adam, `ppo_epochs` passes over the batch in minibatches of 256, and grad-norm clip 1.0.
@@ -167,7 +169,7 @@ def test_training_never_uses_eval_universes()     # every universe collect() tou
   - `load_checkpoint(dir, which: str = "latest") -> tuple[CreatorNet, dict]`, where `which` is `"latest"` or `"vNNN"`. A missing file raises `FileNotFoundError` naming the available versions. A feature-dimension mismatch raises `ValueError("checkpoint built for feature dims X/Y, code has A/B")`.
   - `DEFAULT_CHECKPOINT_DIR` = repo-root `checkpoints/`, overridable with the env var `PROMETHEUS_CHECKPOINTS`.
   - CLI `prometheus train-creator --iterations N [--resume] [--runs-per-iteration] [--checkpoint-every] [--workers] [--seed]` prints one line per iteration: iteration, mean reward, improvement, prediction MAE, and seconds.
-  - CLI `prometheus creator-progress [--versions v000,v010,...|all] --seeds 0,1,2,3,4 --out .` runs each checkpoint at default run sizes on the held-out seeds. It writes `creator/progress.json`: `[{version, iteration, final_best_mean, final_best_std, improvement_mean, prediction_mae}]`, and prints a table.
+  - CLI `prometheus creator-progress [--versions v000,v010,...|all] --seeds 0,1,2,3,4 --out .` runs each checkpoint at default run sizes on the held-out seeds. It writes `creator/progress.json`: `[{version, iteration, verified_final_mean, verified_final_std, verified_gain_mean, verified_gain_std, prediction_mae}]`, and prints a table.
   - `compare` and `run` accept `neural:latest`, `neural:v000`, `neural:latest:noteach`.
   - `train-creator` copies `creator/training_history.json` next to the checkpoints so the dashboard can read it.
 
@@ -185,6 +187,6 @@ def test_training_never_uses_eval_universes()     # every universe collect() tou
 
 - [ ] **Step 1: Train.** `prometheus train-creator --iterations 300 --checkpoint-every 25` runs in the background. Watch the per-iteration lines. Expected: mean reward and prediction MAE trend better over iterations. If reward is flat after about 100 iterations, stop and debug with superpowers:systematic-debugging: check reward scale, advantage normalization and entropy. Do not just train longer.
 - [ ] **Step 2: Creator progress.** `prometheus creator-progress --versions all --seeds 0,1,2,3,4 --out ..` answers whether the parent gets better as it trains.
-- [ ] **Step 3: Final comparison on held-out universes.** `prometheus compare --creators neural:latest,neural:latest:noteach,neural:v000,random,heuristic --seeds 0,1,2,3,4 --name final --out ..`
+- [ ] **Step 3: Final comparison on held-out universes.** `prometheus compare --creators neural:latest,neural:latest:noteach,neural:v000,random,clone,heuristic --seeds 0,1,2,3,4 --name final --out ..`. All answers use the verified gain columns.
 - [ ] **Step 4: Write `docs/creator-results.md`:** the training curves (table of history rows every 25 iterations), the progress table, the final comparison table (mean ± std), and the four honest answers from spec §8: do later generations beat earlier ones; does the trained Creator beat random and heuristic; does teaching add value (latest vs noteach); does an experienced Creator beat a fresh one (latest vs v000). Include what the Creator learned to do (most common edits per failure type, curriculum patterns, from the final comparison's entities). If any answer is "no", say so and give the likely reason.
 - [ ] **Step 5: Update the README** status and results. **Commit** `"Train the Creator"` (checkpoints and history), then `"Report Creator results"`, then push.

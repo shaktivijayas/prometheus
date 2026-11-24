@@ -1,0 +1,58 @@
+[
+ {
+  "version": 0,
+  "name": "v000",
+  "iteration": 0,
+  "file": "creator_v000.pt",
+  "created_at": "2026-11-24T12:51:48Z",
+  "mean_reward": null
+ },
+ {
+  "version": 1,
+  "name": "v001",
+  "iteration": 25,
+  "file": "creator_v001.pt",
+  "created_at": "2026-11-24T13:08:26Z",
+  "mean_reward": 2.5754488040242274
+ },
+ {
+  "version": 2,
+  "name": "v002",
+  "iteration": 50,
+  "file": "creator_v002.pt",
+  "created_at": "2026-11-24T13:35:08Z",
+  "mean_reward": 3.4977177440606613
+ },
+ {
+  "version": 3,
+  "name": "v003",
+  "iteration": 75,
+  "file": "creator_v003.pt",
+  "created_at": "2026-11-24T14:03:21Z",
+  "mean_reward": 4.54534802484973
+ },
+ {
+  "version": 4,
+  "name": "v004",
+  "iteration": 100,
+  "file": "creator_v004.pt",
+  "created_at": "2026-11-24T14:32:51Z",
+  "mean_reward": 3.6389101935246115
+ },
+ {
+  "version": 5,
+  "name": "v005",
+  "iteration": 125,
+  "file": "creator_v005.pt",
+  "created_at": "2026-11-24T15:04:45Z",
+  "mean_reward": 3.7409637178438846
+ },
+ {
+  "version": 6,
+  "name": "v006",
+  "iteration": 150,
+  "file": "creator_v006.pt",
+  "created_at": "2026-11-24T15:37:13Z",
+  "mean_reward": 4.350147345638943
+ }
+]

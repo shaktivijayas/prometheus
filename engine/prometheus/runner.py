@@ -1,21 +1,25 @@
-"""The generation loop: Creator designs and teaches, children learn, the benchmark judges, the best survive."""
+"""The generation loop: Creator designs and teaches, children learn, the benchmark judges, the best survive.
+
+`Evolution` is a steppable state machine (propose jobs -> ingest results), so many evolutions can share one
+worker pool in lockstep (`run_lockstep`), which is how the Creator is trained. `run_evolution` drives one.
+"""
 from __future__ import annotations
 
 import multiprocessing as mp
 import os
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Callable
 
 import numpy as np
 
-from .benchmark import EvalSuite, replay_episodes, train_and_evaluate_replicated
+from .benchmark import EvalSuite, is_training_universe, replay_episodes, train_and_evaluate_replicated
 from .child import Beliefs
 from .creators import get_creator
 from .creators.base import Creator, GenerationReport, ranked
 from .genome import Genome
 from .registry import EntityRecord, EventLog, Registry
-from .world import PRESETS
+from .world import PRESETS, WorldVariant
 
 
 @dataclass
@@ -31,7 +35,8 @@ class RunConfig:
     record_replays: bool = True
     replicates: int = 3           # independent upbringings averaged per child, so fitness reflects the design
     universe: int | None = None   # which hidden laws; defaults to `seed` so every arm with a seed shares a universe
-    verify_replicates: int = 10   # fresh upbringings used to re-score gen-0 best and final champion (unbiased headline)
+    verify_replicates: int = 10   # fresh upbringings re-scoring gen-0 best and final champion; 0 = skip
+    variant: WorldVariant = field(default_factory=WorldVariant)
 
     def universe_seed(self) -> int:
         return self.seed if self.universe is None else self.universe
@@ -106,101 +111,197 @@ def _gen_stats(generation: int, active: list[EntityRecord]) -> dict:
             "best_entity": best.id if best else None}
 
 
+def _job(rec: EntityRecord, registry: Registry, seeds: list[int], suite: EvalSuite, config: RunConfig) -> tuple:
+    start = _start_beliefs(rec, registry)
+    return (rec.genome, start.to_dict() if start else None, tuple(rec.curriculum), seeds, suite,
+            config.episodes_per_lesson)
+
+
+# Verification worlds are offset from the selection worlds, so a champion can't carry an advantage it got by
+# fitting the exact layouts it was selected on. Same universe (hidden laws), different world layouts.
+VERIFY_WORLD_OFFSET = 50_000
+
+
+class Evolution:
+    """One population evolving under one Creator. Drive it with pending_jobs() / ingest(results)."""
+
+    def __init__(self, config: RunConfig, creator: Creator | None = None,
+                 clock: Callable[[], str] | None = None, allow_training_universe: bool = False):
+        if is_training_universe(config.universe_seed()) and not allow_training_universe:
+            raise ValueError(f"universe {config.universe_seed()} is reserved for training the Creator; "
+                             "evaluation runs must use a smaller universe seed")
+        self.t0 = time.perf_counter()
+        self.config = config
+        self.creator = creator or get_creator(config.creator)
+        self.suite = EvalSuite(n_worlds=config.eval_worlds, rules_seed=config.universe_seed(), variant=config.variant)
+        self.verify_suite = replace(self.suite, seed=self.suite.seed + VERIFY_WORLD_OFFSET)
+        self.registry, self.events = Registry(clock=clock), EventLog()
+        self.rng = np.random.default_rng([config.seed, 1])
+        self.generations: list[dict] = []
+        self.replays: dict[str, dict] = {}
+        self.verification: dict = {}
+        self.gen = 0
+        self.phase = "propose" if config.generations > 0 else "done"
+        self._new: list[EntityRecord] = []
+        self._verify_targets: dict[str, str] = {}
+
+    @property
+    def done(self) -> bool:
+        return self.phase == "done"
+
+    # ----- stepping -------------------------------------------------------
+    def pending_jobs(self) -> list[tuple]:
+        if self.phase == "propose":
+            return self._propose()
+        if self.phase == "verify":
+            return self._verify_jobs()
+        return []
+
+    def ingest(self, results: list[tuple[dict, dict]]) -> None:
+        if self.phase == "propose":
+            self._ingest_generation(results)
+        elif self.phase == "verify":
+            self._ingest_verification(results)
+
+    def result(self) -> RunResult:
+        return RunResult(self.config, self.registry, self.events, self.generations, self.replays,
+                         list(self.suite.rules().roles), timing={"duration_s": round(time.perf_counter() - self.t0, 3)},
+                         verification=self.verification)
+
+    # ----- generations ----------------------------------------------------
+    def _propose(self) -> list[tuple]:
+        cfg, gen, registry, events = self.config, self.gen, self.registry, self.events
+        if gen == 0:
+            specs = self.creator.seed_population(cfg.population, self.rng)
+        else:
+            active = ranked(registry.active())
+            for loser in active[cfg.elite:]:
+                registry.retire(loser.id, gen)
+                events.emit("retired", gen, loser.id, fitness=loser.fitness)
+            report = GenerationReport(gen, active, list(self.generations), cfg.generations)
+            specs = self.creator.next_generation(report, cfg.population - cfg.elite, self.rng)
+            if len(specs) != cfg.population - cfg.elite:
+                raise RuntimeError(f"creator {self.creator.name} returned {len(specs)} specs, "
+                                   f"expected {cfg.population - cfg.elite}")
+        self._new = []
+        for spec in specs:
+            spec = _checked_parent(spec.validated(), registry)
+            rec = registry.create(spec, gen)
+            self._new.append(rec)
+            events.emit("created", gen, rec.id, name=rec.name, parent_id=rec.parent_id,
+                        specialization=rec.specialization)
+            events.emit("creator_decision", gen, rec.id, reason=rec.reason, parent_id=rec.parent_id,
+                        predicted_change=rec.predicted_change, curriculum=rec.curriculum,
+                        inherit_beliefs=rec.inherit_beliefs)
+        return [_job(rec, registry, replicate_seeds(cfg.seed, rec.id, max(1, cfg.replicates)), self.suite, cfg)
+                for rec in self._new]
+
+    def _ingest_generation(self, results: list[tuple[dict, dict]]) -> None:
+        gen, registry, events = self.gen, self.registry, self.events
+        for rec, (metrics, beliefs) in zip(self._new, results):
+            rec.metrics, rec.beliefs = metrics, beliefs
+            if rec.parent_id:
+                rec.actual_change = round(rec.fitness - registry.get(rec.parent_id).fitness, 6)
+            events.emit("trained", gen, rec.id, lesson_scores=metrics["lesson_scores"], curriculum=rec.curriculum)
+            events.emit("evaluated", gen, rec.id, fitness=metrics["fitness"], survival_rate=metrics["survival_rate"],
+                        adaptation_ratio=metrics["adaptation_ratio"], actual_change=rec.actual_change,
+                        predicted_change=rec.predicted_change)
+        stats = _gen_stats(gen, registry.active())
+        self.generations.append(stats)
+        events.emit("generation_complete", gen, **{k: v for k, v in stats.items() if k != "generation"})
+        if self.config.record_replays and stats["best_entity"]:
+            self._record_replays(registry.get(stats["best_entity"]))
+        self.gen += 1
+        if self.gen >= self.config.generations:
+            self.phase = "verify"
+
+    # ----- verification ---------------------------------------------------
+    def _verify_jobs(self) -> list[tuple]:
+        """Re-score the gen-0 best and the final champion on fresh upbringings and unseen world layouts.
+
+        Selection keeps the luckiest draws, so the in-run 'best' curve is biased upward (a clone arm that changes
+        nothing still 'improves'). These numbers are not: the same fresh seeds are used for both designs.
+        """
+        n = self.config.verify_replicates
+        if n <= 0 or not self.generations:
+            self.phase = "done"
+            return []
+        seeds = verification_seeds(self.config.seed, n)
+        self._verify_targets = {"gen0_best": self.generations[0]["best_entity"],
+                                "final_best": self.generations[-1]["best_entity"]}
+        jobs = []
+        for entity_id in self._verify_targets.values():
+            rec = self.registry.get(entity_id)
+            jobs += [_job(rec, self.registry, [s], self.verify_suite, self.config) for s in seeds]
+        return jobs
+
+    def _ingest_verification(self, results: list[tuple[dict, dict]]) -> None:
+        n = self.config.verify_replicates
+        out: dict = {}
+        for i, (key, entity_id) in enumerate(self._verify_targets.items()):
+            f = np.array([m["fitness"] for m, _ in results[i * n:(i + 1) * n]])
+            out[key] = {"entity_id": entity_id, "name": self.registry.get(entity_id).name,
+                        "mean": round(float(f.mean()), 6), "std": round(float(f.std()), 6), "n": n}
+        out["gain"] = round(out["final_best"]["mean"] - out["gen0_best"]["mean"], 6)
+        base = out["gen0_best"]["mean"]
+        out["gain_pct"] = round(100.0 * out["gain"] / base, 2) if base > 0 else None
+        self.verification = out
+        self.phase = "done"
+
+    # ----- replays --------------------------------------------------------
+    def _record_replays(self, best: EntityRecord) -> None:
+        suite, cfg = self.suite, self.config
+        worlds = [0, suite.n_worlds // 2]
+        shift_step = suite.variant.apply(PRESETS["shift"]).shift_step
+        threshold = best.genome["surprise_threshold"]
+        for preset, wseed, res in replay_episodes(Genome.from_dict(best.genome), _start_beliefs(best, self.registry),
+                                                 tuple(best.curriculum), child_seed(cfg.seed, best.id), suite,
+                                                 worlds, episodes_per_lesson=cfg.episodes_per_lesson):
+            key = f"{best.id}_{preset}_{wseed}"
+            self.replays[key] = {"entity_id": best.id, "name": best.name, "generation": self.gen, "preset": preset,
+                                 "seed": wseed, "score": round(res.score, 6), "goals": res.goals,
+                                 "steps": res.steps, "survived": res.survived, "death_cause": res.death_cause,
+                                 "trace": res.trace}
+            if preset == "shift":
+                for step in res.trace[1:]:
+                    if step["t"] > shift_step and step["surprise"] > threshold:
+                        self.events.emit("rule_shift_detected", self.gen, best.id, t=step["t"], kind=step["kind"],
+                                         surprise=step["surprise"], replay=key)
+                        break
+
+
+def run_lockstep(evolutions: list[Evolution], executor: _Executor) -> None:
+    """Advance many evolutions together, sending all their children to the worker pool in one batch per step."""
+    while True:
+        batch: list[tuple[Evolution, int, int]] = []
+        jobs: list[tuple] = []
+        for evo in evolutions:
+            if evo.done:
+                continue
+            pending = evo.pending_jobs()
+            if evo.done:  # e.g. verification skipped
+                continue
+            batch.append((evo, len(jobs), len(pending)))
+            jobs += pending
+        if not batch:
+            return
+        results = executor.map(jobs) if jobs else []
+        for evo, start, count in batch:
+            evo.ingest(results[start:start + count])
+
+
 def run_evolution(config: RunConfig, creator: Creator | None = None,
                   clock: Callable[[], str] | None = None,
                   executor: "_Executor | None" = None) -> RunResult:
-    t0 = time.perf_counter()
-    creator = creator or get_creator(config.creator)
-    suite = EvalSuite(n_worlds=config.eval_worlds, rules_seed=config.universe_seed())
-    registry, events = Registry(clock=clock), EventLog()
-    rng = np.random.default_rng([config.seed, 1])
-    generations: list[dict] = []
-    replays: dict[str, dict] = {}
+    evo = Evolution(config, creator, clock)
     own_executor = executor is None
     executor = executor or _Executor(config.workers)
     try:
-        for gen in range(config.generations):
-            if gen == 0:
-                specs = creator.seed_population(config.population, rng)
-            else:
-                active = ranked(registry.active())
-                for loser in active[config.elite:]:
-                    registry.retire(loser.id, gen)
-                    events.emit("retired", gen, loser.id, fitness=loser.fitness)
-                report = GenerationReport(gen, active, list(generations))
-                specs = creator.next_generation(report, config.population - config.elite, rng)
-                if len(specs) != config.population - config.elite:
-                    raise RuntimeError(f"creator {creator.name} returned {len(specs)} specs, "
-                                       f"expected {config.population - config.elite}")
-            new = []
-            for spec in specs:
-                spec = _checked_parent(spec.validated(), registry)
-                rec = registry.create(spec, gen)
-                new.append(rec)
-                events.emit("created", gen, rec.id, name=rec.name, parent_id=rec.parent_id,
-                            specialization=rec.specialization)
-                events.emit("creator_decision", gen, rec.id, reason=rec.reason, parent_id=rec.parent_id,
-                            predicted_change=rec.predicted_change, curriculum=rec.curriculum,
-                            inherit_beliefs=rec.inherit_beliefs)
-            _evaluate(new, registry, events, executor, suite, config, gen)
-            active = registry.active()
-            stats = _gen_stats(gen, active)
-            generations.append(stats)
-            events.emit("generation_complete", gen, **{k: v for k, v in stats.items() if k != "generation"})
-            if config.record_replays and stats["best_entity"]:
-                _record_replays(registry.get(stats["best_entity"]), gen, suite, config, registry, events, replays)
-        verification = _verify(generations, registry, executor, suite, config) if generations else {}
+        run_lockstep([evo], executor)
     finally:
         if own_executor:
             executor.close()
-    return RunResult(config, registry, events, generations, replays, list(suite.rules().roles),
-                     timing={"duration_s": round(time.perf_counter() - t0, 3)}, verification=verification)
-
-
-def _verify(generations: list[dict], registry: Registry, executor: _Executor, suite: EvalSuite,
-            config: RunConfig) -> dict:
-    """Re-score the gen-0 best and the final champion on fresh upbringings.
-
-    Selection keeps the luckiest draws, so the in-run 'best' curve is biased upward (a clone arm that changes
-    nothing still 'improves'). These numbers are not: the same fresh seeds are used for both designs.
-    """
-    n = max(1, config.verify_replicates)
-    seeds = verification_seeds(config.seed, n)
-    targets = {"gen0_best": generations[0]["best_entity"], "final_best": generations[-1]["best_entity"]}
-    jobs = []
-    for entity_id in targets.values():
-        rec = registry.get(entity_id)
-        start = _start_beliefs(rec, registry)
-        jobs += [(rec.genome, start.to_dict() if start else None, tuple(rec.curriculum), [s], suite,
-                  config.episodes_per_lesson) for s in seeds]
-    results = executor.map(jobs)
-    out: dict = {}
-    for i, (key, entity_id) in enumerate(targets.items()):
-        f = np.array([m["fitness"] for m, _ in results[i * n:(i + 1) * n]])
-        out[key] = {"entity_id": entity_id, "name": registry.get(entity_id).name, "mean": round(float(f.mean()), 6),
-                    "std": round(float(f.std()), 6), "n": n}
-    out["gain"] = round(out["final_best"]["mean"] - out["gen0_best"]["mean"], 6)
-    base = out["gen0_best"]["mean"]
-    out["gain_pct"] = round(100.0 * out["gain"] / base, 2) if base > 0 else None
-    return out
-
-
-def _evaluate(new: list[EntityRecord], registry: Registry, events: EventLog, executor: _Executor,
-              suite: EvalSuite, config: RunConfig, gen: int) -> None:
-    jobs = []
-    for rec in new:
-        start = _start_beliefs(rec, registry)
-        jobs.append((rec.genome, start.to_dict() if start else None, tuple(rec.curriculum),
-                     replicate_seeds(config.seed, rec.id, max(1, config.replicates)), suite,
-                     config.episodes_per_lesson))
-    for rec, (metrics, beliefs) in zip(new, executor.map(jobs)):
-        rec.metrics, rec.beliefs = metrics, beliefs
-        if rec.parent_id:
-            rec.actual_change = round(rec.fitness - registry.get(rec.parent_id).fitness, 6)
-        events.emit("trained", gen, rec.id, lesson_scores=metrics["lesson_scores"], curriculum=rec.curriculum)
-        events.emit("evaluated", gen, rec.id, fitness=metrics["fitness"], survival_rate=metrics["survival_rate"],
-                    adaptation_ratio=metrics["adaptation_ratio"], actual_change=rec.actual_change,
-                    predicted_change=rec.predicted_change)
+    return evo.result()
 
 
 def _checked_parent(spec, registry: Registry):
@@ -223,23 +324,3 @@ def _start_beliefs(rec: EntityRecord, registry: Registry) -> Beliefs | None:
         parent = registry.get(rec.parent_id)
         return Beliefs.from_dict(parent.beliefs) if parent.beliefs else None
     return None
-
-
-def _record_replays(best: EntityRecord, gen: int, suite: EvalSuite, config: RunConfig, registry: Registry,
-                    events: EventLog, replays: dict[str, dict]) -> None:
-    worlds = [0, suite.n_worlds // 2]
-    shift_step = PRESETS["shift"].shift_step
-    threshold = best.genome["surprise_threshold"]
-    for preset, wseed, res in replay_episodes(Genome.from_dict(best.genome), _start_beliefs(best, registry),
-                                             tuple(best.curriculum), child_seed(config.seed, best.id), suite,
-                                             worlds, episodes_per_lesson=config.episodes_per_lesson):
-        key = f"{best.id}_{preset}_{wseed}"
-        replays[key] = {"entity_id": best.id, "name": best.name, "generation": gen, "preset": preset,
-                        "seed": wseed, "score": round(res.score, 6), "goals": res.goals, "steps": res.steps,
-                        "survived": res.survived, "death_cause": res.death_cause, "trace": res.trace}
-        if preset == "shift":
-            for step in res.trace[1:]:
-                if step["t"] > shift_step and step["surprise"] > threshold:
-                    events.emit("rule_shift_detected", gen, best.id, t=step["t"], kind=step["kind"],
-                                surprise=step["surprise"], replay=key)
-                    break
