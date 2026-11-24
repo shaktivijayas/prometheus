@@ -6,8 +6,26 @@ PROMETHEUS is an experimental AI ecosystem built around one question: *can an AI
 
 The Creator is a neural network we build and train ourselves with reinforcement learning. It does not call Claude or any other external model or API. Each child intelligence has its own identity, genome, learned memory and lineage. Children live in a grid world whose laws are hidden: they find out by experience which tiles feed them, hurt them or count as goals, and the laws sometimes change in the middle of an episode. The Creator decides each child's design (its genome), whether it inherits its parent's knowledge, and how it is taught (its curriculum of lessons). Every claim is checked against a control arm that uses random mutation and gets the same budget.
 
-> **Status:** Plan 1 of 3 (the engine) is done. Plan 2 (the trained neural Creator) and Plan 3 (the lab dashboard) are next.
-> Design: [`docs/superpowers/specs/2026-11-24-prometheus-core-design.md`](docs/superpowers/specs/2026-11-24-prometheus-core-design.md)
+> **Status:** the core is done. The engine, the trained neural Creator and the lab dashboard all work.
+> **Live lab dashboard:** https://shaktivijayas.github.io/prometheus/
+> Full results: [`docs/creator-results.md`](docs/creator-results.md) · Design: [`docs/superpowers/specs/2026-11-24-prometheus-core-design.md`](docs/superpowers/specs/2026-11-24-prometheus-core-design.md)
+
+## Headline result
+
+Every number below was measured in universes the Creator never trained in, with the same budget for every arm. Results are verified, meaning champions are re-scored on 10 fresh upbringings, across 5 universes.
+
+| Creator | Verified final champion | **Verified gain** over gen-0 |
+|---|---|---|
+| **trained Creator** (PPO, 156 iterations) | **15.85 ± 0.97** | **+12.37 ± 1.38** |
+| random mutation (control) | 10.22 ± 0.82 | +6.75 ± 1.51 |
+| untrained Creator (same network, random weights) | 8.27 ± 1.87 | +4.79 ± 2.16 |
+| trained Creator with its teaching switched off | 5.10 ± 2.26 | +1.62 ± 2.18 |
+| clone (null: changes nothing) | 3.48 ± 0.97 | +0.00 ± 0.00 |
+| hand-written rules | 1.26 ± 0.16 | −0.06 ± 0.20 |
+
+- **The trained Creator gets 1.8× random mutation's improvement.** Its worst held-out universe beats random's best.
+- **Training is what does it.** The same network untrained is no better than random.
+- **Teaching is half the skill.** Without its lesson plans the trained Creator's gain collapses to +1.6. It learned to almost never teach a law-change lesson (0.2% of lessons) and to favour hard lessons. It also designs fast-learning, far-seeing children that drop their beliefs as soon as the world surprises them.
 
 ## How it works
 
@@ -31,7 +49,7 @@ We train the CREATOR  ──►  Creator DESIGNS a child (genome), passes on kno
 cd engine
 python -m venv .venv
 .venv/Scripts/python -m pip install -e ".[dev]"      # on macOS/Linux use .venv/bin/python
-.venv/Scripts/python -m pytest                          # 95 tests
+.venv/Scripts/python -m pytest                          # 129 tests
 
 # evolve one population with one Creator
 .venv/Scripts/prometheus run --creator random --seed 0
@@ -40,9 +58,19 @@ python -m venv .venv
 .venv/Scripts/prometheus compare --creators clone,heuristic,random --seeds 0,1,2 --name baseline --out ..
 ```
 
-Creators available now: `clone` (null baseline), `random` (control) and `heuristic` (hand-written rules). The trained `neural` Creator arrives in Plan 2.
+Creators: `clone` (null baseline), `random` (control), `heuristic` (hand-written rules) and `neural` (the trained network). `neural` takes a version: `neural:latest`, `neural:v000` … `neural:v006`, and `:noteach` switches teaching off. Trained checkpoints are in `checkpoints/`.
 
-## Baseline results
+```bash
+# train the Creator (or continue: --resume --iterations <more>)
+.venv/Scripts/prometheus train-creator --iterations 300 --workers 6
+# score every checkpoint on held-out universes, then export everything for the dashboard
+.venv/Scripts/prometheus creator-progress --versions all --seeds 0,1,2 --out ..
+.venv/Scripts/prometheus export-dashboard --out ../dashboard/public/data --runs "../runs/final_*_s0" --comparisons ../comparisons/final.json --creator ../creator
+```
+
+The dashboard (`dashboard/`, React + Vite) runs with `npm install && npm run dev`.
+
+## Baseline results (before the Creator)
 
 The defaults are population 8, 10 generations, each child scored as the average of 3 upbringings, and 3 seeds. The run took 176 s on a 12-core laptop.
 
@@ -63,7 +91,7 @@ See [`docs/engine-speed.md`](docs/engine-speed.md) for details.
 
 ## Run output
 
-Each run writes a self-contained folder, which the dashboard (Plan 3) will read:
+Each run writes a self-contained folder, which the dashboard reads:
 
 ```
 runs/<run>/
