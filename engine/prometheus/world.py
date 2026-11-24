@@ -6,7 +6,7 @@ In shift worlds, the roles are secretly permuted part-way through an episode.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 
@@ -50,6 +50,29 @@ PRESETS: dict[str, WorldConfig] = {
     "hard": WorldConfig(wall_density=0.15, n_food=8, n_hazard=20),
     "shift": WorldConfig(shift=True),
 }
+
+
+@dataclass(frozen=True)
+class WorldVariant:
+    """Perturbs a preset's economy and shift timing, so a Creator trained across variants learns general skill."""
+    food_scale: float = 1.0
+    hazard_scale: float = 1.0
+    shift_step: int = SHIFT_STEP
+
+    def apply(self, config: WorldConfig) -> WorldConfig:
+        if self == WorldVariant():
+            return config
+        return replace(config,
+                       n_food=max(1, int(round(config.n_food * self.food_scale))),
+                       n_hazard=max(0, int(round(config.n_hazard * self.hazard_scale))),
+                       n_goal=max(1, config.n_goal),
+                       shift_step=int(self.shift_step))
+
+    @classmethod
+    def random(cls, rng: np.random.Generator) -> "WorldVariant":
+        return cls(food_scale=round(float(rng.uniform(0.6, 1.4)), 4),
+                   hazard_scale=round(float(rng.uniform(0.6, 1.6)), 4),
+                   shift_step=int(rng.integers(60, 141)))
 
 
 @dataclass
@@ -177,14 +200,15 @@ class World:
         return StepResult(kind, delta, reached_goal, shifted, self.done, consumed, respawn)
 
 
-def make_world(preset: str, seed: int, rules: RuleSet | None = None) -> World:
+def make_world(preset: str, seed: int, rules: RuleSet | None = None, variant: WorldVariant | None = None) -> World:
     if preset not in PRESETS:
         raise ValueError(f"unknown preset {preset!r}; valid: {sorted(PRESETS)}")
-    return World(PRESETS[preset], seed, rules)
+    config = PRESETS[preset] if variant is None else variant.apply(PRESETS[preset])
+    return World(config, seed, rules)
 
 
 __all__ = [
     "FLOOR", "WALL", "START_ENERGY", "STEP_COST", "PERCEPTION_COST", "FOOD_VALUE",
     "HAZARD_VALUE", "GOAL_ENERGY", "NEUTRAL_VALUE", "MAX_STEPS", "SHIFT_STEP", "ACTIONS",
-    "ROLES", "WorldConfig", "PRESETS", "RuleSet", "StepResult", "World", "make_world",
+    "ROLES", "WorldConfig", "WorldVariant", "PRESETS", "RuleSet", "StepResult", "World", "make_world",
 ]

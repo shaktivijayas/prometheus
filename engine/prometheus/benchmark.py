@@ -9,13 +9,18 @@ import numpy as np
 
 from .child import Beliefs, ChildAgent, run_episode
 from .genome import Genome
-from .world import PRESETS, RuleSet, make_world
+from .world import PRESETS, RuleSet, WorldVariant, make_world
 
 CURRICULUM_PRESETS = ("easy", "normal", "hard", "shift")
 LESSONS = 4
 EPISODES_PER_LESSON = 5
 DEFAULT_CURRICULUM = ("normal", "normal", "shift", "normal")
 EVAL_SEED = 10_000
+TRAIN_UNIVERSE_BASE = 1_000_000  # universes >= this are for training the Creator; evaluation never uses them
+
+
+def is_training_universe(rules_seed: int) -> bool:
+    return rules_seed >= TRAIN_UNIVERSE_BASE
 
 
 def _seed(*parts: int) -> int:
@@ -27,6 +32,7 @@ class EvalSuite:
     n_worlds: int = 24
     seed: int = EVAL_SEED
     rules_seed: int = EVAL_SEED  # which universe (hidden laws) training and evaluation happen in
+    variant: WorldVariant = WorldVariant()  # world economy / shift timing for this universe
 
     def rules(self) -> RuleSet:
         return RuleSet.random(PRESETS["normal"].n_kinds, np.random.default_rng(self.rules_seed))
@@ -39,14 +45,15 @@ class EvalSuite:
 
 
 def train_child(agent: ChildAgent, curriculum: Sequence[str], seed: int,
-                episodes_per_lesson: int = EPISODES_PER_LESSON, rules: RuleSet | None = None) -> list[float]:
+                episodes_per_lesson: int = EPISODES_PER_LESSON, rules: RuleSet | None = None,
+                variant: WorldVariant | None = None) -> list[float]:
     """Run the child through its lessons (it learns as it goes). Returns mean score per lesson."""
     for preset in curriculum:
         if preset not in CURRICULUM_PRESETS:
             raise ValueError(f"unknown lesson preset {preset!r}; valid: {CURRICULUM_PRESETS}")
     scores = []
     for lesson, preset in enumerate(curriculum):
-        lesson_scores = [run_episode(agent, make_world(preset, _seed(seed, lesson, ep), rules)).score
+        lesson_scores = [run_episode(agent, make_world(preset, _seed(seed, lesson, ep), rules, variant)).score
                          for ep in range(episodes_per_lesson)]
         scores.append(float(np.mean(lesson_scores)) if lesson_scores else 0.0)
     return scores
@@ -108,11 +115,11 @@ class ChildMetrics:
 
 
 def _evaluate_worlds(agent: ChildAgent, worlds: list[tuple[str, int]], lesson_scores: list[float],
-                     rules: RuleSet | None = None) -> ChildMetrics:
+                     rules: RuleSet | None = None, variant: WorldVariant | None = None) -> ChildMetrics:
     results = []
     for preset, wseed in worlds:
         trial = copy.deepcopy(agent)  # every world starts from the same trained state
-        results.append((preset, run_episode(trial, make_world(preset, wseed, rules))))
+        results.append((preset, run_episode(trial, make_world(preset, wseed, rules, variant))))
     scores = [r.score for _, r in results]
     stable = [r.score for p, r in results if not PRESETS[p].shift]
     shifted = [r for p, r in results if PRESETS[p].shift]
@@ -139,7 +146,7 @@ def _evaluate_worlds(agent: ChildAgent, worlds: list[tuple[str, int]], lesson_sc
 
 
 def evaluate(agent: ChildAgent, suite: EvalSuite, lesson_scores: list[float]) -> ChildMetrics:
-    return _evaluate_worlds(agent, suite.worlds(), lesson_scores, suite.rules())
+    return _evaluate_worlds(agent, suite.worlds(), lesson_scores, suite.rules(), suite.variant)
 
 
 def train_and_evaluate(genome: Genome, beliefs: Beliefs | None, curriculum: Sequence[str], seed: int,
@@ -147,7 +154,7 @@ def train_and_evaluate(genome: Genome, beliefs: Beliefs | None, curriculum: Sequ
                        episodes_per_lesson: int = EPISODES_PER_LESSON) -> tuple[ChildMetrics, Beliefs]:
     """Build a child, teach it its curriculum, then score it. Pure: same inputs, same outputs."""
     agent = ChildAgent(genome, n_kinds, np.random.default_rng(seed), beliefs)
-    lessons = train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules())
+    lessons = train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules(), suite.variant)
     return evaluate(agent, suite, lessons), agent.beliefs.copy()
 
 
@@ -156,13 +163,13 @@ def replay_episodes(genome: Genome, beliefs: Beliefs | None, curriculum: Sequenc
                     episodes_per_lesson: int = EPISODES_PER_LESSON) -> list[tuple[str, int, "object"]]:
     """Re-create a child exactly as train_and_evaluate did and record step-by-step traces of chosen eval worlds."""
     agent = ChildAgent(genome, n_kinds, np.random.default_rng(seed), beliefs)
-    train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules())
+    train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules(), suite.variant)
     worlds = suite.worlds()
     out = []
     for i in world_indices:
         preset, wseed = worlds[i]
         trial = copy.deepcopy(agent)
-        out.append((preset, wseed, run_episode(trial, make_world(preset, wseed, suite.rules()), record=True)))
+        out.append((preset, wseed, run_episode(trial, make_world(preset, wseed, suite.rules(), suite.variant), record=True)))
     return out
 
 
