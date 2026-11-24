@@ -46,5 +46,5 @@ def compare(creators: list[str], seeds: list[int], base: RunConfig, out_dir: Pat
         executor.close()
     data = {"name": name, "creators": list(creators), "seeds": list(seeds), "generations": base.generations,
             "arms": arms}
-    (out_dir / "comparisons" / f"{name}.json").write_text(json.dumps(data, indent=1), encoding="utf-8")
+    (out_dir / "comparisons" / f"{name}.json").write_text(json.dumps(data, indent=1, allow_nan=False), encoding="utf-8")
     return data

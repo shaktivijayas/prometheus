@@ -10,7 +10,7 @@ from .runner import RunResult
 
 
 def _dump(path: Path, data) -> None:
-    path.write_text(json.dumps(data, indent=1), encoding="utf-8")
+    path.write_text(json.dumps(data, indent=1, allow_nan=False), encoding="utf-8")
 
 
 def run_summary(result: RunResult) -> dict:
@@ -45,7 +45,7 @@ def write_run(result: RunResult, out_dir: Path) -> None:
     _dump(out_dir / "entities.json", [r.to_dict() for r in result.registry.all()])
     with open(out_dir / "events.jsonl", "w", encoding="utf-8") as f:
         for e in result.events.events:
-            f.write(json.dumps(e) + "\n")
+            f.write(json.dumps(e, allow_nan=False) + "\n")
     _dump(out_dir / "generations.json", result.generations)
     for key, replay in result.replays.items():
-        (out_dir / "replays" / f"{key}.json").write_text(json.dumps(replay), encoding="utf-8")
+        (out_dir / "replays" / f"{key}.json").write_text(json.dumps(replay, allow_nan=False), encoding="utf-8")

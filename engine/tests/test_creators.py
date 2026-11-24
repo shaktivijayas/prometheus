@@ -117,3 +117,13 @@ def test_heuristic_never_ends_training_on_a_rule_shift():
         report = population([row] + [metrics(fitness=0.1)] * 3)
         spec = get_creator("heuristic").next_generation(report, 1, np.random.default_rng(0))[0]
         assert spec.curriculum[-1] != "shift", spec.reason
+
+
+def test_validated_cleans_predictions_and_decisions():
+    import json, math
+    s = ChildSpec(Genome.default(), None, False, DEFAULT_CURRICULUM, "r", predicted_change=math.nan,
+                  decision={"edit": np.array([0.1, np.nan]), "p": np.float32(0.5), "i": np.int64(3)})
+    v = s.validated()
+    assert v.predicted_change is None
+    json.dumps(v.decision, allow_nan=False)
+    assert v.decision["edit"] == [0.1, None] and v.decision["i"] == 3

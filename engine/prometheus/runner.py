@@ -127,7 +127,7 @@ def run_evolution(config: RunConfig, creator: Creator | None = None,
                                        f"expected {config.population - config.elite}")
             new = []
             for spec in specs:
-                spec = spec.validated()
+                spec = _checked_parent(spec.validated(), registry)
                 rec = registry.create(spec, gen)
                 new.append(rec)
                 events.emit("created", gen, rec.id, name=rec.name, parent_id=rec.parent_id,
@@ -165,6 +165,20 @@ def _evaluate(new: list[EntityRecord], registry: Registry, events: EventLog, exe
         events.emit("evaluated", gen, rec.id, fitness=metrics["fitness"], survival_rate=metrics["survival_rate"],
                     adaptation_ratio=metrics["adaptation_ratio"], actual_change=rec.actual_change,
                     predicted_change=rec.predicted_change)
+
+
+def _checked_parent(spec, registry: Registry):
+    """A parent must be an already-scored entity; otherwise the child is treated as parentless."""
+    if spec.parent_id is None:
+        return spec
+    try:
+        parent = registry.get(spec.parent_id)
+    except KeyError:
+        parent = None
+    if parent is None or parent.metrics is None:
+        spec.reason = f"{spec.reason} [invalid parent {spec.parent_id!r} dropped]"
+        spec.parent_id, spec.inherit_beliefs = None, False
+    return spec
 
 
 def _start_beliefs(rec: EntityRecord, registry: Registry) -> Beliefs | None:

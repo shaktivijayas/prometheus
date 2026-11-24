@@ -5,9 +5,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Callable
 
-import numpy as np
-
 from .genome import Genome
+from .jsonutil import jsonable as _jsonable
 
 if TYPE_CHECKING:
     from .creators.base import ChildSpec
@@ -124,14 +123,3 @@ class EventLog:
         self.events.append(event)
         return event
 
-
-def _jsonable(x):
-    if isinstance(x, dict):
-        return {k: _jsonable(v) for k, v in x.items()}
-    if isinstance(x, (list, tuple)):
-        return [_jsonable(v) for v in x]
-    if isinstance(x, (np.floating, float)):
-        return round(float(x), 6)
-    if isinstance(x, np.integer):
-        return int(x)
-    return x

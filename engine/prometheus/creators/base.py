@@ -1,6 +1,7 @@
 """What every Creator produces (ChildSpec), what it sees (GenerationReport), and its interface."""
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Protocol
 
@@ -8,6 +9,7 @@ import numpy as np
 
 from ..benchmark import CURRICULUM_PRESETS, DEFAULT_CURRICULUM, LESSONS
 from ..genome import GENE_NAMES, Genome
+from ..jsonutil import jsonable
 
 if TYPE_CHECKING:
     from ..registry import EntityRecord
@@ -30,8 +32,12 @@ class ChildSpec:
         curriculum = tuple(self.curriculum)
         if len(curriculum) != LESSONS or any(p not in CURRICULUM_PRESETS for p in curriculum):
             curriculum = DEFAULT_CURRICULUM
+        predicted = self.predicted_change
+        if predicted is not None and not math.isfinite(float(predicted)):
+            predicted = None
         return ChildSpec(self.genome.clamped(), self.parent_id, bool(self.inherit_beliefs), curriculum,
-                         self.reason, self.specialization, self.predicted_change, dict(self.decision))
+                         str(self.reason), str(self.specialization),
+                         None if predicted is None else float(predicted), jsonable(dict(self.decision)))
 
 
 @dataclass

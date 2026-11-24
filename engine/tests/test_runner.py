@@ -1,3 +1,4 @@
+import numpy as np
 import json
 import math
 
@@ -116,3 +117,32 @@ def test_replicates_average_several_upbringings():
 
 def test_default_replicates_is_three():
     assert RunConfig().replicates == 3
+
+
+class _BadCreator:
+    """Misbehaves on purpose: unknown parent ids and NaN predictions (reviewer finding #4)."""
+    name = "bad"
+
+    def seed_population(self, n, rng):
+        from prometheus.creators import get_creator
+        return get_creator("random").seed_population(n, rng)
+
+    def next_generation(self, report, slots, rng):
+        from prometheus.creators.base import ChildSpec
+        from prometheus.genome import Genome
+        return [ChildSpec(Genome.default(), "E9999", True, ("normal",) * 4, "bad", predicted_change=float("nan"),
+                          decision={"x": np.array([1.0, np.inf])})
+                for _ in range(slots)]
+
+
+def test_bad_creator_output_is_cleaned_and_json_is_strict(tmp_path):
+    def strict(text):
+        return json.loads(text, parse_constant=lambda c: (_ for _ in ()).throw(ValueError(c)))
+    res = run_evolution(RunConfig(creator="random", **{**TINY, "generations": 2}), creator=_BadCreator(), clock=CLOCK)
+    for r in res.registry.all():
+        if r.generation > 0:
+            assert r.parent_id is None and not r.inherit_beliefs and r.predicted_change is None
+    write_run(res, tmp_path)
+    strict((tmp_path / "entities.json").read_text())
+    for line in (tmp_path / "events.jsonl").read_text().splitlines():
+        strict(line)
