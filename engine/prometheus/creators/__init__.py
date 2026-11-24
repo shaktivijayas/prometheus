@@ -13,6 +13,14 @@ _FACTORIES: dict[str, Callable[[str], Creator]] = {
     "heuristic": lambda arg: HeuristicCreator(),
     "clone": lambda arg: CloneCreator(),
 }
+
+
+def _neural(arg: str) -> Creator:
+    from .neural import make_neural  # imported lazily: torch is only needed for the neural Creator
+    return make_neural(arg)
+
+
+_FACTORIES["neural"] = _neural
 CREATOR_NAMES = _FACTORIES  # live view: the neural Creator registers itself here
 
 

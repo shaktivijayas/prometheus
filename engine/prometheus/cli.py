@@ -20,12 +20,15 @@ def _sizing(p: argparse.ArgumentParser) -> None:
     p.add_argument("--workers", type=int, default=d.workers, help="0 = all cores")
     p.add_argument("--replicates", type=int, default=d.replicates,
                    help="independent upbringings averaged per child (reduces luck)")
+    p.add_argument("--verify-replicates", type=int, default=d.verify_replicates,
+                   help="fresh upbringings used to verify gen-0 best and final champion (0 = skip)")
 
 
 def _config(args, creator: str, seed: int) -> RunConfig:
     return RunConfig(creator=creator, generations=args.generations, population=args.population, elite=args.elite,
                      seed=seed, episodes_per_lesson=args.episodes_per_lesson, eval_worlds=args.eval_worlds,
-                     workers=args.workers, replicates=args.replicates)
+                     workers=args.workers, replicates=args.replicates,
+                     verify_replicates=args.verify_replicates)
 
 
 def _check_creators(names: list[str]) -> None:
