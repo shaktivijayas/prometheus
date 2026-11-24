@@ -6,7 +6,8 @@ from typing import TYPE_CHECKING, Protocol
 
 import numpy as np
 
-from ..genome import Genome
+from ..benchmark import CURRICULUM_PRESETS, DEFAULT_CURRICULUM, LESSONS
+from ..genome import GENE_NAMES, Genome
 
 if TYPE_CHECKING:
     from ..registry import EntityRecord
@@ -24,6 +25,14 @@ class ChildSpec:
     predicted_change: float | None = None
     decision: dict = field(default_factory=dict)  # raw decision details for analysis (Creator-specific)
 
+    def validated(self) -> "ChildSpec":
+        """Clamp the genome into bounds; replace a malformed curriculum with the default one."""
+        curriculum = tuple(self.curriculum)
+        if len(curriculum) != LESSONS or any(p not in CURRICULUM_PRESETS for p in curriculum):
+            curriculum = DEFAULT_CURRICULUM
+        return ChildSpec(self.genome.clamped(), self.parent_id, bool(self.inherit_beliefs), curriculum,
+                         self.reason, self.specialization, self.predicted_change, dict(self.decision))
+
 
 @dataclass
 class GenerationReport:
@@ -38,3 +47,27 @@ class Creator(Protocol):
     def seed_population(self, n: int, rng: np.random.Generator) -> list[ChildSpec]: ...
 
     def next_generation(self, report: GenerationReport, slots: int, rng: np.random.Generator) -> list[ChildSpec]: ...
+
+
+def ranked(population: list["EntityRecord"]) -> list["EntityRecord"]:
+    """Best first; ties broken by id so selection is deterministic."""
+    return sorted(population, key=lambda r: (-r.fitness, r.id))
+
+
+def top_half(population: list["EntityRecord"]) -> list["EntityRecord"]:
+    ordered = ranked(population)
+    return ordered[: max(1, (len(ordered) + 1) // 2)]
+
+
+def describe_edits(before: Genome, after: Genome) -> str:
+    parts = []
+    for name in GENE_NAMES:
+        a, b = getattr(before, name), getattr(after, name)
+        if a != b:
+            delta = b - a
+            parts.append(f"{name} {delta:+d}" if isinstance(delta, int) else f"{name} {delta:+.2f}")
+    return ", ".join(parts) if parts else "no gene changes"
+
+
+def curriculum_text(curriculum) -> str:
+    return " > ".join(curriculum)
