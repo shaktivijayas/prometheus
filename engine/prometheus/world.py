@@ -87,10 +87,11 @@ class StepResult:
 
 
 class World:
-    def __init__(self, config: WorldConfig, seed: int):
+    def __init__(self, config: WorldConfig, seed: int, rules: RuleSet | None = None):
+        """`rules` are the universe's hidden laws; when omitted the world draws its own from `seed`."""
         self.config = config
         self.rng = np.random.default_rng(seed)
-        self.rules = RuleSet.random(config.n_kinds, self.rng)
+        self.rules = RuleSet(list(rules.roles)) if rules is not None else RuleSet.random(config.n_kinds, self.rng)
         n = config.size
         self.grid = np.full((n, n), FLOOR, dtype=np.int8)
         walls = self.rng.random((n, n)) < config.wall_density
@@ -170,10 +171,10 @@ class World:
         return StepResult(kind, delta, reached_goal, shifted, self.done)
 
 
-def make_world(preset: str, seed: int) -> World:
+def make_world(preset: str, seed: int, rules: RuleSet | None = None) -> World:
     if preset not in PRESETS:
         raise ValueError(f"unknown preset {preset!r}; valid: {sorted(PRESETS)}")
-    return World(PRESETS[preset], seed)
+    return World(PRESETS[preset], seed, rules)
 
 
 __all__ = [

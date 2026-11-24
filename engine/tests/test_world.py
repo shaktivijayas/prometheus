@@ -127,3 +127,20 @@ def test_episode_ends_on_energy_or_max_steps():
     while not w2.done:
         w2.step(4, perception_radius=1)
     assert w2.t == 200
+
+
+def test_universe_rules_shared_across_worlds():
+    rules = RuleSet.random(5, np.random.default_rng(42))
+    a, b = World(WorldConfig(), 1, rules=rules), World(WorldConfig(), 2, rules=rules)
+    assert a.rules.roles == b.rules.roles == rules.roles
+    assert not np.array_equal(a.grid, b.grid)  # layouts still differ
+
+
+def test_shift_does_not_mutate_universe_rules():
+    rules = RuleSet.random(5, np.random.default_rng(42))
+    original = list(rules.roles)
+    w = World(PRESETS["shift"], 3, rules=rules)
+    w.energy = 1e9
+    for _ in range(120):
+        w.step(4, 1)
+    assert w.rules.roles != original and rules.roles == original
