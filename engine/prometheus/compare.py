@@ -23,7 +23,7 @@ def compare(creators: list[str], seeds: list[int], base: RunConfig, out_dir: Pat
     executor = _Executor(base.workers)
     try:
         for creator in creators:
-            best_curves, mean_curves, runs = [], [], []
+            best_curves, mean_curves, runs, verified = [], [], [], []
             for seed in seeds:
                 cfg = replace(base, creator=creator, seed=seed)
                 result = run_evolution(cfg, executor=executor)
@@ -32,6 +32,7 @@ def compare(creators: list[str], seeds: list[int], base: RunConfig, out_dir: Pat
                 best_curves.append([g["best"] for g in result.generations])
                 mean_curves.append([g["mean"] for g in result.generations])
                 runs.append(run_name)
+                verified.append(result.verification)
                 if progress:
                     progress(creator, seed, result)
             best, mean = np.array(best_curves), np.array(mean_curves)
@@ -41,6 +42,12 @@ def compare(creators: list[str], seeds: list[int], base: RunConfig, out_dir: Pat
                 "mean_mean": [round(float(x), 6) for x in mean.mean(axis=0)],
                 "mean_std": [round(float(x), 6) for x in mean.std(axis=0)],
                 "runs": runs,
+                # unbiased headline: champions re-scored on fresh upbringings (see runner._verify)
+                "verified_final_mean": round(float(np.mean([v["final_best"]["mean"] for v in verified])), 6),
+                "verified_final_std": round(float(np.std([v["final_best"]["mean"] for v in verified])), 6),
+                "verified_gen0_mean": round(float(np.mean([v["gen0_best"]["mean"] for v in verified])), 6),
+                "verified_gain_mean": round(float(np.mean([v["gain"] for v in verified])), 6),
+                "verified_gain_std": round(float(np.std([v["gain"] for v in verified])), 6),
             }
     finally:
         executor.close()

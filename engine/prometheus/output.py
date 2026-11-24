@@ -41,6 +41,7 @@ def write_run(result: RunResult, out_dir: Path) -> None:
         "universe": result.universe,
         "timing": result.timing,
         "summary": run_summary(result),
+        "verification": result.verification,
     })
     _dump(out_dir / "entities.json", [r.to_dict() for r in result.registry.all()])
     with open(out_dir / "events.jsonl", "w", encoding="utf-8") as f:

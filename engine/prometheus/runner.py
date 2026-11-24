@@ -31,6 +31,7 @@ class RunConfig:
     record_replays: bool = True
     replicates: int = 3           # independent upbringings averaged per child, so fitness reflects the design
     universe: int | None = None   # which hidden laws; defaults to `seed` so every arm with a seed shares a universe
+    verify_replicates: int = 10   # fresh upbringings used to re-score gen-0 best and final champion (unbiased headline)
 
     def universe_seed(self) -> int:
         return self.seed if self.universe is None else self.universe
@@ -45,6 +46,7 @@ class RunResult:
     replays: dict[str, dict]
     universe: list[str]
     timing: dict = field(default_factory=dict)
+    verification: dict = field(default_factory=dict)
 
 
 def child_seed(run_seed: int, entity_id: str) -> int:
@@ -56,6 +58,11 @@ def replicate_seeds(run_seed: int, entity_id: str, replicates: int) -> list[int]
     extra = [int(np.random.SeedSequence([run_seed, int(entity_id[1:]), r]).generate_state(1)[0])
              for r in range(1, replicates)]
     return [child_seed(run_seed, entity_id)] + extra
+
+
+def verification_seeds(run_seed: int, n: int) -> list[int]:
+    """Fresh upbringings never used during selection (a different seed-sequence shape from replicate_seeds)."""
+    return [int(np.random.SeedSequence([run_seed, 2**31, 7, i]).generate_state(1)[0]) for i in range(n)]
 
 
 def _evaluate_job(job: tuple) -> tuple[dict, dict]:
@@ -142,11 +149,40 @@ def run_evolution(config: RunConfig, creator: Creator | None = None,
             events.emit("generation_complete", gen, **{k: v for k, v in stats.items() if k != "generation"})
             if config.record_replays and stats["best_entity"]:
                 _record_replays(registry.get(stats["best_entity"]), gen, suite, config, registry, events, replays)
+        verification = _verify(generations, registry, executor, suite, config) if generations else {}
     finally:
         if own_executor:
             executor.close()
     return RunResult(config, registry, events, generations, replays, list(suite.rules().roles),
-                     timing={"duration_s": round(time.perf_counter() - t0, 3)})
+                     timing={"duration_s": round(time.perf_counter() - t0, 3)}, verification=verification)
+
+
+def _verify(generations: list[dict], registry: Registry, executor: _Executor, suite: EvalSuite,
+            config: RunConfig) -> dict:
+    """Re-score the gen-0 best and the final champion on fresh upbringings.
+
+    Selection keeps the luckiest draws, so the in-run 'best' curve is biased upward (a clone arm that changes
+    nothing still 'improves'). These numbers are not: the same fresh seeds are used for both designs.
+    """
+    n = max(1, config.verify_replicates)
+    seeds = verification_seeds(config.seed, n)
+    targets = {"gen0_best": generations[0]["best_entity"], "final_best": generations[-1]["best_entity"]}
+    jobs = []
+    for entity_id in targets.values():
+        rec = registry.get(entity_id)
+        start = _start_beliefs(rec, registry)
+        jobs += [(rec.genome, start.to_dict() if start else None, tuple(rec.curriculum), [s], suite,
+                  config.episodes_per_lesson) for s in seeds]
+    results = executor.map(jobs)
+    out: dict = {}
+    for i, (key, entity_id) in enumerate(targets.items()):
+        f = np.array([m["fitness"] for m, _ in results[i * n:(i + 1) * n]])
+        out[key] = {"entity_id": entity_id, "name": registry.get(entity_id).name, "mean": round(float(f.mean()), 6),
+                    "std": round(float(f.std()), 6), "n": n}
+    out["gain"] = round(out["final_best"]["mean"] - out["gen0_best"]["mean"], 6)
+    base = out["gen0_best"]["mean"]
+    out["gain_pct"] = round(100.0 * out["gain"] / base, 2) if base > 0 else None
+    return out
 
 
 def _evaluate(new: list[EntityRecord], registry: Registry, events: EventLog, executor: _Executor,

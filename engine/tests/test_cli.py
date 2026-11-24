@@ -52,3 +52,11 @@ def test_cli_unknown_creator(tmp_path):
     p = cli("run", "--creator", "nope", *TINY_FLAGS, cwd=tmp_path)
     assert p.returncode == 2
     assert "heuristic" in p.stderr and "random" in p.stderr
+
+
+def test_compare_reports_verified_numbers(tmp_path):
+    base = RunConfig(generations=2, population=4, elite=1, episodes_per_lesson=1, eval_worlds=4, workers=1,
+                     verify_replicates=2)
+    arm = compare(["clone"], [0, 1], base, tmp_path, "v")["arms"]["clone"]
+    for key in ("verified_final_mean", "verified_final_std", "verified_gen0_mean", "verified_gain_mean"):
+        assert isinstance(arm[key], float)

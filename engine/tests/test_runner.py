@@ -146,3 +146,26 @@ def test_bad_creator_output_is_cleaned_and_json_is_strict(tmp_path):
     strict((tmp_path / "entities.json").read_text())
     for line in (tmp_path / "events.jsonl").read_text().splitlines():
         strict(line)
+
+
+def test_run_ends_with_unbiased_verification():
+    """Selection picks lucky draws; the headline must come from fresh upbringings (re-review of finding #1)."""
+    res = run_evolution(RunConfig(creator="random", **{**TINY, "verify_replicates": 3}), clock=CLOCK)
+    v = res.verification
+    assert v["gen0_best"]["entity_id"] == res.generations[0]["best_entity"]
+    assert v["final_best"]["entity_id"] == res.generations[-1]["best_entity"]
+    assert v["gen0_best"]["n"] == v["final_best"]["n"] == 3
+    assert v["gain"] == pytest.approx(v["final_best"]["mean"] - v["gen0_best"]["mean"], abs=1e-6)
+
+
+def test_verification_seeds_never_used_in_selection():
+    from prometheus.runner import replicate_seeds, verification_seeds
+    used = {s for i in range(1, 200) for s in replicate_seeds(0, f"E{i:04d}", 3)}
+    assert not used & set(verification_seeds(0, 50))
+
+
+def test_verification_written_to_run_json(tmp_path):
+    res = run_evolution(RunConfig(creator="clone", **{**TINY, "verify_replicates": 2}), clock=CLOCK)
+    write_run(res, tmp_path)
+    run = json.loads((tmp_path / "run.json").read_text())
+    assert run["verification"]["final_best"]["n"] == 2
