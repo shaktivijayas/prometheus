@@ -17,7 +17,9 @@ async function getJson<T>(path: string): Promise<Loaded<T>> {
     cache.set(path, (async () => {
       try {
         const res = await fetch(url(path));
-        if (!res.ok) return { ok: false, missing: true, reason: `${path}: HTTP ${res.status}` } as const;
+        if (!res.ok) return { ok: false, missing: true, reason: `${path} was not found (HTTP ${res.status}).` } as const;
+        const type = res.headers?.get?.("content-type") ?? "application/json";
+        if (!type.includes("json")) return { ok: false, missing: true, reason: `${path} was not found.` } as const;
         return { ok: true, value: (await res.json()) as T } as const;
       } catch (err) {
         return { ok: false, missing: true, reason: `${path}: ${String(err)}` } as const;
