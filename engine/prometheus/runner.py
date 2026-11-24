@@ -172,7 +172,7 @@ class Evolution:
             for loser in active[cfg.elite:]:
                 registry.retire(loser.id, gen)
                 events.emit("retired", gen, loser.id, fitness=loser.fitness)
-            report = GenerationReport(gen, active, list(self.generations))
+            report = GenerationReport(gen, active, list(self.generations), cfg.generations)
             specs = self.creator.next_generation(report, cfg.population - cfg.elite, self.rng)
             if len(specs) != cfg.population - cfg.elite:
                 raise RuntimeError(f"creator {self.creator.name} returned {len(specs)} specs, "

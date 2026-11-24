@@ -45,6 +45,7 @@ class GenerationReport:
     generation: int
     population: list["EntityRecord"]
     history: list[dict]
+    total_generations: int = 0
 
 
 class Creator(Protocol):
