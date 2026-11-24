@@ -66,7 +66,7 @@ def test_heuristic_targets_hazard_deaths():
     assert spec.parent_id == parent.id
     assert spec.genome.risk_aversion > parent.genome_obj().risk_aversion or parent.genome_obj().risk_aversion == 3.0
     assert "hazard" in spec.reason
-    assert spec.curriculum == ("easy", "hard", "normal", "shift")
+    assert spec.curriculum == ("easy", "hard", "shift", "normal")
     assert spec.inherit_beliefs
 
 
@@ -76,7 +76,7 @@ def test_heuristic_targets_poor_adaptation():
     spec = get_creator("heuristic").next_generation(report, 1, np.random.default_rng(0))[0]
     assert spec.genome.surprise_threshold < parent.surprise_threshold or parent.surprise_threshold == 0.1
     assert "adapt" in spec.reason
-    assert spec.curriculum == ("normal", "shift", "shift", "shift")
+    assert spec.curriculum == ("shift", "shift", "shift", "normal")
 
 
 def test_random_creator_seeded():
@@ -107,3 +107,13 @@ def test_clone_creator_copies_parents_exactly():
         parent = by_id[s.parent_id]
         assert s.genome == parent.genome_obj() and list(s.curriculum) == parent.curriculum
         assert not s.inherit_beliefs
+
+
+def test_heuristic_never_ends_training_on_a_rule_shift():
+    """A final shift lesson leaves the child believing scrambled laws (reviewer finding #2)."""
+    rows = [metrics(fitness=2.0, hazard=0.5), metrics(fitness=2.0, adaptation=0.3),
+            metrics(fitness=2.0, starvation=0.5), metrics(fitness=2.0, speed=0.75), metrics(fitness=2.0)]
+    for row in rows:
+        report = population([row] + [metrics(fitness=0.1)] * 3)
+        spec = get_creator("heuristic").next_generation(report, 1, np.random.default_rng(0))[0]
+        assert spec.curriculum[-1] != "shift", spec.reason

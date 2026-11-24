@@ -23,21 +23,21 @@ def _diagnose(parent: EntityRecord, g: Genome, rng: np.random.Generator) -> tupl
     deaths = m.get("death_causes", {})
     if deaths.get("hazard", 0.0) > 0.3:
         return (replace(g, risk_aversion=g.risk_aversion + 0.5, perception_radius=g.perception_radius + 1),
-                ("easy", "hard", "normal", "shift"),
+                ("easy", "hard", "shift", "normal"),
                 f"{parent.name} died to hazards in {_pct(deaths['hazard'])}% of worlds")
     if m.get("adaptation_ratio", 1.0) < 0.6:
         return (replace(g, surprise_threshold=g.surprise_threshold - 0.5, learning_rate=g.learning_rate + 0.1),
-                ("normal", "shift", "shift", "shift"),
+                ("shift", "shift", "shift", "normal"),
                 f"{parent.name} failed to adapt after rule shifts (ratio {m['adaptation_ratio']:.2f})")
     if deaths.get("starvation", 0.0) > 0.3:
         radius = g.perception_radius - 1 if g.perception_radius > 2 else g.perception_radius
         return (replace(g, exploration=g.exploration + 0.1, curiosity_bonus=g.curiosity_bonus + 0.3,
                         perception_radius=radius),
-                ("easy", "normal", "normal", "shift"),
+                ("easy", "normal", "shift", "normal"),
                 f"{parent.name} starved in {_pct(deaths['starvation'])}% of worlds")
     if m.get("learning_speed", 0.0) > 0.5:
         return (replace(g, learning_rate=g.learning_rate + 0.15, memory_capacity=g.memory_capacity + 5),
-                ("easy", "easy", "normal", "shift"),
+                ("easy", "easy", "shift", "normal"),
                 f"{parent.name} learned slowly (speed {m['learning_speed']:.2f})")
     v = replace(g, planning_horizon=g.planning_horizon + 1).clamped().to_vector()
     nudged = Genome.from_vector(np.clip(v + rng.normal(0.0, NUDGE_SIGMA, size=len(v)), 0.0, 1.0))
