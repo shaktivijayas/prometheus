@@ -1,0 +1,4342 @@
+[
+ {
+  "id": "E0001",
+  "name": "GENERALIST-001",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.248606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.23246
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.023819,
+   "mean_score": 1.023819,
+   "stable_score": 0.718472,
+   "shift_score": 1.329167,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.370179,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.604266,
+   "perception_cost": 11.905556,
+   "death_causes": {
+    "hazard": 0.013889,
+    "starvation": 0.986111,
+    "post_shift": 0.125
+   },
+   "lesson_scores": [
+    0.474167,
+    1.098333,
+    1.595167,
+    0.891833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    0.976386
+   ],
+   "count": [
+    6.5,
+    0.25,
+    0.75,
+    12.75,
+    10.75
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0002",
+  "name": "GENERALIST-002",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 10,
+   "learning_rate": 0.188021,
+   "exploration": 0.30367,
+   "exploration_decay": 0.971076,
+   "planning_horizon": 7,
+   "risk_aversion": 1.00461,
+   "surprise_threshold": 1.187656,
+   "curiosity_bonus": 0.522638
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.479427,
+   "mean_score": 1.553819,
+   "stable_score": 1.143472,
+   "shift_score": 1.964167,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.81902,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.20967,
+   "perception_cost": 12.083333,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.833333,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    0.813333,
+    1.404167,
+    1.828667,
+    1.154
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    2.82367,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    2.0625,
+    1.625,
+    5.3125,
+    4.4375,
+    15.625
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0003",
+  "name": "GENERALIST-003",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 6,
+   "learning_rate": 0.315013,
+   "exploration": 0.368689,
+   "exploration_decay": 0.974911,
+   "planning_horizon": 6,
+   "risk_aversion": 0.702508,
+   "surprise_threshold": 1.298571,
+   "curiosity_bonus": 0.336526
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.438437,
+   "mean_score": 0.508889,
+   "stable_score": 0.441319,
+   "shift_score": 0.576458,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.774892,
+   "learning_speed": 0.833333,
+   "mean_prediction_error": 0.259689,
+   "perception_cost": 10.711111,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.930556,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    0.0845,
+    0.3425,
+    1.040667,
+    0.515333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    30.0,
+    5.0,
+    3.0,
+    13.0,
+    25.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0004",
+  "name": "LEARNER-001",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "LEARNER",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 12,
+   "learning_rate": 0.450349,
+   "exploration": 0.31504,
+   "exploration_decay": 0.963987,
+   "planning_horizon": 6,
+   "risk_aversion": 1.068471,
+   "surprise_threshold": 1.49776,
+   "curiosity_bonus": 0.487136
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.683686,
+   "mean_score": 0.774688,
+   "stable_score": 0.497083,
+   "shift_score": 1.052292,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.148148,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.114121,
+   "perception_cost": 11.975,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.916667,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    0.099833,
+    1.434167,
+    0.432333,
+    0.857833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    0.0,
+    8.0
+   ],
+   "count": [
+    60.0,
+    7.0,
+    5.0,
+    0.0,
+    14.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0005",
+  "name": "GENERALIST-004",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.277756,
+   "exploration": 0.285467,
+   "exploration_decay": 0.96662,
+   "planning_horizon": 6,
+   "risk_aversion": 1.232229,
+   "surprise_threshold": 1.576157,
+   "curiosity_bonus": 0.670726
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.976597,
+   "mean_score": 1.18316,
+   "stable_score": 0.785972,
+   "shift_score": 1.580347,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.333333,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.060642,
+   "perception_cost": 7.986111,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.930556,
+    "post_shift": 0.027778
+   },
+   "lesson_scores": [
+    0.678167,
+    1.093833,
+    1.481333,
+    0.6895
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.53125,
+    2.046875,
+    0.390625,
+    5.65625,
+    9.296875
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0006",
+  "name": "GENERALIST-005",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.321101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 0.436778
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.982083,
+   "mean_score": 0.982083,
+   "stable_score": 0.843611,
+   "shift_score": 1.120556,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 1.427626,
+   "learning_speed": 0.833333,
+   "mean_prediction_error": 0.088151,
+   "perception_cost": 14.122222,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.902778,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    0.087833,
+    0.121333,
+    0.192167,
+    0.862167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    0.0,
+    8.0
+   ],
+   "count": [
+    47.0,
+    4.0,
+    9.0,
+    0.0,
+    1.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0007",
+  "name": "GENERALIST-006",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 12,
+   "learning_rate": 0.3371,
+   "exploration": 0.244185,
+   "exploration_decay": 0.969613,
+   "planning_horizon": 6,
+   "risk_aversion": 1.105473,
+   "surprise_threshold": 1.15513,
+   "curiosity_bonus": 0.371587
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.540104,
+   "mean_score": 0.540104,
+   "stable_score": 0.381875,
+   "shift_score": 0.698333,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.472222,
+   "perception_cost": 6.541667,
+   "death_causes": {
+    "hazard": 0.0,
+    "starvation": 1.0,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.063333,
+    0.174,
+    0.676,
+    0.408667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.3032,
+    0.0,
+    -12.0,
+    25.0,
+    -12.0
+   ],
+   "count": [
+    0.1875,
+    1.03125,
+    1.5625,
+    2.0,
+    0.28125
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0008",
+  "name": "GENERALIST-007",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:09:50Z",
+  "specialization": "GENERALIST",
+  "reason": "Hand-designed default with small variation",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.275333,
+   "exploration": 0.376829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.546246,
+   "curiosity_bonus": 0.437067
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.310911,
+   "mean_score": 1.407188,
+   "stable_score": 1.086458,
+   "shift_score": 1.727917,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.760684,
+   "learning_speed": 0.916667,
+   "mean_prediction_error": 0.055596,
+   "perception_cost": 11.463889,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.944444,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    0.378333,
+    0.2935,
+    0.8775,
+    1.226833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.0,
+    9.0,
+    6.0,
+    5.0,
+    45.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0009",
+  "name": "EXPLORER-001",
+  "parent_id": "E0002",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-002 starved in 83% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 10,
+   "learning_rate": 0.188021,
+   "exploration": 0.40367,
+   "exploration_decay": 0.971076,
+   "planning_horizon": 7,
+   "risk_aversion": 1.00461,
+   "surprise_threshold": 1.187656,
+   "curiosity_bonus": 0.822638
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.227526,
+   "mean_score": 1.437778,
+   "stable_score": 1.071875,
+   "shift_score": 1.803681,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.517544,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.155381,
+   "perception_cost": 11.688889,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.902778,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    4.253333,
+    1.064333,
+    1.0175,
+    1.446167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    50.0,
+    13.625,
+    27.3125,
+    32.4375,
+    50.0
+   ]
+  },
+  "actual_change": -0.251901,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0010",
+  "name": "EXPLORER-002",
+  "parent_id": "E0008",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-007 starved in 94% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.275333,
+   "exploration": 0.476829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.546246,
+   "curiosity_bonus": 0.737067
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.965089,
+   "mean_score": 1.097708,
+   "stable_score": 1.019861,
+   "shift_score": 1.175556,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.623188,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.30878,
+   "perception_cost": 11.15,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.902778,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.155667,
+    1.155,
+    2.242,
+    0.9865
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    8.0,
+    4.201138
+   ],
+   "count": [
+    9.703125,
+    2.75,
+    4.3125,
+    0.40625,
+    0.828125
+   ]
+  },
+  "actual_change": -0.345822,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0011",
+  "name": "GENERALIST-008",
+  "parent_id": "E0001",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "GENERALIST",
+  "reason": "GENERALIST-001 starved in 99% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.348606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.53246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.671354,
+   "mean_score": 1.671354,
+   "stable_score": 1.355,
+   "shift_score": 1.987708,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.365227,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.872608,
+   "perception_cost": 12.597222,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.916667,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    2.053333,
+    0.917667,
+    0.871,
+    1.3045
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    3.190544
+   ],
+   "count": [
+    0.685547,
+    5.008789,
+    2.510742,
+    4.264648,
+    0.420898
+   ]
+  },
+  "actual_change": 0.647535,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0012",
+  "name": "EXPLORER-003",
+  "parent_id": "E0006",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-005 starved in 90% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.421101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 0.736778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.508038,
+   "mean_score": 1.585556,
+   "stable_score": 1.545486,
+   "shift_score": 1.625625,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 1.028986,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.111636,
+   "perception_cost": 13.511111,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.875,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.041333,
+    1.032333,
+    1.634833,
+    1.631
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    65.0,
+    26.0,
+    20.0,
+    35.0,
+    65.0
+   ]
+  },
+  "actual_change": 0.525955,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0013",
+  "name": "EXPLORER-004",
+  "parent_id": "E0002",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-002 starved in 83% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 10,
+   "learning_rate": 0.188021,
+   "exploration": 0.40367,
+   "exploration_decay": 0.971076,
+   "planning_horizon": 7,
+   "risk_aversion": 1.00461,
+   "surprise_threshold": 1.187656,
+   "curiosity_bonus": 0.822638
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.148505,
+   "mean_score": 1.179271,
+   "stable_score": 0.604375,
+   "shift_score": 1.754167,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.148645,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.217475,
+   "perception_cost": 11.008333,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.916667,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    2.468833,
+    0.976167,
+    2.051167,
+    2.271333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.81665,
+    2.064941,
+    4.298096,
+    20.138428,
+    19.632812
+   ]
+  },
+  "actual_change": -0.330922,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0014",
+  "name": "EXPLORER-005",
+  "parent_id": "E0008",
+  "generation": 1,
+  "created_at": "2026-11-24T18:09:51Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-007 starved in 94% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.275333,
+   "exploration": 0.476829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.546246,
+   "curiosity_bonus": 0.737067
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.996628,
+   "mean_score": 1.146424,
+   "stable_score": 0.871528,
+   "shift_score": 1.421319,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.604336,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.508344,
+   "perception_cost": 11.713889,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.888889,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.721667,
+    1.496833,
+    2.224,
+    1.357333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    -12.0
+   ],
+   "count": [
+    28.203125,
+    0.359375,
+    2.265625,
+    8.84375,
+    0.765625
+   ]
+  },
+  "actual_change": -0.314283,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0015",
+  "name": "EXPLORER-006",
+  "parent_id": "E0011",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.032491,
+   "mean_score": 1.18441,
+   "stable_score": 0.807431,
+   "shift_score": 1.561389,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.619195,
+   "learning_speed": 0.916667,
+   "mean_prediction_error": 0.057286,
+   "perception_cost": 10.308333,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.888889,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    0.719833,
+    0.7215,
+    0.939833,
+    1.0065
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    7.252197,
+    12.627686,
+    18.066162,
+    40.0
+   ]
+  },
+  "actual_change": -0.638863,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0016",
+  "name": "EXPLORER-007",
+  "parent_id": "E0012",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.796866,
+   "mean_score": 0.845069,
+   "stable_score": 0.650972,
+   "shift_score": 1.039167,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.875,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.246552,
+   "perception_cost": 8.716667,
+   "death_causes": {
+    "hazard": 0.152778,
+    "starvation": 0.847222,
+    "post_shift": 0.055556
+   },
+   "lesson_scores": [
+    2.669167,
+    1.010833,
+    1.769667,
+    0.488
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.766345,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    16.25,
+    19.25,
+    7.75,
+    19.75,
+    40.25
+   ]
+  },
+  "actual_change": -0.711172,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0017",
+  "name": "EXPLORER-008",
+  "parent_id": "E0002",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-002 starved in 83% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 10,
+   "learning_rate": 0.188021,
+   "exploration": 0.40367,
+   "exploration_decay": 0.971076,
+   "planning_horizon": 7,
+   "risk_aversion": 1.00461,
+   "surprise_threshold": 1.187656,
+   "curiosity_bonus": 0.822638
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.03336,
+   "mean_score": 1.229132,
+   "stable_score": 1.065694,
+   "shift_score": 1.392569,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.390313,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.091986,
+   "perception_cost": 10.552778,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.888889,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.552833,
+    1.75,
+    0.5775,
+    1.3845
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    4.190036,
+    0.400824,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    1.441406,
+    2.726562,
+    1.957031,
+    6.214844,
+    14.375
+   ]
+  },
+  "actual_change": -0.446067,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0018",
+  "name": "EXPLORER-009",
+  "parent_id": "E0008",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-007 starved in 94% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.275333,
+   "exploration": 0.476829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.546246,
+   "curiosity_bonus": 0.737067
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.417542,
+   "mean_score": 1.537222,
+   "stable_score": 1.096319,
+   "shift_score": 1.978125,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.94814,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.133024,
+   "perception_cost": 12.977778,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.930556,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    4.247833,
+    1.458167,
+    1.714167,
+    1.115167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    45.0,
+    32.0,
+    14.0,
+    44.0,
+    45.0
+   ]
+  },
+  "actual_change": 0.106631,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0019",
+  "name": "EXPLORER-010",
+  "parent_id": "E0011",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.275139,
+   "mean_score": 1.275139,
+   "stable_score": 0.892222,
+   "shift_score": 1.658056,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.274527,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.31073,
+   "perception_cost": 12.011111,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.930556,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    2.3075,
+    1.113667,
+    0.682,
+    0.705667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    3.247907,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.25,
+    1.036141,
+    0.283702,
+    1.442641,
+    0.40625
+   ]
+  },
+  "actual_change": -0.396215,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0020",
+  "name": "EXPLORER-011",
+  "parent_id": "E0012",
+  "generation": 2,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.460503,
+   "mean_score": 1.562847,
+   "stable_score": 1.060208,
+   "shift_score": 2.065486,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.134306,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.122156,
+   "perception_cost": 12.805556,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.833333,
+    "post_shift": 0.125
+   },
+   "lesson_scores": [
+    3.000667,
+    0.873333,
+    1.158,
+    1.511333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    65.0,
+    40.0,
+    35.0,
+    65.0,
+    65.0
+   ]
+  },
+  "actual_change": -0.047535,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0021",
+  "name": "EXPLORER-012",
+  "parent_id": "E0011",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.220391,
+   "mean_score": 1.388611,
+   "stable_score": 0.956111,
+   "shift_score": 1.821111,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.782407,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.140995,
+   "perception_cost": 11.088889,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.902778,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    1.692167,
+    1.007167,
+    0.724833,
+    1.118833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    29.752197,
+    19.627685,
+    35.316162,
+    40.0
+   ]
+  },
+  "actual_change": -0.450963,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0022",
+  "name": "EXPLORER-013",
+  "parent_id": "E0012",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.100425,
+   "mean_score": 1.229306,
+   "stable_score": 1.040417,
+   "shift_score": 1.418194,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.283318,
+   "perception_cost": 11.677778,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.902778,
+    "post_shift": 0.055556
+   },
+   "lesson_scores": [
+    2.889,
+    1.138667,
+    1.744833,
+    0.736667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    65.0,
+    51.0,
+    27.0,
+    62.0,
+    65.0
+   ]
+  },
+  "actual_change": -0.407613,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0023",
+  "name": "EXPLORER-014",
+  "parent_id": "E0020",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-011 starved in 83% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.621101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.336778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.631224,
+   "mean_score": 0.787083,
+   "stable_score": 0.567986,
+   "shift_score": 1.006181,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.333333,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.01634,
+   "perception_cost": 8.522222,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.861111,
+    "post_shift": 0.027778
+   },
+   "lesson_scores": [
+    2.122833,
+    1.013,
+    1.286833,
+    0.282167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    4.3125,
+    4.1875,
+    3.6875,
+    4.5625,
+    10.0625
+   ]
+  },
+  "actual_change": -0.829279,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0024",
+  "name": "EXPLORER-015",
+  "parent_id": "E0018",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-009 starved in 93% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.275333,
+   "exploration": 0.576829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.546246,
+   "curiosity_bonus": 1.037067
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.179553,
+   "mean_score": 1.349028,
+   "stable_score": 1.536736,
+   "shift_score": 1.161319,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.594771,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.060361,
+   "perception_cost": 14.588889,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.888889,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    2.7435,
+    1.505167,
+    1.263,
+    1.713333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    45.0,
+    45.0,
+    32.0,
+    45.0,
+    45.0
+   ]
+  },
+  "actual_change": -0.237989,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0025",
+  "name": "EXPLORER-016",
+  "parent_id": "E0011",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.139909,
+   "mean_score": 1.256771,
+   "stable_score": 1.246667,
+   "shift_score": 1.266875,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.59375,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.249289,
+   "perception_cost": 10.541667,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.944444,
+    "post_shift": 0.041667
+   },
+   "lesson_scores": [
+    1.881,
+    0.575,
+    0.838333,
+    1.145167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    22.252197,
+    17.627685,
+    26.316162,
+    40.0
+   ]
+  },
+  "actual_change": -0.531445,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0026",
+  "name": "EXPLORER-017",
+  "parent_id": "E0012",
+  "generation": 3,
+  "created_at": "2026-11-24T18:09:52Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.869271,
+   "mean_score": 1.06809,
+   "stable_score": 0.757986,
+   "shift_score": 1.378194,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.333333,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.18434,
+   "perception_cost": 9.891667,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.888889,
+    "post_shift": 0.041667
+   },
+   "lesson_scores": [
+    2.98,
+    0.929833,
+    2.028833,
+    2.460333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    2.177649,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.269531,
+    0.398438,
+    0.128906,
+    1.574219,
+    6.378906
+   ]
+  },
+  "actual_change": -0.638767,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0027",
+  "name": "EXPLORER-018",
+  "parent_id": "E0011",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 2.155486,
+   "mean_score": 2.155486,
+   "stable_score": 2.063056,
+   "shift_score": 2.247917,
+   "survival_rate": 0.055556,
+   "adaptation_ratio": 1.410684,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.138238,
+   "perception_cost": 15.772222,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.875,
+    "post_shift": 0.152778
+   },
+   "lesson_scores": [
+    2.160167,
+    0.910667,
+    0.996667,
+    1.4565
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.999797
+   ],
+   "count": [
+    26.421387,
+    6.252197,
+    9.627686,
+    9.066162,
+    25.355224
+   ]
+  },
+  "actual_change": 0.484132,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0028",
+  "name": "EXPLORER-019",
+  "parent_id": "E0012",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.001096,
+   "mean_score": 1.021042,
+   "stable_score": 0.603056,
+   "shift_score": 1.439028,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.518594,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.51772,
+   "perception_cost": 11.683333,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.902778,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.7465,
+    1.627,
+    1.976,
+    0.518333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    3.298766,
+    -12.0,
+    8.0,
+    8.0
+   ],
+   "count": [
+    2.265198,
+    0.940002,
+    1.755493,
+    0.022461,
+    1.261047
+   ]
+  },
+  "actual_change": -0.506942,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0029",
+  "name": "EXPLORER-020",
+  "parent_id": "E0021",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-012 starved in 90% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.938424,
+   "mean_score": 1.12125,
+   "stable_score": 0.789792,
+   "shift_score": 1.452708,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.509861,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.345892,
+   "perception_cost": 13.033333,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.930556,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    2.715167,
+    0.950667,
+    0.744667,
+    1.278667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    40.0,
+    40.0,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.281967,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0030",
+  "name": "EXPLORER-021",
+  "parent_id": "E0024",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-015 failed to adapt after rule shifts (ratio 0.59): learning_rate +0.10, surprise_threshold -0.50; curriculum shift > shift > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 9,
+   "learning_rate": 0.375333,
+   "exploration": 0.576829,
+   "exploration_decay": 0.954086,
+   "planning_horizon": 6,
+   "risk_aversion": 0.975163,
+   "surprise_threshold": 1.046246,
+   "curiosity_bonus": 1.037067
+  },
+  "curriculum": [
+   "shift",
+   "shift",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.1625,
+   "mean_score": 1.248542,
+   "stable_score": 1.07125,
+   "shift_score": 1.425833,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.803763,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.07346,
+   "perception_cost": 10.994444,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.916667,
+    "post_shift": 0.041667
+   },
+   "lesson_scores": [
+    0.913,
+    1.067667,
+    2.244,
+    0.914667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.000162,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    30.425781,
+    9.175781,
+    6.148438,
+    15.441406,
+    29.628906
+   ]
+  },
+  "actual_change": -0.017053,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0031",
+  "name": "EXPLORER-022",
+  "parent_id": "E0011",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.819581,
+   "mean_score": 1.893646,
+   "stable_score": 1.430208,
+   "shift_score": 2.357083,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 1.074074,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.103269,
+   "perception_cost": 12.602778,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.861111,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.261,
+    0.8705,
+    1.1575,
+    2.371167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.999997
+   ],
+   "count": [
+    40.0,
+    12.752197,
+    9.877686,
+    25.816162,
+    39.105224
+   ]
+  },
+  "actual_change": 0.148227,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0032",
+  "name": "EXPLORER-023",
+  "parent_id": "E0012",
+  "generation": 4,
+  "created_at": "2026-11-24T18:09:53Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.710078,
+   "mean_score": 0.821528,
+   "stable_score": 0.809375,
+   "shift_score": 0.833681,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.679614,
+   "perception_cost": 10.166667,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.875,
+    "post_shift": 0.055556
+   },
+   "lesson_scores": [
+    1.992,
+    0.5075,
+    0.737333,
+    0.861333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    65.0,
+    41.0,
+    32.0,
+    54.0,
+    65.0
+   ]
+  },
+  "actual_change": -0.79796,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0033",
+  "name": "EXPLORER-024",
+  "parent_id": "E0027",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.586378,
+   "mean_score": 1.785799,
+   "stable_score": 1.365694,
+   "shift_score": 2.205903,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.485268,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.175896,
+   "perception_cost": 15.086111,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.847222,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    2.149167,
+    1.082,
+    1.607333,
+    0.9335
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.938935
+   ],
+   "count": [
+    15.921875,
+    0.344735,
+    4.076671,
+    1.441665,
+    10.34375
+   ]
+  },
+  "actual_change": -0.569108,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0034",
+  "name": "EXPLORER-025",
+  "parent_id": "E0031",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.903307,
+   "mean_score": 1.20441,
+   "stable_score": 1.020347,
+   "shift_score": 1.388472,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.0,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.117056,
+   "perception_cost": 10.797222,
+   "death_causes": {
+    "hazard": 0.180556,
+    "starvation": 0.805556,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    2.4075,
+    1.2635,
+    1.577,
+    1.014167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    19.752197,
+    32.877686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.916274,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0035",
+  "name": "EXPLORER-026",
+  "parent_id": "E0011",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "GENERALIST-008 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.448606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 0.83246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.557269,
+   "mean_score": 1.615938,
+   "stable_score": 1.003681,
+   "shift_score": 2.228194,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.387125,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.201708,
+   "perception_cost": 13.719444,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.916667,
+    "post_shift": 0.180556
+   },
+   "lesson_scores": [
+    2.972833,
+    0.919,
+    1.266333,
+    1.792167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.999967
+   ],
+   "count": [
+    26.421387,
+    9.252197,
+    7.127686,
+    15.566162,
+    31.355224
+   ]
+  },
+  "actual_change": -0.114085,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0036",
+  "name": "EXPLORER-027",
+  "parent_id": "E0012",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-003 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 13,
+   "learning_rate": 0.351914,
+   "exploration": 0.521101,
+   "exploration_decay": 0.971843,
+   "planning_horizon": 5,
+   "risk_aversion": 1.067637,
+   "surprise_threshold": 1.58641,
+   "curiosity_bonus": 1.036778
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.055668,
+   "mean_score": 1.142431,
+   "stable_score": 0.951458,
+   "shift_score": 1.333403,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.777778,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.534562,
+   "perception_cost": 10.283333,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.875,
+    "post_shift": 0.041667
+   },
+   "lesson_scores": [
+    2.665167,
+    0.524167,
+    1.757667,
+    0.507333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.503342
+   ],
+   "count": [
+    16.25,
+    10.75,
+    11.0,
+    18.75,
+    20.25
+   ]
+  },
+  "actual_change": -0.45237,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0037",
+  "name": "EXPLORER-028",
+  "parent_id": "E0027",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.229214,
+   "mean_score": 1.381424,
+   "stable_score": 0.795764,
+   "shift_score": 1.967083,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.455614,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.205352,
+   "perception_cost": 12.736111,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.888889,
+    "post_shift": 0.152778
+   },
+   "lesson_scores": [
+    3.4435,
+    0.762333,
+    1.544167,
+    1.072667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    4.231229,
+    0.437978,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.28125,
+    1.14161,
+    3.541514,
+    4.355727,
+    15.53125
+   ]
+  },
+  "actual_change": -0.926272,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0038",
+  "name": "EXPLORER-029",
+  "parent_id": "E0031",
+  "generation": 5,
+  "created_at": "2026-11-24T18:09:54Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.985035,
+   "mean_score": 0.985035,
+   "stable_score": 0.651806,
+   "shift_score": 1.318264,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.476038,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.111866,
+   "perception_cost": 12.136111,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.875,
+    "post_shift": 0.125
+   },
+   "lesson_scores": [
+    3.117833,
+    1.280667,
+    1.343167,
+    1.413333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    0.0,
+    8.0
+   ],
+   "count": [
+    37.0,
+    12.438049,
+    8.969421,
+    10.0,
+    37.0
+   ]
+  },
+  "actual_change": -0.834546,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0039",
+  "name": "EXPLORER-030",
+  "parent_id": "E0027",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.040139,
+   "mean_score": 1.040139,
+   "stable_score": 1.121319,
+   "shift_score": 0.958958,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 1.333333,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.152369,
+   "perception_cost": 10.988889,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.902778,
+    "post_shift": 0.041667
+   },
+   "lesson_scores": [
+    2.0325,
+    0.950333,
+    0.6505,
+    0.650833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    10.5,
+    4.140762,
+    6.10173,
+    6.379135,
+    23.25
+   ]
+  },
+  "actual_change": -1.115347,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0040",
+  "name": "EXPLORER-031",
+  "parent_id": "E0031",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.028715,
+   "mean_score": 1.248681,
+   "stable_score": 1.170903,
+   "shift_score": 1.326458,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.666667,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.129894,
+   "perception_cost": 12.116667,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.847222,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    1.481167,
+    1.088,
+    1.538167,
+    1.824833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    7.991361,
+    0.74029,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    22.75,
+    4.859512,
+    4.617355,
+    11.0,
+    7.75
+   ]
+  },
+  "actual_change": -0.790866,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0041",
+  "name": "EXPLORER-032",
+  "parent_id": "E0033",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-024 failed to adapt after rule shifts (ratio 0.49): learning_rate +0.10, surprise_threshold -0.50; curriculum shift > shift > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.359535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 0.999434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "shift",
+   "shift",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.643038,
+   "mean_score": 0.742778,
+   "stable_score": 0.747361,
+   "shift_score": 0.738194,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.075206,
+   "perception_cost": 10.533333,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.916667,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    0.517167,
+    2.2155,
+    0.764833,
+    0.450667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.071508,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    18.495117,
+    5.209046,
+    6.629792,
+    2.715104,
+    16.021484
+   ]
+  },
+  "actual_change": -0.94334,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0042",
+  "name": "EXPLORER-033",
+  "parent_id": "E0035",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-026 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.369375,
+   "mean_score": 1.369375,
+   "stable_score": 0.988681,
+   "shift_score": 1.750069,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.174525,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.273545,
+   "perception_cost": 12.883333,
+   "death_causes": {
+    "hazard": 0.027778,
+    "starvation": 0.944444,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    2.904333,
+    1.384,
+    0.807333,
+    1.150833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    35.252197,
+    26.127686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.187894,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0043",
+  "name": "EXPLORER-034",
+  "parent_id": "E0027",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.890952,
+   "mean_score": 1.007326,
+   "stable_score": 0.845278,
+   "shift_score": 1.169375,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.996129,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.153951,
+   "perception_cost": 12.808333,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.847222,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    2.779167,
+    0.442667,
+    0.958833,
+    1.552667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    19.252197,
+    17.627686,
+    31.066162,
+    40.0
+   ]
+  },
+  "actual_change": -1.264534,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0044",
+  "name": "EXPLORER-035",
+  "parent_id": "E0031",
+  "generation": 6,
+  "created_at": "2026-11-24T18:09:55Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.471015,
+   "mean_score": 1.527674,
+   "stable_score": 1.123819,
+   "shift_score": 1.931528,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.829787,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.164944,
+   "perception_cost": 13.325,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.916667,
+    "post_shift": 0.125
+   },
+   "lesson_scores": [
+    2.926833,
+    1.401333,
+    1.479333,
+    1.161833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    28.752197,
+    34.877686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.348566,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0045",
+  "name": "EXPLORER-036",
+  "parent_id": "E0027",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.536319,
+   "mean_score": 1.536319,
+   "stable_score": 1.259236,
+   "shift_score": 1.813403,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.482218,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.582681,
+   "perception_cost": 11.794444,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.888889,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    2.144667,
+    0.680167,
+    1.066667,
+    1.391833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    30.252197,
+    29.627686,
+    37.066162,
+    40.0
+   ]
+  },
+  "actual_change": -0.619167,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0046",
+  "name": "EXPLORER-037",
+  "parent_id": "E0031",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.290785,
+   "mean_score": 1.304688,
+   "stable_score": 0.909375,
+   "shift_score": 1.7,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 1.296296,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.45125,
+   "perception_cost": 11.041667,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.916667,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    1.725333,
+    2.247833,
+    0.936,
+    0.907167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    8.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.429688,
+    0.031985,
+    0.022341,
+    0.789062,
+    0.105469
+   ]
+  },
+  "actual_change": -0.528796,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0047",
+  "name": "EXPLORER-038",
+  "parent_id": "E0044",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-035 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.648606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.43246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.224896,
+   "mean_score": 1.224896,
+   "stable_score": 0.804722,
+   "shift_score": 1.645069,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.408163,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.49542,
+   "perception_cost": 10.213889,
+   "death_causes": {
+    "hazard": 0.152778,
+    "starvation": 0.847222,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    1.517667,
+    0.801167,
+    0.799167,
+    0.709
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    2.404961
+   ],
+   "count": [
+    11.0,
+    11.0,
+    13.0,
+    12.0,
+    10.0
+   ]
+  },
+  "actual_change": -0.246119,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0048",
+  "name": "EXPLORER-039",
+  "parent_id": "E0042",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-033 starved in 94% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.648606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.43246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.918203,
+   "mean_score": 1.022188,
+   "stable_score": 0.705625,
+   "shift_score": 1.33875,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.975508,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.093713,
+   "perception_cost": 8.441667,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.875,
+    "post_shift": 0.055556
+   },
+   "lesson_scores": [
+    1.254667,
+    0.597167,
+    1.216,
+    0.968333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    21.75,
+    5.0,
+    8.32048,
+    7.5,
+    20.75
+   ]
+  },
+  "actual_change": -0.451172,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0049",
+  "name": "EXPLORER-040",
+  "parent_id": "E0027",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.137561,
+   "mean_score": 1.374097,
+   "stable_score": 0.990903,
+   "shift_score": 1.757292,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.524904,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.106707,
+   "perception_cost": 13.261111,
+   "death_causes": {
+    "hazard": 0.166667,
+    "starvation": 0.819444,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    2.930167,
+    1.219167,
+    1.069167,
+    1.1835
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    16.0,
+    3.515762,
+    4.41423,
+    2.254135,
+    8.75
+   ]
+  },
+  "actual_change": -1.017925,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0050",
+  "name": "EXPLORER-041",
+  "parent_id": "E0031",
+  "generation": 7,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.992151,
+   "mean_score": 1.137986,
+   "stable_score": 0.835764,
+   "shift_score": 1.440208,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.478577,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.405447,
+   "perception_cost": 9.927778,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.930556,
+    "post_shift": 0.055556
+   },
+   "lesson_scores": [
+    2.4945,
+    1.057,
+    1.9215,
+    1.042333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    7.722765,
+    0.0,
+    -12.0,
+    25.0,
+    -12.0
+   ],
+   "count": [
+    23.0,
+    10.938049,
+    6.969422,
+    15.0,
+    10.0
+   ]
+  },
+  "actual_change": -0.82743,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0051",
+  "name": "EXPLORER-042",
+  "parent_id": "E0027",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.150112,
+   "mean_score": 1.161354,
+   "stable_score": 1.240069,
+   "shift_score": 1.082639,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.969697,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.431271,
+   "perception_cost": 9.575,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.861111,
+    "post_shift": 0.013889
+   },
+   "lesson_scores": [
+    2.205333,
+    1.2945,
+    1.404,
+    1.056833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    10.0,
+    7.313049,
+    10.156921,
+    10.26654,
+    17.0
+   ]
+  },
+  "actual_change": -1.005374,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0052",
+  "name": "EXPLORER-043",
+  "parent_id": "E0031",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.160493,
+   "mean_score": 1.383681,
+   "stable_score": 1.243542,
+   "shift_score": 1.523819,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.261438,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.366977,
+   "perception_cost": 12.916667,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.888889,
+    "post_shift": 0.125
+   },
+   "lesson_scores": [
+    1.903167,
+    1.822833,
+    1.922,
+    1.562167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -12.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    0.625,
+    3.464878,
+    0.419964,
+    7.875,
+    13.1875
+   ]
+  },
+  "actual_change": -0.659088,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0053",
+  "name": "EXPLORER-044",
+  "parent_id": "E0045",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-036 starved in 89% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.648606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.43246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.956695,
+   "mean_score": 1.23934,
+   "stable_score": 1.12625,
+   "shift_score": 1.352431,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.08547,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.078807,
+   "perception_cost": 11.369444,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.944444,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    1.248167,
+    0.628667,
+    1.340333,
+    0.938167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    15.0,
+    5.265762,
+    4.47673,
+    9.25,
+    13.5
+   ]
+  },
+  "actual_change": -0.579624,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0054",
+  "name": "EXPLORER-045",
+  "parent_id": "E0046",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-037 starved in 92% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.648606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.43246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.322462,
+   "mean_score": 1.488646,
+   "stable_score": 1.528403,
+   "shift_score": 1.448889,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.660131,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.124879,
+   "perception_cost": 13.536111,
+   "death_causes": {
+    "hazard": 0.166667,
+    "starvation": 0.833333,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    0.769333,
+    0.6575,
+    1.087833,
+    1.0265
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    37.357422,
+    10.507996,
+    9.255585,
+    14.947266,
+    40.0
+   ]
+  },
+  "actual_change": 0.031677,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0055",
+  "name": "EXPLORER-046",
+  "parent_id": "E0027",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.036962,
+   "mean_score": 1.235556,
+   "stable_score": 1.150278,
+   "shift_score": 1.320833,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.574713,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.225412,
+   "perception_cost": 12.177778,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.888889,
+    "post_shift": 0.097222
+   },
+   "lesson_scores": [
+    2.085,
+    0.609333,
+    1.1435,
+    1.275667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    15.5,
+    4.515762,
+    2.97673,
+    5.941635,
+    10.75
+   ]
+  },
+  "actual_change": -1.118524,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0056",
+  "name": "EXPLORER-047",
+  "parent_id": "E0031",
+  "generation": 8,
+  "created_at": "2026-11-24T18:09:56Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.033958,
+   "mean_score": 1.033958,
+   "stable_score": 0.894722,
+   "shift_score": 1.173194,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.617284,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.112295,
+   "perception_cost": 12.716667,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.930556,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    3.368,
+    1.292,
+    1.550167,
+    1.439167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    24.752197,
+    28.877686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.785623,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0057",
+  "name": "EXPLORER-048",
+  "parent_id": "E0027",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.143688,
+   "mean_score": 1.346146,
+   "stable_score": 0.943889,
+   "shift_score": 1.748403,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.41094,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.207285,
+   "perception_cost": 13.247222,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.916667,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    2.741333,
+    1.658333,
+    1.167,
+    0.813667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    20.25,
+    6.203262,
+    2.03923,
+    7.379135,
+    22.0
+   ]
+  },
+  "actual_change": -1.011798,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0058",
+  "name": "EXPLORER-049",
+  "parent_id": "E0031",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.387805,
+   "mean_score": 1.480625,
+   "stable_score": 1.056389,
+   "shift_score": 1.904861,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.992102,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.170723,
+   "perception_cost": 12.894444,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.902778,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    1.607833,
+    0.6505,
+    1.156,
+    2.000667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    28.752197,
+    20.877686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.431776,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0059",
+  "name": "EXPLORER-050",
+  "parent_id": "E0054",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-045 starved in 83% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.748606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.73246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.048037,
+   "mean_score": 1.169097,
+   "stable_score": 0.938542,
+   "shift_score": 1.399653,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.621411,
+   "learning_speed": 1.0,
+   "mean_prediction_error": 0.097466,
+   "perception_cost": 11.305556,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.861111,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    0.581,
+    0.575833,
+    0.365333,
+    1.753667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    9.25,
+    5.65675,
+    6.140974,
+    8.246704,
+    14.75
+   ]
+  },
+  "actual_change": -0.274425,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0060",
+  "name": "EXPLORER-051",
+  "parent_id": "E0052",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-043 failed to adapt after rule shifts (ratio 0.26): learning_rate +0.10, surprise_threshold -0.50; curriculum shift > shift > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.359535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 0.999434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "shift",
+   "shift",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.07476,
+   "mean_score": 1.242778,
+   "stable_score": 0.937083,
+   "shift_score": 1.548472,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.392416,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 0.090174,
+   "perception_cost": 11.644444,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.930556,
+    "post_shift": 0.111111
+   },
+   "lesson_scores": [
+    0.835333,
+    0.7265,
+    0.711667,
+    0.8305
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    12.866219,
+    16.104991,
+    14.21875,
+    40.0
+   ]
+  },
+  "actual_change": -0.085733,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0061",
+  "name": "EXPLORER-052",
+  "parent_id": "E0027",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-018 starved in 88% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.780362,
+   "mean_score": 1.886076,
+   "stable_score": 1.612708,
+   "shift_score": 2.159444,
+   "survival_rate": 0.055556,
+   "adaptation_ratio": 0.872398,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.279619,
+   "perception_cost": 16.441667,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.888889,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    3.927,
+    1.007667,
+    1.361,
+    0.947167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.420015
+   ],
+   "count": [
+    40.0,
+    20.252197,
+    30.627686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.375124,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0062",
+  "name": "EXPLORER-053",
+  "parent_id": "E0031",
+  "generation": 9,
+  "created_at": "2026-11-24T18:09:57Z",
+  "specialization": "EXPLORER",
+  "reason": "EXPLORER-022 starved in 86% of worlds: exploration +0.10, curiosity_bonus +0.30; curriculum easy > normal > shift > normal",
+  "genome": {
+   "perception_radius": 2,
+   "memory_capacity": 8,
+   "learning_rate": 0.259535,
+   "exploration": 0.548606,
+   "exploration_decay": 0.967128,
+   "planning_horizon": 7,
+   "risk_aversion": 1.059004,
+   "surprise_threshold": 1.499434,
+   "curiosity_bonus": 1.13246
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": true,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 1.383416,
+   "mean_score": 1.522118,
+   "stable_score": 1.179653,
+   "shift_score": 1.864583,
+   "survival_rate": 0.027778,
+   "adaptation_ratio": 0.674554,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.1705,
+   "perception_cost": 12.880556,
+   "death_causes": {
+    "hazard": 0.222222,
+    "starvation": 0.75,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    2.390333,
+    1.003,
+    0.667833,
+    1.440167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    29.752197,
+    29.877686,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.436165,
+  "retired_at_generation": null,
+  "decision": null
+ }
+]

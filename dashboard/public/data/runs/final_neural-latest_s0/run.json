@@ -1,0 +1,60 @@
+{
+ "config": {
+  "creator": "neural:latest",
+  "generations": 10,
+  "population": 8,
+  "elite": 2,
+  "seed": 0,
+  "episodes_per_lesson": 5,
+  "eval_worlds": 24,
+  "workers": 6,
+  "record_replays": true,
+  "replicates": 3,
+  "universe": null,
+  "verify_replicates": 10,
+  "variant": {
+   "food_scale": 1.0,
+   "hazard_scale": 1.0,
+   "shift_step": 100
+  }
+ },
+ "creator": "neural:latest",
+ "universe": [
+  "food",
+  "neutral",
+  "hazard",
+  "goal",
+  "food"
+ ],
+ "timing": {
+  "duration_s": 62.089
+ },
+ "summary": {
+  "gen0_best": 4.510964,
+  "final_best": 16.431528,
+  "improvement": 11.920564,
+  "improvement_pct": 264.26,
+  "best_entity": "E0040",
+  "best_name": "SCOUT-034",
+  "children_created": 62,
+  "mean_prediction_error": 1.422982
+ },
+ "verification": {
+  "gen0_best": {
+   "entity_id": "E0008",
+   "name": "SCOUT-004",
+   "mean": 4.816949,
+   "std": 2.206697,
+   "n": 10
+  },
+  "final_best": {
+   "entity_id": "E0040",
+   "name": "SCOUT-034",
+   "mean": 15.930115,
+   "std": 0.531699,
+   "n": 10
+  },
+  "gain": 11.113166,
+  "gain_pct": 230.71
+ }
+}

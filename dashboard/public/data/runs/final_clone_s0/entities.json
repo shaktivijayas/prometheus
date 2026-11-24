@@ -1,0 +1,4342 @@
+[
+ {
+  "id": "E0001",
+  "name": "SCOUT-001",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "SCOUT",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 5,
+   "memory_capacity": 28,
+   "learning_rate": 0.802899,
+   "exploration": 0.956514,
+   "exploration_decay": 0.905862,
+   "planning_horizon": 4,
+   "risk_aversion": 2.363437,
+   "surprise_threshold": 0.10151,
+   "curiosity_bonus": 1.451446
+  },
+  "curriculum": [
+   "shift",
+   "hard",
+   "normal",
+   "easy"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.877257,
+   "mean_score": 0.877257,
+   "stable_score": 0.892222,
+   "shift_score": 0.862292,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 11.5625,
+   "death_causes": {
+    "hazard": 0.013889,
+    "starvation": 0.986111,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.525167,
+    0.244667,
+    0.992667,
+    0.9265
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    2.0,
+    9.0,
+    8.0,
+    13.0,
+    3.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0002",
+  "name": "EXPLORER-001",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "EXPLORER",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 1,
+   "memory_capacity": 7,
+   "learning_rate": 0.764085,
+   "exploration": 0.958772,
+   "exploration_decay": 0.912756,
+   "planning_horizon": 7,
+   "risk_aversion": 0.944035,
+   "surprise_threshold": 0.263801,
+   "curiosity_bonus": 0.669096
+  },
+  "curriculum": [
+   "hard",
+   "normal",
+   "easy",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.61559,
+   "mean_score": 0.657743,
+   "stable_score": 0.445903,
+   "shift_score": 0.869583,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 0.666667,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.019841,
+   "perception_cost": 4.643056,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.902778,
+    "post_shift": 0.013889
+   },
+   "lesson_scores": [
+    0.112667,
+    0.378667,
+    0.550833,
+    0.210333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    12.0,
+    7.0,
+    15.0,
+    1.0,
+    23.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0003",
+  "name": "LEARNER-001",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "LEARNER",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 8,
+   "learning_rate": 0.833558,
+   "exploration": 0.427367,
+   "exploration_decay": 0.923145,
+   "planning_horizon": 4,
+   "risk_aversion": 1.038337,
+   "surprise_threshold": 3.089353,
+   "curiosity_bonus": 1.281585
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.596475,
+   "mean_score": 2.943125,
+   "stable_score": 2.165069,
+   "shift_score": 3.721181,
+   "survival_rate": 0.111111,
+   "adaptation_ratio": 0.516435,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.328547,
+   "perception_cost": 29.841667,
+   "death_causes": {
+    "hazard": 0.027778,
+    "starvation": 0.861111,
+    "post_shift": 0.25
+   },
+   "lesson_scores": [
+    1.7755,
+    2.144167,
+    2.4155,
+    0.918667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    22.0,
+    8.0,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0004",
+  "name": "SCOUT-002",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "SCOUT",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 5,
+   "memory_capacity": 19,
+   "learning_rate": 0.017895,
+   "exploration": 0.381976,
+   "exploration_decay": 0.944131,
+   "planning_horizon": 2,
+   "risk_aversion": 2.80169,
+   "surprise_threshold": 1.839969,
+   "curiosity_bonus": 0.028749
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "shift",
+   "normal"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.176597,
+   "mean_score": 0.176597,
+   "stable_score": 0.134722,
+   "shift_score": 0.218472,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 10.319444,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.958333,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.053,
+    0.119833,
+    0.048667,
+    0.185667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.0,
+    0.0,
+    -12.0,
+    25.0,
+    0.0
+   ],
+   "count": [
+    0.0,
+    6.0,
+    1.0,
+    3.0,
+    0.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0005",
+  "name": "SCOUT-003",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "SCOUT",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 5,
+   "memory_capacity": 9,
+   "learning_rate": 0.87465,
+   "exploration": 0.5877,
+   "exploration_decay": 0.943082,
+   "planning_horizon": 9,
+   "risk_aversion": 2.930937,
+   "surprise_threshold": 1.106677,
+   "curiosity_bonus": 1.558199
+  },
+  "curriculum": [
+   "normal",
+   "hard",
+   "easy",
+   "easy"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.323611,
+   "mean_score": 1.323611,
+   "stable_score": 1.167986,
+   "shift_score": 1.479236,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.916667,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 11.944444,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.944444,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.246333,
+    0.313167,
+    1.799333,
+    2.3385
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    2.0,
+    7.0,
+    9.0,
+    31.0,
+    2.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0006",
+  "name": "LEARNER-002",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "LEARNER",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 21,
+   "learning_rate": 0.984751,
+   "exploration": 0.403803,
+   "exploration_decay": 0.950904,
+   "planning_horizon": 2,
+   "risk_aversion": 2.596867,
+   "surprise_threshold": 3.073805,
+   "curiosity_bonus": 0.888584
+  },
+  "curriculum": [
+   "easy",
+   "normal",
+   "hard",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.536528,
+   "mean_score": 0.536528,
+   "stable_score": 0.340764,
+   "shift_score": 0.732292,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.25,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 7.716667,
+   "death_causes": {
+    "hazard": 0.027778,
+    "starvation": 0.972222,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.532333,
+    0.325167,
+    0.194667,
+    0.33
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    5.0,
+    0.0,
+    5.0,
+    6.0,
+    3.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0007",
+  "name": "LEARNER-003",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "LEARNER",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 1,
+   "memory_capacity": 37,
+   "learning_rate": 0.812376,
+   "exploration": 0.14731,
+   "exploration_decay": 0.976796,
+   "planning_horizon": 2,
+   "risk_aversion": 2.305427,
+   "surprise_threshold": 4.591348,
+   "curiosity_bonus": 1.13501
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.113854,
+   "mean_score": 0.113854,
+   "stable_score": 0.071944,
+   "shift_score": 0.155764,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 2.8875,
+   "death_causes": {
+    "hazard": 0.0,
+    "starvation": 1.0,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.066833,
+    0.0735,
+    0.0675,
+    0.071167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    0.0,
+    8.0
+   ],
+   "count": [
+    1.0,
+    1.0,
+    4.0,
+    0.0,
+    2.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 1,
+  "decision": null
+ },
+ {
+  "id": "E0008",
+  "name": "SCOUT-004",
+  "parent_id": null,
+  "generation": 0,
+  "created_at": "2026-11-24T18:08:04Z",
+  "specialization": "SCOUT",
+  "reason": "Random initial design",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.510964,
+   "mean_score": 4.884549,
+   "stable_score": 4.869722,
+   "shift_score": 4.899375,
+   "survival_rate": 0.166667,
+   "adaptation_ratio": 0.670774,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.062662,
+   "perception_cost": 43.75,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.694444,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    4.9155,
+    18.3,
+    6.672833,
+    5.8285
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    1.632385,
+    0.0,
+    -12.0,
+    14.052486,
+    9.336129
+   ],
+   "count": [
+    155.0,
+    7.0,
+    3.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": null,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0009",
+  "name": "SCOUT-005",
+  "parent_id": "E0008",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.508172,
+   "mean_score": 2.800312,
+   "stable_score": 2.566042,
+   "shift_score": 3.034583,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.667123,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.840922,
+   "perception_cost": 25.827778,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.888889,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    3.068333,
+    11.325833,
+    6.070667,
+    3.174167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    6.917466,
+    0.0,
+    -12.0,
+    23.812012,
+    1.333333
+   ],
+   "count": [
+    134.0,
+    6.0,
+    7.0,
+    73.0,
+    9.0
+   ]
+  },
+  "actual_change": -2.002792,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0010",
+  "name": "LEARNER-004",
+  "parent_id": "E0003",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "LEARNER",
+  "reason": "Clone of LEARNER-001 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 8,
+   "learning_rate": 0.833558,
+   "exploration": 0.427367,
+   "exploration_decay": 0.923145,
+   "planning_horizon": 4,
+   "risk_aversion": 1.038337,
+   "surprise_threshold": 3.089353,
+   "curiosity_bonus": 1.281585
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.348319,
+   "mean_score": 2.682049,
+   "stable_score": 2.168264,
+   "shift_score": 3.195833,
+   "survival_rate": 0.166667,
+   "adaptation_ratio": 0.65029,
+   "learning_speed": 0.333333,
+   "mean_prediction_error": 0.230756,
+   "perception_cost": 28.5125,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.763889,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    2.2725,
+    2.121333,
+    2.231833,
+    1.251167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    10.0,
+    10.0,
+    34.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.248156,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0011",
+  "name": "SCOUT-006",
+  "parent_id": "E0005",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-003 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 5,
+   "memory_capacity": 9,
+   "learning_rate": 0.87465,
+   "exploration": 0.5877,
+   "exploration_decay": 0.943082,
+   "planning_horizon": 9,
+   "risk_aversion": 2.930937,
+   "surprise_threshold": 1.106677,
+   "curiosity_bonus": 1.558199
+  },
+  "curriculum": [
+   "normal",
+   "hard",
+   "easy",
+   "easy"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.268056,
+   "mean_score": 1.268056,
+   "stable_score": 1.085694,
+   "shift_score": 1.450417,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.75,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 11.944444,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.944444,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.185833,
+    1.055333,
+    1.801,
+    1.597667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    3.0,
+    4.0,
+    7.0,
+    16.0,
+    6.0
+   ]
+  },
+  "actual_change": -0.055555,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0012",
+  "name": "SCOUT-007",
+  "parent_id": "E0001",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-001 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 5,
+   "memory_capacity": 28,
+   "learning_rate": 0.802899,
+   "exploration": 0.956514,
+   "exploration_decay": 0.905862,
+   "planning_horizon": 4,
+   "risk_aversion": 2.363437,
+   "surprise_threshold": 0.10151,
+   "curiosity_bonus": 1.451446
+  },
+  "curriculum": [
+   "shift",
+   "hard",
+   "normal",
+   "easy"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 0.792986,
+   "mean_score": 0.792986,
+   "stable_score": 0.638056,
+   "shift_score": 0.947917,
+   "survival_rate": 0.0,
+   "adaptation_ratio": 1.0,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.0,
+   "perception_cost": 11.375,
+   "death_causes": {
+    "hazard": 0.013889,
+    "starvation": 0.986111,
+    "post_shift": 0.0
+   },
+   "lesson_scores": [
+    0.183333,
+    0.381833,
+    0.657,
+    0.591
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    5.0,
+    13.0,
+    3.0,
+    4.0,
+    5.0
+   ]
+  },
+  "actual_change": -0.084271,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0013",
+  "name": "SCOUT-008",
+  "parent_id": "E0008",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.351956,
+   "mean_score": 4.834826,
+   "stable_score": 4.588333,
+   "shift_score": 5.081319,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.57271,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.790695,
+   "perception_cost": 40.238889,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.75,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    2.4535,
+    10.849167,
+    4.545,
+    6.384167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    10.412853,
+    2.0,
+    -12.0,
+    22.560752,
+    0.052933
+   ],
+   "count": [
+    155.0,
+    8.0,
+    5.0,
+    130.0,
+    119.0
+   ]
+  },
+  "actual_change": -0.159008,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0014",
+  "name": "LEARNER-005",
+  "parent_id": "E0003",
+  "generation": 1,
+  "created_at": "2026-11-24T18:08:07Z",
+  "specialization": "LEARNER",
+  "reason": "Clone of LEARNER-001 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 8,
+   "learning_rate": 0.833558,
+   "exploration": 0.427367,
+   "exploration_decay": 0.923145,
+   "planning_horizon": 4,
+   "risk_aversion": 1.038337,
+   "surprise_threshold": 3.089353,
+   "curiosity_bonus": 1.281585
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.076501,
+   "mean_score": 3.232153,
+   "stable_score": 2.035833,
+   "shift_score": 4.428472,
+   "survival_rate": 0.125,
+   "adaptation_ratio": 0.878202,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.262997,
+   "perception_cost": 29.525,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.819444,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    0.992667,
+    2.644833,
+    3.445167,
+    1.308833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    10.0,
+    12.0,
+    40.0,
+    40.0
+   ]
+  },
+  "actual_change": 0.480026,
+  "retired_at_generation": 2,
+  "decision": null
+ },
+ {
+  "id": "E0015",
+  "name": "SCOUT-009",
+  "parent_id": "E0008",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.069444,
+   "mean_score": 4.069444,
+   "stable_score": 4.414583,
+   "shift_score": 3.724306,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 1.150895,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.735241,
+   "perception_cost": 33.333333,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.75,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    3.621667,
+    12.880333,
+    4.483333,
+    3.609833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.050569,
+    0.0,
+    -2.5,
+    24.997107,
+    7.144719
+   ],
+   "count": [
+    86.0,
+    11.0,
+    6.0,
+    97.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.44152,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0016",
+  "name": "SCOUT-010",
+  "parent_id": "E0013",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-008 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.218929,
+   "mean_score": 3.528229,
+   "stable_score": 3.359792,
+   "shift_score": 3.696667,
+   "survival_rate": 0.097222,
+   "adaptation_ratio": 0.65842,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.405545,
+   "perception_cost": 31.183333,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.791667,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    4.521667,
+    12.344333,
+    7.305833,
+    4.046667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    1.474863,
+    0.0,
+    -10.0,
+    23.362577,
+    2.62577
+   ],
+   "count": [
+    119.0,
+    9.0,
+    10.0,
+    120.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.133027,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0017",
+  "name": "LEARNER-006",
+  "parent_id": "E0014",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "LEARNER",
+  "reason": "Clone of LEARNER-005 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 8,
+   "learning_rate": 0.833558,
+   "exploration": 0.427367,
+   "exploration_decay": 0.923145,
+   "planning_horizon": 4,
+   "risk_aversion": 1.038337,
+   "surprise_threshold": 3.089353,
+   "curiosity_bonus": 1.281585
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.761064,
+   "mean_score": 3.024375,
+   "stable_score": 2.323958,
+   "shift_score": 3.724792,
+   "survival_rate": 0.111111,
+   "adaptation_ratio": 0.650541,
+   "learning_speed": 0.583333,
+   "mean_prediction_error": 0.330761,
+   "perception_cost": 31.258333,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.819444,
+    "post_shift": 0.236111
+   },
+   "lesson_scores": [
+    1.257833,
+    2.500167,
+    2.868,
+    1.249167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    15.0,
+    9.0,
+    30.0,
+    40.0
+   ]
+  },
+  "actual_change": -0.315437,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0018",
+  "name": "LEARNER-007",
+  "parent_id": "E0003",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "LEARNER",
+  "reason": "Clone of LEARNER-001 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 3,
+   "memory_capacity": 8,
+   "learning_rate": 0.833558,
+   "exploration": 0.427367,
+   "exploration_decay": 0.923145,
+   "planning_horizon": 4,
+   "risk_aversion": 1.038337,
+   "surprise_threshold": 3.089353,
+   "curiosity_bonus": 1.281585
+  },
+  "curriculum": [
+   "normal",
+   "normal",
+   "normal",
+   "hard"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.335824,
+   "mean_score": 3.564271,
+   "stable_score": 2.604028,
+   "shift_score": 4.524514,
+   "survival_rate": 0.194444,
+   "adaptation_ratio": 0.782938,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 0.354687,
+   "perception_cost": 32.7125,
+   "death_causes": {
+    "hazard": 0.0,
+    "starvation": 0.805556,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    1.160333,
+    2.831167,
+    3.944333,
+    1.040333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    8.0
+   ],
+   "count": [
+    40.0,
+    14.0,
+    3.0,
+    34.0,
+    40.0
+   ]
+  },
+  "actual_change": 0.739349,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0019",
+  "name": "SCOUT-011",
+  "parent_id": "E0008",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.912377,
+   "mean_score": 3.165208,
+   "stable_score": 3.350069,
+   "shift_score": 2.980347,
+   "survival_rate": 0.055556,
+   "adaptation_ratio": 0.57769,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.350123,
+   "perception_cost": 28.655556,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.833333,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    4.053333,
+    17.608833,
+    7.071167,
+    6.052
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.531006,
+    0.0,
+    -12.0,
+    24.999999,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    12.0,
+    15.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.598587,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0020",
+  "name": "SCOUT-012",
+  "parent_id": "E0013",
+  "generation": 2,
+  "created_at": "2026-11-24T18:08:09Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-008 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.803307,
+   "mean_score": 4.027257,
+   "stable_score": 3.579444,
+   "shift_score": 4.475069,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.742261,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.479942,
+   "perception_cost": 35.472222,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.819444,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    3.314333,
+    15.7985,
+    6.114333,
+    4.29
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.616591,
+    0.0,
+    -12.0,
+    24.999963,
+    0.818713
+   ],
+   "count": [
+    155.0,
+    6.0,
+    9.0,
+    151.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.548649,
+  "retired_at_generation": 3,
+  "decision": null
+ },
+ {
+  "id": "E0021",
+  "name": "SCOUT-013",
+  "parent_id": "E0008",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.955246,
+   "mean_score": 3.416667,
+   "stable_score": 3.839236,
+   "shift_score": 2.994097,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.247834,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.368954,
+   "perception_cost": 33.333333,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.763889,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    3.727167,
+    16.611833,
+    10.055,
+    3.273667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    1.937769,
+    0.0,
+    -12.0,
+    24.514328,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    11.0,
+    12.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.555718,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0022",
+  "name": "SCOUT-014",
+  "parent_id": "E0013",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-008 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.671013,
+   "mean_score": 4.014757,
+   "stable_score": 3.744583,
+   "shift_score": 4.284931,
+   "survival_rate": 0.152778,
+   "adaptation_ratio": 0.875264,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.638037,
+   "perception_cost": 40.138889,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.736111,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    4.341167,
+    15.966667,
+    8.2845,
+    6.808333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    6.215576,
+    0.0,
+    -12.0,
+    6.514684,
+    12.273801
+   ],
+   "count": [
+    155.0,
+    12.0,
+    10.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.680943,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0023",
+  "name": "SCOUT-015",
+  "parent_id": "E0015",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-009 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.300694,
+   "mean_score": 4.501285,
+   "stable_score": 4.776389,
+   "shift_score": 4.226181,
+   "survival_rate": 0.152778,
+   "adaptation_ratio": 0.886569,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.051545,
+   "perception_cost": 40.205556,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.791667,
+    "post_shift": 0.208333
+   },
+   "lesson_scores": [
+    4.440167,
+    14.324833,
+    7.065667,
+    4.184833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -0.415108,
+    0.0,
+    -12.0,
+    22.315542,
+    8.681063
+   ],
+   "count": [
+    155.0,
+    7.0,
+    8.0,
+    94.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.23125,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0024",
+  "name": "SCOUT-016",
+  "parent_id": "E0020",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-012 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.870406,
+   "mean_score": 4.294583,
+   "stable_score": 3.902708,
+   "shift_score": 4.686458,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.455432,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 6.242538,
+   "perception_cost": 40.466667,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.777778,
+    "post_shift": 0.263889
+   },
+   "lesson_scores": [
+    4.695833,
+    14.966667,
+    9.078333,
+    7.861167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    20.452733,
+    -0.454115,
+    -12.0,
+    23.439091,
+    2.648316
+   ],
+   "count": [
+    155.0,
+    13.0,
+    10.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.067099,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0025",
+  "name": "SCOUT-017",
+  "parent_id": "E0008",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 6.200104,
+   "mean_score": 6.200104,
+   "stable_score": 4.690764,
+   "shift_score": 7.709444,
+   "survival_rate": 0.208333,
+   "adaptation_ratio": 1.459857,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.438814,
+   "perception_cost": 43.127778,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.694444,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    3.816333,
+    16.340833,
+    6.984667,
+    4.516167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.106309,
+    0.0,
+    -12.0,
+    25.0,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    14.0,
+    8.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": 1.68914,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0026",
+  "name": "SCOUT-018",
+  "parent_id": "E0013",
+  "generation": 3,
+  "created_at": "2026-11-24T18:08:11Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-008 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.883347,
+   "mean_score": 4.530451,
+   "stable_score": 4.416181,
+   "shift_score": 4.644722,
+   "survival_rate": 0.166667,
+   "adaptation_ratio": 0.337249,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 5.221421,
+   "perception_cost": 38.205556,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.722222,
+    "post_shift": 0.25
+   },
+   "lesson_scores": [
+    3.514,
+    16.066,
+    8.204333,
+    4.669667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    -1.107667,
+    0.8,
+    -10.285714,
+    17.439705,
+    1.274134
+   ],
+   "count": [
+    155.0,
+    10.0,
+    7.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.468609,
+  "retired_at_generation": 4,
+  "decision": null
+ },
+ {
+  "id": "E0027",
+  "name": "SCOUT-019",
+  "parent_id": "E0025",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.445464,
+   "mean_score": 4.941667,
+   "stable_score": 4.991111,
+   "shift_score": 4.892222,
+   "survival_rate": 0.208333,
+   "adaptation_ratio": 0.460149,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.721926,
+   "perception_cost": 44.0,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.708333,
+    "post_shift": 0.25
+   },
+   "lesson_scores": [
+    6.963833,
+    11.744833,
+    4.818667,
+    4.9095
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    3.520325,
+    -0.787731,
+    -5.333333,
+    24.999577,
+    9.166224
+   ],
+   "count": [
+    136.0,
+    21.0,
+    6.0,
+    126.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.75464,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0028",
+  "name": "SCOUT-020",
+  "parent_id": "E0008",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.481656,
+   "mean_score": 2.844444,
+   "stable_score": 2.993264,
+   "shift_score": 2.695625,
+   "survival_rate": 0.125,
+   "adaptation_ratio": 1.062016,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 5.708725,
+   "perception_cost": 35.111111,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.777778,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    2.954333,
+    10.262,
+    3.653167,
+    8.176667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    22.149217,
+    -2.4,
+    -7.555556,
+    2.8,
+    2.343234
+   ],
+   "count": [
+    155.0,
+    5.0,
+    9.0,
+    5.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.029308,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0029",
+  "name": "SCOUT-021",
+  "parent_id": "E0013",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-008 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.49796,
+   "mean_score": 2.854722,
+   "stable_score": 1.961875,
+   "shift_score": 3.747569,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.442117,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.921445,
+   "perception_cost": 27.866667,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.888889,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    4.056167,
+    17.956,
+    6.227333,
+    5.846333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.454073,
+    1.0,
+    -10.366721,
+    24.442796,
+    -1.107667
+   ],
+   "count": [
+    112.0,
+    8.0,
+    12.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.853996,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0030",
+  "name": "SCOUT-022",
+  "parent_id": "E0023",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-015 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.427292,
+   "mean_score": 3.236389,
+   "stable_score": 3.901944,
+   "shift_score": 2.570833,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.0,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.264189,
+   "perception_cost": 33.377778,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.805556,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    6.264333,
+    14.361667,
+    6.937833,
+    5.679167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.842975,
+    0.0,
+    -12.0,
+    24.024992,
+    5.522708
+   ],
+   "count": [
+    153.0,
+    8.0,
+    5.0,
+    142.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.873402,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0031",
+  "name": "SCOUT-023",
+  "parent_id": "E0025",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 6.221007,
+   "mean_score": 6.221007,
+   "stable_score": 5.3725,
+   "shift_score": 7.069514,
+   "survival_rate": 0.25,
+   "adaptation_ratio": 1.297538,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.306288,
+   "perception_cost": 46.472222,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.666667,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    3.866,
+    13.021167,
+    9.205833,
+    4.643833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    4.298527,
+    0.0,
+    -12.0,
+    25.0,
+    4.132704
+   ],
+   "count": [
+    155.0,
+    15.0,
+    8.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.020903,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0032",
+  "name": "SCOUT-024",
+  "parent_id": "E0008",
+  "generation": 4,
+  "created_at": "2026-11-24T18:08:14Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.335278,
+   "mean_score": 4.545451,
+   "stable_score": 4.771111,
+   "shift_score": 4.319792,
+   "survival_rate": 0.166667,
+   "adaptation_ratio": 0.743804,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.754067,
+   "perception_cost": 38.383333,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.694444,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    4.85,
+    15.890667,
+    4.679667,
+    3.730167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    12.865269,
+    0.0,
+    -9.6,
+    23.218523,
+    3.099597
+   ],
+   "count": [
+    155.0,
+    8.0,
+    10.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.175686,
+  "retired_at_generation": 5,
+  "decision": null
+ },
+ {
+  "id": "E0033",
+  "name": "SCOUT-025",
+  "parent_id": "E0031",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.984557,
+   "mean_score": 3.336806,
+   "stable_score": 2.640764,
+   "shift_score": 4.032847,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.410506,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.854916,
+   "perception_cost": 29.444444,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.833333,
+    "post_shift": 0.208333
+   },
+   "lesson_scores": [
+    4.264667,
+    12.757333,
+    10.222167,
+    3.8095
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    9.285846,
+    0.0,
+    -12.0,
+    23.362577,
+    0.212702
+   ],
+   "count": [
+    155.0,
+    10.0,
+    8.0,
+    130.0,
+    155.0
+   ]
+  },
+  "actual_change": -3.23645,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0034",
+  "name": "SCOUT-026",
+  "parent_id": "E0025",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.599627,
+   "mean_score": 5.328125,
+   "stable_score": 5.980278,
+   "shift_score": 4.675972,
+   "survival_rate": 0.263889,
+   "adaptation_ratio": 0.457207,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.736329,
+   "perception_cost": 50.277778,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.611111,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    3.729333,
+    18.766667,
+    7.802833,
+    4.918
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    7.53339,
+    0.0,
+    -12.0,
+    24.999999,
+    7.999999
+   ],
+   "count": [
+    155.0,
+    10.0,
+    7.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.600477,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0035",
+  "name": "SCOUT-027",
+  "parent_id": "E0008",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-004 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.798521,
+   "mean_score": 5.047049,
+   "stable_score": 4.677778,
+   "shift_score": 5.416319,
+   "survival_rate": 0.138889,
+   "adaptation_ratio": 0.824149,
+   "learning_speed": 0.666667,
+   "mean_prediction_error": 2.568766,
+   "perception_cost": 40.861111,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.805556,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    4.663,
+    9.752,
+    4.7245,
+    5.337333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.657069,
+    1.142857,
+    -10.192638,
+    14.492962,
+    7.705603
+   ],
+   "count": [
+    127.0,
+    7.0,
+    11.0,
+    93.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.287557,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0036",
+  "name": "SCOUT-028",
+  "parent_id": "E0027",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-019 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.520369,
+   "mean_score": 4.669826,
+   "stable_score": 3.828542,
+   "shift_score": 5.511111,
+   "survival_rate": 0.097222,
+   "adaptation_ratio": 0.884931,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.954503,
+   "perception_cost": 36.061111,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.819444,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    5.591333,
+    14.016167,
+    7.366667,
+    2.918667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.653311,
+    -12.0,
+    24.998797,
+    7.999996
+   ],
+   "count": [
+    155.0,
+    12.0,
+    8.0,
+    121.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.074905,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0037",
+  "name": "SCOUT-029",
+  "parent_id": "E0031",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.04118,
+   "mean_score": 4.371215,
+   "stable_score": 3.428889,
+   "shift_score": 5.313542,
+   "survival_rate": 0.152778,
+   "adaptation_ratio": 1.097782,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.408198,
+   "perception_cost": 41.616667,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.75,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    4.239833,
+    13.908,
+    5.496,
+    6.637333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.907247,
+    0.0,
+    -12.0,
+    24.999519,
+    3.226279
+   ],
+   "count": [
+    155.0,
+    7.0,
+    9.0,
+    111.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.179827,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0038",
+  "name": "SCOUT-030",
+  "parent_id": "E0025",
+  "generation": 5,
+  "created_at": "2026-11-24T18:08:16Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.811055,
+   "mean_score": 5.067049,
+   "stable_score": 3.898194,
+   "shift_score": 6.235903,
+   "survival_rate": 0.194444,
+   "adaptation_ratio": 1.381187,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 2.754815,
+   "perception_cost": 41.838889,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.666667,
+    "post_shift": 0.236111
+   },
+   "lesson_scores": [
+    4.052167,
+    8.707167,
+    4.079167,
+    3.493167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    10.072776,
+    0.0,
+    -12.0,
+    4.07123,
+    5.762983
+   ],
+   "count": [
+    155.0,
+    7.0,
+    10.0,
+    121.0,
+    51.0
+   ]
+  },
+  "actual_change": -1.389049,
+  "retired_at_generation": 6,
+  "decision": null
+ },
+ {
+  "id": "E0039",
+  "name": "SCOUT-031",
+  "parent_id": "E0031",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.908283,
+   "mean_score": 3.160937,
+   "stable_score": 2.877292,
+   "shift_score": 3.444583,
+   "survival_rate": 0.083333,
+   "adaptation_ratio": 0.92736,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.478975,
+   "perception_cost": 30.194444,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.833333,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    4.750333,
+    14.405167,
+    4.760167,
+    5.393833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    9.120123,
+    0.0,
+    -12.0,
+    24.34189,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    7.0,
+    6.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -3.312724,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0040",
+  "name": "SCOUT-032",
+  "parent_id": "E0025",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 1.763064,
+   "mean_score": 2.11809,
+   "stable_score": 1.733681,
+   "shift_score": 2.5025,
+   "survival_rate": 0.013889,
+   "adaptation_ratio": 0.333333,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.419815,
+   "perception_cost": 23.338889,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.861111,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    3.404667,
+    15.006667,
+    7.509333,
+    4.083
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.438892,
+    0.0,
+    -12.0,
+    24.999999,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    9.0,
+    10.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -4.43704,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0041",
+  "name": "SCOUT-033",
+  "parent_id": "E0038",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-030 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.005573,
+   "mean_score": 4.075139,
+   "stable_score": 3.902361,
+   "shift_score": 4.247917,
+   "survival_rate": 0.111111,
+   "adaptation_ratio": 1.297589,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.507193,
+   "perception_cost": 34.244444,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.791667,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    3.600833,
+    17.049667,
+    5.745667,
+    3.657667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    7.831333,
+    0.0,
+    -12.0,
+    23.363836,
+    8.149201
+   ],
+   "count": [
+    155.0,
+    12.0,
+    6.0,
+    133.0,
+    118.0
+   ]
+  },
+  "actual_change": -0.805482,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0042",
+  "name": "SCOUT-034",
+  "parent_id": "E0035",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-027 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.120867,
+   "mean_score": 3.204132,
+   "stable_score": 2.046736,
+   "shift_score": 4.361528,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 1.290248,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.234226,
+   "perception_cost": 30.438889,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.902778,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    3.775167,
+    15.753667,
+    6.641167,
+    4.843833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    3.368607,
+    0.0,
+    -12.0,
+    24.999999,
+    0.818713
+   ],
+   "count": [
+    155.0,
+    11.0,
+    6.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.677654,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0043",
+  "name": "SCOUT-035",
+  "parent_id": "E0031",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.087855,
+   "mean_score": 4.452257,
+   "stable_score": 4.179167,
+   "shift_score": 4.725347,
+   "survival_rate": 0.180556,
+   "adaptation_ratio": 0.52149,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.466722,
+   "perception_cost": 36.805556,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.722222,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    4.010333,
+    12.148833,
+    4.977833,
+    6.336
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    7.308704,
+    0.0,
+    -12.0,
+    24.596326,
+    2.135478
+   ],
+   "count": [
+    155.0,
+    5.0,
+    3.0,
+    75.0,
+    20.0
+   ]
+  },
+  "actual_change": -2.133152,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0044",
+  "name": "SCOUT-036",
+  "parent_id": "E0025",
+  "generation": 6,
+  "created_at": "2026-11-24T18:08:19Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.831776,
+   "mean_score": 5.043472,
+   "stable_score": 4.854722,
+   "shift_score": 5.232222,
+   "survival_rate": 0.263889,
+   "adaptation_ratio": 1.31003,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 5.208388,
+   "perception_cost": 46.955556,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.638889,
+    "post_shift": 0.263889
+   },
+   "lesson_scores": [
+    4.155667,
+    12.086833,
+    8.302667,
+    7.582667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    4.53614,
+    0.0,
+    -12.0,
+    18.465546,
+    11.367711
+   ],
+   "count": [
+    155.0,
+    10.0,
+    8.0,
+    142.0,
+    107.0
+   ]
+  },
+  "actual_change": -1.368328,
+  "retired_at_generation": 7,
+  "decision": null
+ },
+ {
+  "id": "E0045",
+  "name": "SCOUT-037",
+  "parent_id": "E0031",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.391126,
+   "mean_score": 3.727882,
+   "stable_score": 3.610556,
+   "shift_score": 3.845208,
+   "survival_rate": 0.083333,
+   "adaptation_ratio": 0.778156,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 1.464889,
+   "perception_cost": 32.016667,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.819444,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    4.353833,
+    9.875833,
+    5.815833,
+    3.373
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    10.377304,
+    0.0,
+    -12.0,
+    23.382172,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    10.0,
+    10.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.829881,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0046",
+  "name": "SCOUT-038",
+  "parent_id": "E0025",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 6.401556,
+   "mean_score": 6.550625,
+   "stable_score": 7.135833,
+   "shift_score": 5.965417,
+   "survival_rate": 0.305556,
+   "adaptation_ratio": 0.907951,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.210631,
+   "perception_cost": 50.322222,
+   "death_causes": {
+    "hazard": 0.194444,
+    "starvation": 0.5,
+    "post_shift": 0.291667
+   },
+   "lesson_scores": [
+    4.474,
+    15.245667,
+    4.348667,
+    4.655167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    16.345461,
+    4.452722
+   ],
+   "count": [
+    155.0,
+    8.0,
+    7.0,
+    144.0,
+    155.0
+   ]
+  },
+  "actual_change": 0.201452,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0047",
+  "name": "SCOUT-039",
+  "parent_id": "E0044",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-036 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.888226,
+   "mean_score": 4.106042,
+   "stable_score": 3.394931,
+   "shift_score": 4.817153,
+   "survival_rate": 0.111111,
+   "adaptation_ratio": 1.015506,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.996591,
+   "perception_cost": 34.744444,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.819444,
+    "post_shift": 0.180556
+   },
+   "lesson_scores": [
+    2.780167,
+    11.966333,
+    3.694667,
+    4.951
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    3.372286,
+    -0.4,
+    -10.192638,
+    23.761368,
+    3.262601
+   ],
+   "count": [
+    155.0,
+    10.0,
+    11.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -0.94355,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0048",
+  "name": "SCOUT-040",
+  "parent_id": "E0043",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-035 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 5.228217,
+   "mean_score": 5.540868,
+   "stable_score": 5.140694,
+   "shift_score": 5.941042,
+   "survival_rate": 0.208333,
+   "adaptation_ratio": 1.007845,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.937563,
+   "perception_cost": 42.094444,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.680556,
+    "post_shift": 0.222222
+   },
+   "lesson_scores": [
+    2.628,
+    13.536,
+    4.334167,
+    4.749167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.404163,
+    0.0,
+    -10.844172,
+    24.075415,
+    6.752948
+   ],
+   "count": [
+    155.0,
+    6.0,
+    12.0,
+    145.0,
+    155.0
+   ]
+  },
+  "actual_change": 1.140362,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0049",
+  "name": "SCOUT-041",
+  "parent_id": "E0031",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 6.395264,
+   "mean_score": 6.84059,
+   "stable_score": 6.430972,
+   "shift_score": 7.250208,
+   "survival_rate": 0.333333,
+   "adaptation_ratio": 0.741652,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.37979,
+   "perception_cost": 54.494444,
+   "death_causes": {
+    "hazard": 0.055556,
+    "starvation": 0.611111,
+    "post_shift": 0.305556
+   },
+   "lesson_scores": [
+    3.959833,
+    14.089333,
+    6.575,
+    6.357833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    9.000116,
+    0.0,
+    -10.07362,
+    25.0,
+    3.500825
+   ],
+   "count": [
+    155.0,
+    5.0,
+    14.0,
+    78.0,
+    128.0
+   ]
+  },
+  "actual_change": 0.174257,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0050",
+  "name": "SCOUT-042",
+  "parent_id": "E0025",
+  "generation": 7,
+  "created_at": "2026-11-24T18:08:21Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.505127,
+   "mean_score": 4.170972,
+   "stable_score": 3.764931,
+   "shift_score": 4.577014,
+   "survival_rate": 0.152778,
+   "adaptation_ratio": 0.288499,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.710722,
+   "perception_cost": 36.244444,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.805556,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    4.818333,
+    13.7805,
+    6.1055,
+    5.098167
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.023992,
+    0.653311,
+    -8.666667,
+    19.804067,
+    16.235407
+   ],
+   "count": [
+    155.0,
+    12.0,
+    6.0,
+    154.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.694977,
+  "retired_at_generation": 8,
+  "decision": null
+ },
+ {
+  "id": "E0051",
+  "name": "SCOUT-043",
+  "parent_id": "E0046",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-038 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.891745,
+   "mean_score": 5.405486,
+   "stable_score": 5.019931,
+   "shift_score": 5.791042,
+   "survival_rate": 0.194444,
+   "adaptation_ratio": 0.812872,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.678113,
+   "perception_cost": 47.1,
+   "death_causes": {
+    "hazard": 0.125,
+    "starvation": 0.680556,
+    "post_shift": 0.361111
+   },
+   "lesson_scores": [
+    3.798333,
+    17.033333,
+    7.021333,
+    8.927833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.323932,
+    0.0,
+    -12.0,
+    19.168179,
+    17.894035
+   ],
+   "count": [
+    155.0,
+    6.0,
+    13.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.509811,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0052",
+  "name": "SCOUT-044",
+  "parent_id": "E0049",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-041 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 2.861878,
+   "mean_score": 3.158646,
+   "stable_score": 2.402708,
+   "shift_score": 3.914583,
+   "survival_rate": 0.083333,
+   "adaptation_ratio": 0.738691,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.20121,
+   "perception_cost": 29.827778,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.833333,
+    "post_shift": 0.152778
+   },
+   "lesson_scores": [
+    5.294167,
+    12.360333,
+    5.783333,
+    5.048333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    3.272976,
+    0.0,
+    -12.0,
+    23.382172,
+    1.587328
+   ],
+   "count": [
+    132.0,
+    10.0,
+    4.0,
+    121.0,
+    155.0
+   ]
+  },
+  "actual_change": -3.533386,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0053",
+  "name": "SCOUT-045",
+  "parent_id": "E0031",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-023 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.793342,
+   "mean_score": 4.218889,
+   "stable_score": 2.728472,
+   "shift_score": 5.709306,
+   "survival_rate": 0.083333,
+   "adaptation_ratio": 0.584618,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 0.704925,
+   "perception_cost": 32.8,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.819444,
+    "post_shift": 0.194444
+   },
+   "lesson_scores": [
+    3.383667,
+    10.859,
+    3.824667,
+    2.245
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.0,
+    0.0,
+    -12.0,
+    25.0,
+    7.999997
+   ],
+   "count": [
+    155.0,
+    13.0,
+    10.0,
+    115.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.427665,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0054",
+  "name": "SCOUT-046",
+  "parent_id": "E0025",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-017 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.171769,
+   "mean_score": 4.361354,
+   "stable_score": 3.702917,
+   "shift_score": 5.019792,
+   "survival_rate": 0.097222,
+   "adaptation_ratio": 0.860754,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 2.554447,
+   "perception_cost": 33.372222,
+   "death_causes": {
+    "hazard": 0.083333,
+    "starvation": 0.819444,
+    "post_shift": 0.180556
+   },
+   "lesson_scores": [
+    5.524833,
+    16.7,
+    5.693,
+    6.114833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.339958,
+    -0.361472,
+    -8.666667,
+    24.013169,
+    7.429932
+   ],
+   "count": [
+    155.0,
+    11.0,
+    6.0,
+    151.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.028335,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0055",
+  "name": "SCOUT-047",
+  "parent_id": "E0046",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-038 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 4.649159,
+   "mean_score": 4.995868,
+   "stable_score": 4.686389,
+   "shift_score": 5.305347,
+   "survival_rate": 0.194444,
+   "adaptation_ratio": 0.598819,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 6.006029,
+   "perception_cost": 43.783333,
+   "death_causes": {
+    "hazard": 0.111111,
+    "starvation": 0.694444,
+    "post_shift": 0.263889
+   },
+   "lesson_scores": [
+    3.685833,
+    16.004667,
+    8.435667,
+    7.0905
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    21.131997,
+    0.0,
+    -12.0,
+    16.937635,
+    0.280245
+   ],
+   "count": [
+    155.0,
+    11.0,
+    7.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.752397,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0056",
+  "name": "SCOUT-048",
+  "parent_id": "E0049",
+  "generation": 8,
+  "created_at": "2026-11-24T18:08:24Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-041 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "retired",
+  "metrics": {
+   "fitness": 3.991426,
+   "mean_score": 4.573576,
+   "stable_score": 4.217917,
+   "shift_score": 4.929236,
+   "survival_rate": 0.152778,
+   "adaptation_ratio": 0.731898,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.640716,
+   "perception_cost": 40.661111,
+   "death_causes": {
+    "hazard": 0.138889,
+    "starvation": 0.708333,
+    "post_shift": 0.277778
+   },
+   "lesson_scores": [
+    3.863167,
+    15.633167,
+    6.600833,
+    4.214667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.719538,
+    0.0,
+    -12.0,
+    25.0,
+    4.37175
+   ],
+   "count": [
+    155.0,
+    9.0,
+    9.0,
+    146.0,
+    130.0
+   ]
+  },
+  "actual_change": -2.403838,
+  "retired_at_generation": 9,
+  "decision": null
+ },
+ {
+  "id": "E0057",
+  "name": "SCOUT-049",
+  "parent_id": "E0046",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-038 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 4.154636,
+   "mean_score": 4.596979,
+   "stable_score": 5.069861,
+   "shift_score": 4.124097,
+   "survival_rate": 0.180556,
+   "adaptation_ratio": 0.74874,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 1.863345,
+   "perception_cost": 37.738889,
+   "death_causes": {
+    "hazard": 0.027778,
+    "starvation": 0.791667,
+    "post_shift": 0.166667
+   },
+   "lesson_scores": [
+    5.226667,
+    17.497833,
+    6.827333,
+    3.691833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    8.520207,
+    0.0,
+    -8.733443,
+    23.465872,
+    2.634704
+   ],
+   "count": [
+    155.0,
+    7.0,
+    12.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.24692,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0058",
+  "name": "SCOUT-050",
+  "parent_id": "E0049",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-041 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 2.989666,
+   "mean_score": 3.265556,
+   "stable_score": 2.544236,
+   "shift_score": 3.986875,
+   "survival_rate": 0.083333,
+   "adaptation_ratio": 0.878769,
+   "learning_speed": 0.416667,
+   "mean_prediction_error": 3.032923,
+   "perception_cost": 33.6,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.819444,
+    "post_shift": 0.208333
+   },
+   "lesson_scores": [
+    3.5995,
+    12.138667,
+    5.165,
+    5.115833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.517093,
+    0.0,
+    -12.0,
+    4.463103,
+    1.285897
+   ],
+   "count": [
+    81.0,
+    11.0,
+    6.0,
+    102.0,
+    155.0
+   ]
+  },
+  "actual_change": -3.405598,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0059",
+  "name": "SCOUT-051",
+  "parent_id": "E0051",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-043 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 2.011618,
+   "mean_score": 2.336944,
+   "stable_score": 1.984306,
+   "shift_score": 2.689583,
+   "survival_rate": 0.041667,
+   "adaptation_ratio": 0.782407,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.241678,
+   "perception_cost": 25.022222,
+   "death_causes": {
+    "hazard": 0.097222,
+    "starvation": 0.861111,
+    "post_shift": 0.083333
+   },
+   "lesson_scores": [
+    4.607667,
+    14.671833,
+    4.060833,
+    4.888333
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.757015,
+    1.0,
+    -9.5,
+    24.999992,
+    13.109953
+   ],
+   "count": [
+    155.0,
+    8.0,
+    8.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.880127,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0060",
+  "name": "SCOUT-052",
+  "parent_id": "E0055",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-047 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 3.327306,
+   "mean_score": 3.479444,
+   "stable_score": 3.6325,
+   "shift_score": 3.326389,
+   "survival_rate": 0.069444,
+   "adaptation_ratio": 1.225517,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.270276,
+   "perception_cost": 32.266667,
+   "death_causes": {
+    "hazard": 0.041667,
+    "starvation": 0.888889,
+    "post_shift": 0.138889
+   },
+   "lesson_scores": [
+    3.387667,
+    15.474333,
+    7.144833,
+    5.303833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    5.613759,
+    0.0,
+    -12.0,
+    24.999999,
+    0.053294
+   ],
+   "count": [
+    155.0,
+    7.0,
+    4.0,
+    153.0,
+    155.0
+   ]
+  },
+  "actual_change": -1.321853,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0061",
+  "name": "SCOUT-053",
+  "parent_id": "E0046",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-038 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 4.318995,
+   "mean_score": 4.735139,
+   "stable_score": 5.490833,
+   "shift_score": 3.979444,
+   "survival_rate": 0.208333,
+   "adaptation_ratio": 0.529107,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 3.248027,
+   "perception_cost": 42.066667,
+   "death_causes": {
+    "hazard": 0.166667,
+    "starvation": 0.625,
+    "post_shift": 0.25
+   },
+   "lesson_scores": [
+    3.611167,
+    17.166667,
+    7.8515,
+    7.538667
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    2.685848,
+    2.407975,
+    -12.0,
+    23.018917,
+    3.062185
+   ],
+   "count": [
+    155.0,
+    13.0,
+    10.0,
+    142.0,
+    155.0
+   ]
+  },
+  "actual_change": -2.082561,
+  "retired_at_generation": null,
+  "decision": null
+ },
+ {
+  "id": "E0062",
+  "name": "SCOUT-054",
+  "parent_id": "E0049",
+  "generation": 9,
+  "created_at": "2026-11-24T18:08:27Z",
+  "specialization": "SCOUT",
+  "reason": "Clone of SCOUT-041 (null baseline: no design changes)",
+  "genome": {
+   "perception_radius": 4,
+   "memory_capacity": 31,
+   "learning_rate": 0.096319,
+   "exploration": 0.142679,
+   "exploration_decay": 0.974245,
+   "planning_horizon": 6,
+   "risk_aversion": 0.982114,
+   "surprise_threshold": 3.812325,
+   "curiosity_bonus": 1.315003
+  },
+  "curriculum": [
+   "shift",
+   "easy",
+   "normal",
+   "shift"
+  ],
+  "inherit_beliefs": false,
+  "predicted_change": null,
+  "status": "active",
+  "metrics": {
+   "fitness": 3.019132,
+   "mean_score": 3.236285,
+   "stable_score": 3.147361,
+   "shift_score": 3.325208,
+   "survival_rate": 0.097222,
+   "adaptation_ratio": 0.737269,
+   "learning_speed": 0.5,
+   "mean_prediction_error": 4.72445,
+   "perception_cost": 28.916667,
+   "death_causes": {
+    "hazard": 0.069444,
+    "starvation": 0.833333,
+    "post_shift": 0.069444
+   },
+   "lesson_scores": [
+    4.178667,
+    16.166667,
+    5.691833,
+    8.837833
+   ]
+  },
+  "beliefs": {
+   "mean": [
+    0.707381,
+    1.0,
+    -12.0,
+    16.577416,
+    16.729288
+   ],
+   "count": [
+    155.0,
+    8.0,
+    6.0,
+    155.0,
+    155.0
+   ]
+  },
+  "actual_change": -3.376132,
+  "retired_at_generation": null,
+  "decision": null
+ }
+]

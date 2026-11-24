@@ -1,0 +1,60 @@
+{
+ "config": {
+  "creator": "heuristic",
+  "generations": 10,
+  "population": 8,
+  "elite": 2,
+  "seed": 0,
+  "episodes_per_lesson": 5,
+  "eval_worlds": 24,
+  "workers": 6,
+  "record_replays": true,
+  "replicates": 3,
+  "universe": null,
+  "verify_replicates": 10,
+  "variant": {
+   "food_scale": 1.0,
+   "hazard_scale": 1.0,
+   "shift_step": 100
+  }
+ },
+ "creator": "heuristic",
+ "universe": [
+  "food",
+  "neutral",
+  "hazard",
+  "goal",
+  "food"
+ ],
+ "timing": {
+  "duration_s": 9.361
+ },
+ "summary": {
+  "gen0_best": 1.479427,
+  "final_best": 2.155486,
+  "improvement": 0.676059,
+  "improvement_pct": 45.7,
+  "best_entity": "E0027",
+  "best_name": "EXPLORER-018",
+  "children_created": 62,
+  "mean_prediction_error": null
+ },
+ "verification": {
+  "gen0_best": {
+   "entity_id": "E0002",
+   "name": "GENERALIST-002",
+   "mean": 1.599363,
+   "std": 0.835208,
+   "n": 10
+  },
+  "final_best": {
+   "entity_id": "E0027",
+   "name": "EXPLORER-018",
+   "mean": 1.389887,
+   "std": 0.807346,
+   "n": 10
+  },
+  "gain": -0.209476,
+  "gain_pct": -13.1
+ }
+}
