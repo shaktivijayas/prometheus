@@ -132,7 +132,35 @@ def build_parser() -> argparse.ArgumentParser:
     pg.add_argument("--checkpoints", default=None)
     _sizing(pg)
     pg.set_defaults(func=cmd_creator_progress)
+
+    ex = sub.add_parser("export-dashboard", help="collect runs and results into the dashboard's data folder")
+    ex.add_argument("--out", default="dashboard/public/data")
+    ex.add_argument("--runs", nargs="*", default=[], help="run directories (globs allowed)")
+    ex.add_argument("--comparisons", nargs="*", default=[], help="comparison json files (globs allowed)")
+    ex.add_argument("--creator", default=None, help="folder with progress.json / training_history.json")
+    ex.set_defaults(func=cmd_export_dashboard)
     return parser
+
+
+def _expand(patterns: list[str]) -> list[Path]:
+    import glob
+    out: list[Path] = []
+    for p in patterns:
+        matches = sorted(glob.glob(p))
+        if not matches:
+            print(f"error: nothing matches {p!r}", file=sys.stderr)
+            raise SystemExit(2)
+        out += [Path(m) for m in matches]
+    return out
+
+
+def cmd_export_dashboard(args) -> None:
+    from .export import export_dashboard
+    runs = [p for p in _expand(args.runs) if (p / "run.json").exists()]
+    index = export_dashboard(Path(args.out), runs, _expand(args.comparisons),
+                             Path(args.creator) if args.creator else None)
+    print(f"exported {len(index['runs'])} runs, {len(index['comparisons'])} comparisons, "
+          f"creator data: {index['creator']} -> {args.out}")
 
 
 def cmd_train_creator(args) -> None:
