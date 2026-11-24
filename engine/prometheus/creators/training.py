@@ -23,7 +23,7 @@ from ..genome import Genome
 from ..registry import Registry
 from ..runner import Evolution, RunConfig, _Executor, run_lockstep
 from ..world import WorldVariant
-from .checkpoints import load_checkpoint, save_checkpoint
+from .checkpoints import load_checkpoint, read_index, save_checkpoint
 from .neural import CreatorNet, Decision, NeuralCreator
 
 DUPLICATE_DISTANCE = 0.05
@@ -170,6 +170,9 @@ def train(cfg: TrainConfig, checkpoint_dir: Path, history_path: Path, resume: bo
             history = [h for h in json.loads(history_path.read_text(encoding="utf-8"))
                        if h["iteration"] <= start_iteration]
     else:
+        if read_index(checkpoint_dir):
+            raise FileExistsError(f"{checkpoint_dir} already holds checkpoints from another training run; "
+                                  "use --resume to continue it, or choose an empty --checkpoints directory")
         torch.manual_seed(cfg.seed)
         net = CreatorNet()
         optimizer = torch.optim.Adam(net.parameters(), lr=cfg.lr)

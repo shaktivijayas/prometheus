@@ -116,3 +116,11 @@ def test_resume_continues(tmp_path):
     assert hashlib.sha256((tmp_path / "c" / "creator_v000.pt").read_bytes()).hexdigest() == v0
     net, meta = load_checkpoint(tmp_path / "c", "latest")
     assert meta["iteration"] == 2
+
+
+def test_fresh_training_refuses_existing_checkpoints(tmp_path):
+    """Final review #3: a fresh run must not mix with an older run's checkpoints."""
+    cfg = TrainConfig(**{**TINY, "iterations": 1})
+    train(cfg, tmp_path / "c", tmp_path / "h.json", resume=False)
+    with pytest.raises(FileExistsError):
+        train(cfg, tmp_path / "c", tmp_path / "h.json", resume=False)
