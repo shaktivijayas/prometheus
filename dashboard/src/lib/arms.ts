@@ -12,7 +12,7 @@ export function armInfo(creator: string): ArmInfo {
     const v000 = creator.includes(":v000");
     if (v000) return { label: "Untrained Creator", short: "untrained", color: "var(--arm-fresh)", note: "same network, random initial weights (v000)" };
     if (creator.endsWith(":randomteach")) return { label: "Trained Creator, random lessons", short: "random lessons", color: "var(--arm-randomteach)", note: "same learned designs, but each child's 4 lessons are drawn at random" };
-    if (noteach) return { label: "Trained Creator, no teaching", short: "no teaching", color: "var(--arm-noteach)", note: "designs children but every child gets the default lessons" };
+    if (noteach) return { label: "Trained Creator, fixed lessons", short: "fixed lessons", color: "var(--arm-noteach)", note: "same learned designs, but every child gets one fixed default lesson plan" };
     return { label: "Trained Creator", short: "trained", color: "var(--arm-trained)", note: "our network after reinforcement-learning training" };
   }
   if (creator === "random") return { label: "Random mutation", short: "random", color: "var(--arm-random)", note: "control: random gene changes and lessons" };
