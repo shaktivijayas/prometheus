@@ -135,7 +135,7 @@ const PRESET_COLOR: Record<string, string> = {
 };
 
 function Behaviour({ runs }: { runs: RunIndexEntry[] }) {
-  const neural = runs.filter((r) => r.creator.startsWith("neural") && !r.creator.includes(":v000") && !r.creator.endsWith(":noteach"));
+  const neural = runs.filter((r) => r.creator.startsWith("neural") && !r.creator.includes(":v000") && !/:(noteach|randomteach)$/.test(r.creator));
   const [entities, setEntities] = useState<{ run: string; e: Entity }[] | null>(null);
   useEffect(() => {
     let alive = true;

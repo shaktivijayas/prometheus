@@ -91,6 +91,7 @@ function ComparisonResults({ c, index }: { c: Comparison; index: DataIndex }) {
   const random = findArm(c, "random");
   const heuristic = findArm(c, "heuristic");
   const noteach = findArm(c, "noteach");
+  const randomteach = findArm(c, "randomteach");
   const untrained = findArm(c, "untrained");
   const subject = trained ?? random;
 
@@ -108,7 +109,11 @@ function ComparisonResults({ c, index }: { c: Comparison; index: DataIndex }) {
     const j = beats(trained[1], heuristic[1], n);
     rows.push({ q: "Does it beat hand-written design rules?", j, text: `Verified champions ${fmt(trained[1].verified_final_mean)} vs ${fmt(heuristic[1].verified_final_mean)} (${evidence(j)}).` });
   }
-  if (trained && noteach) {
+  if (trained && randomteach) {
+    const j = beats(trained[1], randomteach[1], n);
+    const fixed = noteach ? ` With one fixed default plan instead: ${fmt(noteach[1].verified_final_mean)}.` : "";
+    rows.push({ q: "Does its teaching add value?", j, text: `Same trained designer, its own lesson plans vs lessons drawn at random: ${fmt(trained[1].verified_final_mean)} vs ${fmt(randomteach[1].verified_final_mean)} (${evidence(j)}).${fixed}` });
+  } else if (trained && noteach) {
     const j = beats(trained[1], noteach[1], n);
     rows.push({ q: "Does its teaching add value?", j, text: `Same trained designer with and without its own lesson plans: ${fmt(trained[1].verified_final_mean)} vs ${fmt(noteach[1].verified_final_mean)} (${evidence(j)}).` });
   } else rows.push({ q: "Does its teaching add value?", text: "Needs the trained and no-teaching arms." });

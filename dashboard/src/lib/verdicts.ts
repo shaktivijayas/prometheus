@@ -27,14 +27,16 @@ export function improves(a: Arm, n: number): Judgement {
   return { verdict: judge(a.verified_gain_mean, se), diff: a.verified_gain_mean, se };
 }
 
-export type Role = "trained" | "noteach" | "untrained" | "random" | "clone" | "heuristic";
+export type Role = "trained" | "noteach" | "randomteach" | "untrained" | "random" | "clone" | "heuristic";
+
+const ABLATION = /:(noteach|randomteach)$/;
 
 export function findArm(c: Comparison, role: Role): [string, Arm] | undefined {
   const entries = Object.entries(c.arms);
   const match = (name: string) => {
-    if (role === "noteach") return name.startsWith("neural") && name.endsWith(":noteach");
-    if (role === "untrained") return name.startsWith("neural") && name.includes(":v000") && !name.endsWith(":noteach");
-    if (role === "trained") return name.startsWith("neural") && !name.endsWith(":noteach") && !name.includes(":v000");
+    if (role === "noteach" || role === "randomteach") return name.startsWith("neural") && name.endsWith(`:${role}`);
+    if (role === "untrained") return name.startsWith("neural") && name.includes(":v000") && !ABLATION.test(name);
+    if (role === "trained") return name.startsWith("neural") && !ABLATION.test(name) && !name.includes(":v000");
     return name === role;
   };
   return entries.find(([name]) => match(name));

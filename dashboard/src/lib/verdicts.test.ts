@@ -1,3 +1,4 @@
+import { armInfo } from "./arms";
 import { describe, expect, it } from "vitest";
 import { beats, improves, findArm } from "./verdicts";
 import type { Arm, Comparison } from "./types";
@@ -34,5 +35,13 @@ describe("verdicts", () => {
     expect(findArm(c, "noteach")?.[0]).toBe("neural:latest:noteach");
     expect(findArm(c, "random")?.[0]).toBe("random");
     expect(findArm(c, "heuristic")).toBeUndefined();
+  });
+
+  it("tells the random-lessons control apart from the trained arm", () => {
+    const c = { arms: { "neural:latest:randomteach": arm(1, 0), "neural:latest": arm(2, 0), "neural:latest:noteach": arm(1, 0) } } as unknown as Comparison;
+    expect(findArm(c, "trained")?.[0]).toBe("neural:latest");
+    expect(findArm(c, "randomteach")?.[0]).toBe("neural:latest:randomteach");
+    expect(findArm(c, "noteach")?.[0]).toBe("neural:latest:noteach");
+    expect(armInfo("neural:latest:randomteach").label).toBe("Trained Creator, random lessons");
   });
 });
