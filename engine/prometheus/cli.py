@@ -105,7 +105,77 @@ def build_parser() -> argparse.ArgumentParser:
     cmp_.add_argument("--name", default="comparison")
     _sizing(cmp_)
     cmp_.set_defaults(func=cmd_compare)
+
+    from .creators.training import TrainConfig
+    t = TrainConfig()
+    tr = sub.add_parser("train-creator", help="train the Creator network with reinforcement learning")
+    tr.add_argument("--iterations", type=int, default=t.iterations, help="iterations to run (more, when resuming)")
+    tr.add_argument("--resume", action="store_true", help="continue from the latest checkpoint")
+    tr.add_argument("--runs-per-iteration", type=int, default=t.runs_per_iteration)
+    tr.add_argument("--checkpoint-every", type=int, default=t.checkpoint_every)
+    tr.add_argument("--generations", type=int, default=t.generations)
+    tr.add_argument("--population", type=int, default=t.population)
+    tr.add_argument("--elite", type=int, default=t.elite)
+    tr.add_argument("--episodes-per-lesson", type=int, default=t.episodes_per_lesson)
+    tr.add_argument("--eval-worlds", type=int, default=t.eval_worlds)
+    tr.add_argument("--replicates", type=int, default=t.replicates)
+    tr.add_argument("--lr", type=float, default=t.lr)
+    tr.add_argument("--workers", type=int, default=t.workers)
+    tr.add_argument("--seed", type=int, default=t.seed)
+    tr.add_argument("--checkpoints", default=None, help="checkpoint directory (default: <repo>/checkpoints)")
+    tr.set_defaults(func=cmd_train_creator)
+
+    pg = sub.add_parser("creator-progress", help="evaluate Creator checkpoints on held-out universes")
+    pg.add_argument("--versions", default="all", help="'all' or a list like v000,v010")
+    pg.add_argument("--seeds", default="0,1,2,3,4")
+    pg.add_argument("--out", default=".")
+    pg.add_argument("--checkpoints", default=None)
+    _sizing(pg)
+    pg.set_defaults(func=cmd_creator_progress)
     return parser
+
+
+def cmd_train_creator(args) -> None:
+    from .creators.checkpoints import default_checkpoint_dir
+    from .creators.training import TrainConfig, train
+    ckpt = Path(args.checkpoints) if args.checkpoints else default_checkpoint_dir()
+    cfg = TrainConfig(iterations=args.iterations, runs_per_iteration=args.runs_per_iteration,
+                      checkpoint_every=args.checkpoint_every, generations=args.generations,
+                      population=args.population, elite=args.elite, episodes_per_lesson=args.episodes_per_lesson,
+                      eval_worlds=args.eval_worlds, replicates=args.replicates, lr=args.lr, workers=args.workers,
+                      seed=args.seed)
+    print(f"{'iter':>5} {'reward':>8} {'gen0 mean':>9} {'final mean':>10} {'improve':>8} {'pred MAE':>8} "
+          f"{'entropy':>8} {'kl':>7} {'secs':>6} ckpt", flush=True)
+
+    def log(row):
+        ck = f"v{row['version']:03d}" if row.get("version") else ""
+        print(f"{row['iteration']:>5} {row['mean_reward']:>+8.3f} {row['gen0_mean_fitness']:>9.3f} "
+              f"{row['final_mean_fitness']:>10.3f} {row['improvement']:>+8.3f} {row['prediction_mae']:>8.3f} "
+              f"{row['entropy']:>8.2f} {row['approx_kl']:>7.4f} {row['seconds']:>6.1f} {ck}", flush=True)
+
+    train(cfg, ckpt, ckpt / "training_history.json", resume=args.resume, log=log)
+    print(f"checkpoints in {ckpt}")
+
+
+def cmd_creator_progress(args) -> None:
+    from .creators.checkpoints import default_checkpoint_dir
+    from .progress import creator_progress, resolve_versions
+    ckpt = Path(args.checkpoints) if args.checkpoints else default_checkpoint_dir()
+    try:
+        versions = resolve_versions(args.versions, ckpt)
+    except FileNotFoundError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2)
+    seeds = [int(s) for s in args.seeds.split(",")]
+    rows = creator_progress(versions, seeds, _config(args, "neural", seeds[0]), Path(args.out), ckpt,
+                            progress=lambda v, s, r: print(f"  {v} seed {s}: verified champion "
+                                                           f"{r.verification['final_best']['mean']:.3f}", flush=True))
+    print(f"\n{'version':<8} {'iteration':>9} {'verified champion':>20} {'verified gain':>18} {'pred MAE':>9}")
+    for r in rows:
+        mae = f"{r['prediction_mae']:.3f}" if r["prediction_mae"] is not None else "n/a"
+        print(f"{r['version']:<8} {r['iteration']:>9} {r['verified_final_mean']:>11.3f} +/- {r['verified_final_std']:<5.3f}"
+              f" {r['verified_gain_mean']:>+9.3f} +/- {r['verified_gain_std']:<5.3f} {mae:>9}")
+    print(f"wrote {Path(args.out) / 'creator' / 'progress.json'}")
 
 
 def main(argv: list[str] | None = None) -> None:
