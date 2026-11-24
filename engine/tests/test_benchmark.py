@@ -114,3 +114,17 @@ def test_universe_is_shared_by_training_and_eval():
     suite = EvalSuite(n_worlds=4, rules_seed=7)
     assert suite.rules().roles == EvalSuite(n_worlds=4, rules_seed=7).rules().roles
     assert any(EvalSuite(rules_seed=s).rules().roles != suite.rules().roles for s in range(8, 20))
+
+
+def test_replay_matches_scored_episode():
+    from prometheus.benchmark import replay_episodes
+    suite = EvalSuite(n_worlds=4, rules_seed=3)
+    g = Genome.default()
+    replayed = replay_episodes(g, None, DEFAULT_CURRICULUM, 11, suite, [0, 2], episodes_per_lesson=2)
+    agent = ChildAgent(g, 5, np.random.default_rng(11))
+    lessons = train_child(agent, DEFAULT_CURRICULUM, 11, 2, suite.rules())
+    worlds = suite.worlds()
+    for (preset, wseed, res), idx in zip(replayed, [0, 2]):
+        scored = bm._evaluate_worlds(agent, [worlds[idx]], lessons, suite.rules())
+        assert (preset, wseed) == worlds[idx]
+        assert res.score == pytest.approx(scored.mean_score)

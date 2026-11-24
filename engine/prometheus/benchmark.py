@@ -143,3 +143,18 @@ def train_and_evaluate(genome: Genome, beliefs: Beliefs | None, curriculum: Sequ
     agent = ChildAgent(genome, n_kinds, np.random.default_rng(seed), beliefs)
     lessons = train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules())
     return evaluate(agent, suite, lessons), agent.beliefs.copy()
+
+
+def replay_episodes(genome: Genome, beliefs: Beliefs | None, curriculum: Sequence[str], seed: int,
+                    suite: EvalSuite, world_indices: Sequence[int], n_kinds: int = 5,
+                    episodes_per_lesson: int = EPISODES_PER_LESSON) -> list[tuple[str, int, "object"]]:
+    """Re-create a child exactly as train_and_evaluate did and record step-by-step traces of chosen eval worlds."""
+    agent = ChildAgent(genome, n_kinds, np.random.default_rng(seed), beliefs)
+    train_child(agent, curriculum, seed, episodes_per_lesson, suite.rules())
+    worlds = suite.worlds()
+    out = []
+    for i in world_indices:
+        preset, wseed = worlds[i]
+        trial = copy.deepcopy(agent)
+        out.append((preset, wseed, run_episode(trial, make_world(preset, wseed, suite.rules()), record=True)))
+    return out
