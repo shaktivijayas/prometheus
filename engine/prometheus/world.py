@@ -84,6 +84,8 @@ class StepResult:
     reached_goal: bool
     shifted: bool
     done: bool
+    consumed: bool = False                          # the tile stepped on was eaten / collected
+    respawn: tuple[int, int, int] | None = None     # where (and which kind) a replacement tile appeared
 
 
 class World:
@@ -155,6 +157,8 @@ class World:
         kind = cell if cell >= 0 else None
         delta = 0.0
         reached_goal = False
+        consumed = False
+        respawn = None
         if kind is not None:
             role = self.rules.roles[kind]
             delta = ROLE_EFFECT[role]
@@ -162,13 +166,15 @@ class World:
             reached_goal = role == "goal"
             if role in CONSUMED_ROLES:
                 self.grid[self.pos] = FLOOR
+                consumed = True
                 spot = self._random_floor(exclude=self.pos)
                 if spot is not None:
                     self.grid[spot] = kind
+                    respawn = (spot[0], spot[1], kind)
         self.last_kind = kind
         self.t += 1
         self.done = self.energy <= 0 or self.t >= self.config.max_steps
-        return StepResult(kind, delta, reached_goal, shifted, self.done)
+        return StepResult(kind, delta, reached_goal, shifted, self.done, consumed, respawn)
 
 
 def make_world(preset: str, seed: int, rules: RuleSet | None = None) -> World:

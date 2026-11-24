@@ -186,7 +186,11 @@ def run_episode(agent: ChildAgent, world: World, record: bool = False) -> Episod
                 value = res.energy_delta + (GOAL_VALUE if res.reached_goal else 0.0)
             trace.append({"t": world.t, "pos": list(world.pos), "action": action, "kind": res.kind,
                           "predicted": predicted, "value": value, "energy": round(world.energy, 4),
-                          "surprise": round(surprise, 4), "shifted": res.shifted})
+                          "surprise": round(surprise, 4), "shifted": res.shifted, "consumed": res.consumed,
+                          "respawn": list(res.respawn) if res.respawn else None,
+                          "beliefs": [round(float(x), 3) for x in agent.beliefs.mean]})
+            if res.shifted:
+                trace[-1]["roles"] = list(world.rules.roles)
     agent.end_episode()
     survived = world.energy > 0
     death_cause = None if survived else ("hazard" if last_delta < 0 else "starvation")

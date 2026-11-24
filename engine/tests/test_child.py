@@ -181,3 +181,27 @@ def test_death_before_shift_gives_no_shift_rates():
     res = run_episode(agent(exploration=0.0), w)
     assert res.steps < 100 and not res.survived
     assert res.pre_shift_rate is None and res.post_shift_rate is None
+
+
+def test_trace_reconstructs_the_world_exactly():
+    """The dashboard redraws episodes from traces alone; they must reproduce the real grid (finding #5)."""
+    w = World(PRESETS["shift"], 9)
+    w.energy = 1e6  # live the whole episode so there are many pickups, respawns and a shift
+    res = run_episode(agent(), w, record=True)
+    grid = np.array(res.trace[0]["grid"])
+    roles = list(res.trace[0]["roles"])
+    pickups = 0
+    for step in res.trace[1:]:
+        if step["shifted"]:
+            assert "roles" in step
+            roles = step["roles"]
+        if step["consumed"]:
+            pickups += 1
+            grid[tuple(step["pos"])] = FLOOR
+        if step["respawn"] is not None:
+            r, c, k = step["respawn"]
+            grid[r, c] = k
+        assert len(step["beliefs"]) == 5
+    assert pickups > 0
+    assert np.array_equal(grid, w.grid)
+    assert roles == w.rules.roles
