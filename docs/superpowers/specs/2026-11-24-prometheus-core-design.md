@@ -16,6 +16,7 @@ The defining rule (from the concept, §19): the system must show that the evolve
 1. A simulated world with **hidden rules** that agents must discover by experimenting, and that **change mid-run** so adaptation can be measured.
 2. **Child intelligences** with persistent identity, genome (architecture), memory (learned beliefs), lineage and history.
 3. **The Creator** — a trained neural network — analyses performance and failures and designs new children / successors, recording *why* each was created (which features drove the decision) and *what it predicted* would happen.
+3a. **The Creator teaches.** Besides designing a child, it plans the child's training: which kinds of worlds it practices in, in what order, and how hard. The parent raises the child, and is rewarded for good teaching as well as good design.
 3b. **Creator training** across many runs, with saved, versioned checkpoints, so we can measure whether the parent itself improves (research question 8).
 4. **A fixed benchmark** so every generation is scored on identical challenges.
 5. **A control arm** (random mutation, no Creator reasoning) under an identical budget, to prove whether the Creator adds value.
@@ -113,7 +114,12 @@ prometheus/
 
 ### 6.3 Benchmark
 
-- **Training:** each child runs `train_episodes` (default 20) on randomly seeded worlds (seeds derived from run seed + child id).
+- **Training:** each child runs `train_episodes` (default 20) split into 4 **lessons** of 5 episodes. The child's **curriculum** (set by its Creator, see 6.4) chooses a difficulty preset for each lesson:
+  - `easy`: small grid, few hazards, plentiful food, no rule shift
+  - `normal`: default world, no rule shift
+  - `hard`: dense hazards, scarce food, more walls
+  - `shift`: default world with a mid-episode rule shift
+  Seeds are derived from run seed + child id + lesson. The total training budget is the same for every child; only its composition and order change.
 - **Evaluation:** a **fixed suite** of `eval_worlds` (default 24) seeded worlds: half stable, half with a rule shift. Same suite for every child, generation and arm.
 - **Metrics per child:** mean score (goals + survival), survival rate, pre-shift vs post-shift score (**adaptation ratio**), learning speed (episodes to reach X% of final), mean prediction error, energy spent on perception.
 - **Fitness:** a single scalar (weighted mean score with adaptation term) used for selection; all component metrics stored.
@@ -128,24 +134,27 @@ class Creator:
     def next_generation(self, report: GenerationReport, slots: int) -> list[ChildSpec]
 ```
 
-`ChildSpec` = genome + parent_id (optional) + inherit_beliefs flag + name + specialization + **reason** + **predicted fitness change**.
+`ChildSpec` = genome + parent_id (optional) + inherit_beliefs flag + **curriculum** (4 lesson presets) + name + specialization + **reason** + **predicted fitness change**.
 
 #### The Creator (trained neural network) — `neural.py`
 
 **Observation** (per candidate parent, built by `features.py`): normalized genome, fitness and all component metrics, failure profile (share of deaths by cause: hazard / starvation / post-shift), adaptation ratio, learning speed, rank in population, generation index, plus population summary stats (mean/std of each gene and metric, diversity). Fixed-size vectors, so the network works for any population.
 
-**Network:** small MLP encoder (about 2×128) shared across candidates, with four heads:
+**Network:** small MLP encoder (about 2×128) shared across candidates, with five heads:
 
 1. **Parent choice:** a score per candidate; softmax picks which child to build on.
 2. **Gene edits:** mean and log-std of a Gaussian per gene (how much to change each gene, in normalized units); sampled, then clamped to genome bounds.
 3. **Inheritance:** Bernoulli; pass the parent's learned beliefs on or not.
-4. **Prediction:** expected fitness change of the child vs its parent (trained by regression; also the RL value baseline).
+4. **Teaching (curriculum):** for each of the 4 lessons, a categorical choice over `easy / normal / hard / shift`, conditioned on the chosen parent and the gene edits (so it can teach a cautious child differently from a curious one).
+5. **Prediction:** expected fitness change of the child vs its parent (trained by regression; also the RL value baseline).
+
+The decisions are sampled in order (parent, then genes, inheritance, curriculum), so the Creator learns how design and teaching work together.
 
 **Reward:** the child's benchmark fitness minus the parent's, normalized per run. Small penalty for producing near-duplicates of existing children (keeps diversity).
 
 **Algorithm:** policy gradient with a learned baseline (PPO-style clipped updates), batched across all slots in a generation and across many parallel evolution runs.
 
-**Reasons:** each child's `reason` is generated from what the network actually did (the largest gene edits, the parent's dominant failure mode, and the prediction), e.g. *"Parent died to hazards after the rule shift in 60% of worlds: surprise_threshold -0.8, risk_aversion +0.5; predicted +12% fitness."* No free text that isn't grounded in real decisions.
+**Reasons:** each child's `reason` is generated from what the network actually did (the largest gene edits, the parent's dominant failure mode, and the prediction), e.g. *"Parent died to hazards after the rule shift in 60% of worlds: surprise_threshold -0.8, risk_aversion +0.5; curriculum easy → normal → shift → shift; predicted +12% fitness."* No free text that isn't grounded in real decisions.
 
 #### Training the Creator — `training.py`
 
@@ -158,8 +167,9 @@ class Creator:
 #### Baseline arms
 
 - **Untrained Creator:** same network, random initial weights (checkpoint v000). The "fresh parent".
-- **HeuristicCreator:** hand-written rules (low adaptation: raise surprise sensitivity; dying to hazards: raise risk aversion; ...). Shows whether the trained Creator beats a human designer's rules.
-- **RandomMutationCreator (control):** top-k parents, random Gaussian mutations. No intelligence.
+- **Trained Creator, teaching off:** the trained network designs children but every child gets the fixed default curriculum (`normal, normal, shift, normal`). Isolates **how much the teaching itself adds**.
+- **HeuristicCreator:** hand-written rules (low adaptation: raise surprise sensitivity, more `shift` lessons; dying to hazards: raise risk aversion, start with `easy`; ...). Shows whether the trained Creator beats a human designer's rules.
+- **RandomMutationCreator (control):** top-k parents, random Gaussian mutations, random curriculum. No intelligence.
 
 **Selection** (shared, not Creator-controlled, for fairness): keep top `elite` (default 2) unchanged; the Creator fills the remaining slots. Population size fixed (default 8). Retired entities keep their full records.
 
@@ -169,7 +179,7 @@ class Creator:
 
 - `prometheus run --creator {neural[:vNNN],heuristic,random} --generations 10 --population 8 --seed 0 --out runs/<name>`
 - `prometheus train-creator --iterations N [--resume]`
-- `prometheus compare --creators neural:latest,neural:v000,heuristic,random --seeds 0,1,2 --generations 10`: all arms × seeds on held-out worlds; writes mean ± std fitness per generation per arm.
+- `prometheus compare --creators neural:latest,neural:latest:noteach,neural:v000,heuristic,random --seeds 0,1,2 --generations 10`: all arms × seeds on held-out worlds; writes mean ± std fitness per generation per arm.
 - `prometheus creator-progress`: evaluates a series of checkpoints (v000 ... latest) on the same held-out benchmark. **Does the parent get better as it trains?**
 - Human oversight: config caps on max children per run and training compute; training is always started explicitly by the user.
 
@@ -192,9 +202,9 @@ creator/training_history.json reward and loss curves over training
 Vite + React + TypeScript, static. Loads an index of runs from `public/runs/`.
 
 - **Overview:** run summary, population status, headline result ("Gen 10 best vs Gen 1 best: +X%; trained Creator vs control: ...").
-- **Creator:** training curves, checkpoint-progress chart (fresh to experienced), prediction accuracy over time, decision breakdown (which genes it tends to edit for which failure types).
+- **Creator:** training curves, checkpoint-progress chart (fresh to experienced), prediction accuracy over time, decision breakdown (which genes it tends to edit for which failure types), and teaching patterns (which curricula it chooses for which kinds of child, and how that changed during training).
 - **Genealogy:** tree of all entities (colored by fitness, retired greyed), click to open profile.
-- **Entity profile:** identity, parent, reason for creation, predicted vs actual improvement, genome (diff vs parent highlighted), metrics, belief table, events.
+- **Entity profile:** identity, parent, reason for creation, curriculum it was taught (with score after each lesson), predicted vs actual improvement, genome (diff vs parent highlighted), metrics, belief table, events.
 - **Timeline:** filterable event stream including Creator decisions.
 - **Evolution charts:** fitness per generation, metric breakdown.
 - **Comparison:** arms side-by-side with error bands across seeds.
@@ -204,7 +214,7 @@ Deployable to GitHub Pages with bundled sample runs.
 
 ## 7. Testing
 
-- pytest: world determinism and rule shift; genome validation/clamping; learner belief updates and surprise reset; benchmark reproducibility (same seed, same scores); every Creator returns valid specs; Creator network shapes, sampling within bounds, a policy-gradient step improves a toy problem, checkpoint save/load round-trip; runner end-to-end on a tiny config; output schema.
+- pytest: world determinism and rule shift; genome validation/clamping; learner belief updates and surprise reset; benchmark reproducibility (same seed, same scores); every Creator returns valid specs; curriculum presets generate the intended worlds and the training budget is identical across curricula; Creator network shapes, sampling within bounds, a policy-gradient step improves a toy problem, checkpoint save/load round-trip; runner end-to-end on a tiny config; output schema.
 - Dashboard: type-checked against a shared schema; smoke build.
 
 ## 8. Success criteria for the core
@@ -212,7 +222,7 @@ Deployable to GitHub Pages with bundled sample runs.
 1. `train-creator` runs on the laptop and produces checkpoints with training curves.
 2. `compare` and `creator-progress` run over at least 3 seeds on held-out worlds.
 3. Dashboard shows all views for recorded runs and Creator training.
-4. The report states honestly: do later generations beat earlier ones, does the trained Creator beat random and heuristic, and does an experienced Creator beat a fresh one, including if any answer is no.
+4. The report states honestly: do later generations beat earlier ones, does the trained Creator beat random and heuristic, does its teaching add value over the default curriculum, and does an experienced Creator beat a fresh one, including if any answer is no.
 
 ## 9. Builder's calls (open to correction)
 
